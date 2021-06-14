@@ -81,7 +81,7 @@ const Landing = ({ heroRef, isDesktop }) => {
         </ClientesSlider>
       )}
       <Contacto />
-      {isLargerThan1280 && <UbicanosDesk />}
+      {isDesktop && <UbicanosDesk />}
       {isDesktop && <Footer />}
     </>
   )

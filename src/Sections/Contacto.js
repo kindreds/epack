@@ -25,7 +25,7 @@ const Contacto = (props) => {
         bg="#e0e1e0"
         flexDir="column"
         top="-87px"
-        right="17%"
+        right="15%"
         pos={{ xl: 'absolute' }}
         borderWidth={{ xl: 5 }}
         borderColor={{ xl: 'white' }}

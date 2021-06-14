@@ -41,10 +41,10 @@ const ButtonLink = ({ children }) => (
     mb={4}
     color="white"
     display="flex"
-    fontSize="2xl"
     variant="link"
     fontWeight="semibold"
     justifyContent="flex-start"
+    fontSize={{ base: 'lg', xl: '2xl' }}
     leftIcon={<Icon as={Logo} fontSize="x-large" />}
   >
     {children}
@@ -53,13 +53,26 @@ const ButtonLink = ({ children }) => (
 
 const Footer = (props) => {
   return (
-    <Grid w="full" bg="primary.500" templateColumns="repeat(3, minmax(0, 1fr))">
-      <GridItem colSpan={2} pl="15%">
+    <Grid
+      w="full"
+      bg="primary.500"
+      templateColumns={{
+        lg: 'repeat(2, minmax(0, 1fr))',
+        xl: 'repeat(3, minmax(0, 1fr))'
+      }}
+    >
+      <GridItem colSpan={{ base: 1, xl: 2 }} pl="15%">
         <Box pt={10}>
           <Heading mb={4} fontSize="2xl" color="secundary.500">
             ENLACES RÁPIDOS
           </Heading>
-          <SimpleGrid gap={3} templateColumns="repeat(3, 220px)">
+          <SimpleGrid
+            gap={{ base: 1, xl: 3 }}
+            templateColumns={{
+              base: 'repeat(2, 220px)',
+              xl: 'repeat(3, 220px)'
+            }}
+          >
             <ButtonLink>
               <LinkScroll to="inicio">Inicio</LinkScroll>
             </ButtonLink>
@@ -202,12 +215,12 @@ const Footer = (props) => {
           <Divider bg="bgSecundary" h={0.5} my={2} />
         </Box>
       </GridItem>
-      <GridItem colSpan={2} bg="#4d50a2">
+      <GridItem colSpan={{ base: 1, xl: 2 }} bg="#4d50a2">
         <Flex align="center" justify="center">
-          <Box pos="relative" w={32} h={20} mr={4}>
+          <Box pos="relative" w={{ base: 20, xl: 32 }} h={20} mr={4}>
             <Image src="/logo.png" layout="fill" objectFit="contain" />
           </Box>
-          <Heading color="white" fontSize="2xl">
+          <Heading color="white" fontSize={{ base: 'xl', xl: '2xl' }}>
             © Copyright 2021 by ando.pe
           </Heading>
         </Flex>

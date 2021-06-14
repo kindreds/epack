@@ -14,7 +14,7 @@ const Sidebar = ({ isOpen, onClose }) => {
   return (
     <Slide direction="left" in={isOpen} style={{ zIndex: 1 }}>
       <Box w="full" h="100vh" pos="relative" overflow="hidden" bg="bgPrimary">
-        <Flex h="100%" mx="auto" maxW="70%" mt={28} flexDir="column">
+        <Flex h="100%" mx="auto" maxW="70%" mt={24} flexDir="column">
           <IconButton
             mb={5}
             right={10}
@@ -26,9 +26,10 @@ const Sidebar = ({ isOpen, onClose }) => {
             top="calc(82px + 10px)"
           />
           <Link
-            {...{ posScroll, setPosScroll }}
+            isSidebar
             to="inicio"
             onClose={onClose}
+            {...{ posScroll, setPosScroll }}
           />
           <Stack
             align="center"
@@ -46,6 +47,7 @@ const Sidebar = ({ isOpen, onClose }) => {
               MENÚ
             </Heading>
             <Link
+              isSidebar
               to="nosotros"
               onClose={onClose}
               {...{ posScroll, setPosScroll }}
@@ -53,6 +55,7 @@ const Sidebar = ({ isOpen, onClose }) => {
               Nosotros
             </Link>
             <Link
+              isSidebar
               offset={-64}
               to="productos"
               {...{ posScroll, setPosScroll }}
@@ -61,16 +64,23 @@ const Sidebar = ({ isOpen, onClose }) => {
               Productos
             </Link>
             <Link
+              isSidebar
               to="servicios"
               onClose={onClose}
               {...{ posScroll, setPosScroll }}
             >
               Servicios
             </Link>
-            <Link {...{ posScroll, setPosScroll }} to="blog" onClose={onClose}>
+            <Link
+              isSidebar
+              {...{ posScroll, setPosScroll }}
+              to="blog"
+              onClose={onClose}
+            >
               Blog
             </Link>
             <Link
+              isSidebar
               to="testimonios"
               onClose={onClose}
               {...{ posScroll, setPosScroll }}
@@ -78,6 +88,7 @@ const Sidebar = ({ isOpen, onClose }) => {
               Testimonios
             </Link>
             <Link
+              isSidebar
               to="clientes"
               onClose={onClose}
               {...{ posScroll, setPosScroll }}
@@ -85,6 +96,7 @@ const Sidebar = ({ isOpen, onClose }) => {
               Clientes
             </Link>
             <Link
+              isSidebar
               to="contacto"
               onClose={onClose}
               {...{ posScroll, setPosScroll }}

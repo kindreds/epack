@@ -4,7 +4,6 @@ import Image from 'next/image'
 import { Button } from '@chakra-ui/button'
 import { useMediaQuery } from '@chakra-ui/media-query'
 import { Flex, Text, Heading, Box, SimpleGrid } from '@chakra-ui/layout'
-import Divider from './../components/Divider/index'
 
 const Nosotros = (props) => {
   const [is670pxOrLess] = useMediaQuery('(max-height: 670px)')
@@ -18,19 +17,19 @@ const Nosotros = (props) => {
         align="center"
         justify="center"
         flexDir="column"
-        py={{ base: 24, md: 32 }}
+        py={{ base: 28, md: 32 }}
         // minH={{ base: '100vh', md: '700px' }}
         {...props}
       >
         <SimpleGrid
-          maxW={{ base: '85%', xl: 'container.xl' }}
+          gap={{ md: 5 }}
           alignItems="center"
           justifyContent="center"
-          gap={{ md: 5 }}
+          maxW={{ base: '85%', xl: 'container.xl' }}
           templateColumns={{
             base: 'minmax(0, 1fr)',
             md: '400px 400px',
-            lg: '600px 450px'
+            lg: 'minmax(0, 600px) 400px'
           }}
           templateRows={{
             base: 'minmax(0, 250px)',
@@ -59,9 +58,9 @@ const Nosotros = (props) => {
             </Heading>
             <Text
               mb={4}
-              fontSize={{ base: 'lg', lg: '2xl' }}
               color="gray.700"
               fontWeight="400"
+              fontSize={{ base: 'lg', lg: 'xl' }}
               lineHeight={is670pxOrLess ? 'short' : 'taller'}
             >
               EPACK, es la mejor opción en servicio de serigrafía, estampado,

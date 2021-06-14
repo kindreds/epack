@@ -16,7 +16,7 @@ const Productos = (props) => {
         <Heading
           mt={1}
           textAlign="center"
-          fontSize={{ base: '2xl', xl: '5xl' }}
+          fontSize={['2xl', '3xl', '4xl', '5xl']}
           color={{ base: 'white', md: 'bgSecundary' }}
         >
           Nuestros productos
@@ -26,12 +26,11 @@ const Productos = (props) => {
         <SimpleGrid
           gap={{ base: 4, xl: 10 }}
           mx="auto"
-          maxW={{
+          w={{
             base: '90%',
-            sm: '500px',
-            md: 'container.md',
-            lg: 'container.lg'
+            sm: '80%'
           }}
+          maxW="1000px"
           templateColumns={{
             base: 'repeat(2, minmax(0, 1fr))',
             md: 'repeat(3, minmax(0, 1fr))'

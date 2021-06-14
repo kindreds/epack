@@ -4,14 +4,21 @@ import { Box, Heading, Text, Flex, AspectRatio } from '@chakra-ui/layout'
 const UbicanosDesk = () => {
   return (
     <Box id="ubicanos" w="full" bg="white">
-      <Box w="1200px" mx="auto">
-        <Heading mb={2} color="primary.500">
-          Ubícanos en:
-        </Heading>
-        <Text fontSize="2xl" mb={6} color="secundary.500">
-          “ingresar al Correo Corporativo <br />
-          ingresar al Correo Corporativo”
-        </Text>
+      <Flex
+        w={{ base: '90%' }}
+        mx="auto"
+        flexDir="column"
+        align={{ base: 'center', xl: 'flex-start' }}
+      >
+        <Box>
+          <Heading mb={2} color="primary.500">
+            Ubícanos en:
+          </Heading>
+          <Text fontSize={{ base: 'lg' }} mb={6} color="secundary.500">
+            “ingresar al Correo Corporativo <br />
+            ingresar al Correo Corporativo”
+          </Text>
+        </Box>
         <Flex>
           <Box maxW="300px" mb={6} mr={5}>
             <AspectRatio ratio={1} mb={4}>
@@ -45,7 +52,7 @@ const UbicanosDesk = () => {
             </Text>
           </Box>
         </Flex>
-      </Box>
+      </Flex>
     </Box>
   )
 }

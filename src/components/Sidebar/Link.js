@@ -6,6 +6,7 @@ import { Link as LinkS } from 'react-scroll'
 const Link = ({
   to,
   children,
+  isSidebar,
   posScroll,
   setPosScroll,
   fontSize = '2xl',
@@ -28,6 +29,7 @@ const Link = ({
       <Heading
         fontSize={fontSize}
         fontWeight="semibold"
+        h={isSidebar ? 'calc(100vh * 0.045)' : 'unset'}
         color={posScroll === to ? 'secundary.500' : 'white'}
       >
         {children}
@@ -41,6 +43,7 @@ Link.propTypes = {
   onClose: PropTypes.func,
   children: PropTypes.any,
   fontSize: PropTypes.any,
+  isSidebar: PropTypes.bool,
   posScroll: PropTypes.string,
   setPosScroll: PropTypes.func
 }

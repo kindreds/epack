@@ -9,9 +9,8 @@ const Nosotros = (props) => {
   const [is670pxOrLess] = useMediaQuery('(max-height: 670px)')
 
   return (
-    <Box id="nosotros" style={{ scrollPadding: '64px' }}>
+    <Box id="nosotros" mx="auto">
       <Flex
-        mx="auto"
         bg="white"
         align="center"
         justify="center"
@@ -27,8 +26,8 @@ const Nosotros = (props) => {
           maxW={{ base: '80%', xl: 'container.xl' }}
           templateColumns={{
             base: 'minmax(0, 1fr)',
-            md: '400px 400px',
-            lg: '600px 400px'
+            md: 'minmax(0, 400px) 400px',
+            lg: 'minmax(400px, 600px) 400px'
           }}
           templateRows={{
             base: 'minmax(0, 250px)',
@@ -57,9 +56,9 @@ const Nosotros = (props) => {
             </Heading>
             <Text
               mb={4}
-              fontSize={{ base: 'lg', lg: '2xl' }}
               color="gray.700"
               fontWeight="400"
+              fontSize={{ base: 'lg', lg: 'xl' }}
               lineHeight={is670pxOrLess ? 'short' : 'taller'}
             >
               Somos una empresa fabricante y distribuidora de bolsas de papel

@@ -153,7 +153,7 @@ const DesktopNav = () => {
               spy
               smooth
               to="ubicanos"
-              offset={-100}
+              offset={-125}
               onSetActive={setPosScroll}
               onClick={() => setPosScroll('ubicanos')}
             >

@@ -42,9 +42,6 @@ const Home = () => {
         />
         <title>ePack</title>
       </Head>
-      <Box pos="fixed" top={0} opacity={0.5} zIndex="popover">
-        {currentScroll}
-      </Box>
 
       <Landing {...{ heroRef: ref, isDesktop }} />
       {!isDesktop && <Navbar />}

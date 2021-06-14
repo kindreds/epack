@@ -25,15 +25,14 @@ const Navbar = () => {
       <Flex
         h={20}
         w="full"
+        bottom="0"
         pos="sticky"
         top="inherit"
-        bottom="0"
         zIndex="modal"
         align="center"
         bg="bgSecundary"
         borderTopRadius="xl"
         justify="space-around"
-        // transform="translateY(-50%)"
       >
         <IconButton
           onClick={() => onOpen('sidebarDrawer')}

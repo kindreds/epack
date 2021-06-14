@@ -8,16 +8,11 @@ const Hero = (props) => {
   return (
     <Flex
       mx="auto"
-      maxW={{
-        base: '80%',
-        md: 'container.md',
-        lg: 'container.lg',
-        xl: 'container.xl'
-      }}
       id="inicio"
       minH="100vh"
       align="center"
       justify="center"
+      maxW={{ base: '80%' }}
       flexDir={{ base: 'column', md: 'row' }}
       {...props}
     >
