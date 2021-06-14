@@ -1,0 +1,4 @@
+export const OPEN_DRAWER = 'OPEN_DRAWER'
+export const CLOSE_DRAWER = 'CLOSE_DRAWER'
+export const CURRENT_SCROLL = 'CURRENT_SCROLL'
+export const CLOSE_ALL_DRAWERS = 'CLOSE_ALL_DRAWERS'

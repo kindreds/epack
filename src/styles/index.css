@@ -1,0 +1,14 @@
+/* #containerID::-webkit-scrollbar {
+  width: 5px;
+}
+#containerID::-webkit-scrollbar-track {
+  background: transparent;
+}
+#containerID::-webkit-scrollbar-thumb {
+  background: #2ab4a7;
+  border-radius: 5px;
+} */
+
+.activeLink h2 {
+  color: #2ab4a7;
+}
