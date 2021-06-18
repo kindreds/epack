@@ -1,6 +1,6 @@
 import { ChakraProvider } from '@chakra-ui/react'
-import AppState from '../src/context/AppState'
 
+import AppState from '../src/context/AppState'
 import theme from '../theme'
 import '../src/styles/index.css'
 
