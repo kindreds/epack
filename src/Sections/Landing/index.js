@@ -1,8 +1,10 @@
 import React from 'react'
 import d from 'next/dynamic'
+// import Image from 'next/image'
 import PropTypes from 'prop-types'
 import { Box } from '@chakra-ui/layout'
-import { useMediaQuery } from '@chakra-ui/react'
+import { Image } from '@chakra-ui/image'
+import { useMediaQuery } from '@chakra-ui/media-query'
 
 import Hero from '../Hero'
 import Footer from '../Footer'
