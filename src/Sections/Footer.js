@@ -55,7 +55,12 @@ const Footer = (props) => {
   return (
     <Grid
       w="full"
-      bg="primary.500"
+      bgColor="bgPrimary"
+      bgBlendMode="darken"
+      bgPosition={{ lg: 'top' }}
+      bgSize={{ base: 'cover', lg: '100% 100%' }}
+      bgRepeat={{ base: 'no-repeat', lg: 'unset' }}
+      bgImage={{ base: 'url(slide1.png)', lg: 'url(slide2.png)' }}
       templateColumns={{
         lg: 'repeat(2, minmax(0, 1fr))',
         xl: 'repeat(3, minmax(0, 1fr))'

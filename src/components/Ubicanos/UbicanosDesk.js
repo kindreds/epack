@@ -5,11 +5,27 @@ const UbicanosDesk = () => {
   return (
     <Box id="ubicanos" w="full" bg="white">
       <Flex
-        w={{ base: '90%' }}
+        // overflow="hidden"
+        mt="-1px"
         mx="auto"
+        pos="relative"
         flexDir="column"
+        maxW={{ base: '1200px' }}
         align={{ base: 'center', xl: 'flex-start' }}
       >
+        <Box
+          top={0}
+          left={-44}
+          pos="absolute"
+          h={{ base: '150px' }}
+          w={{ base: '150px' }}
+          display={{ base: 'none', lg: 'block' }}
+        >
+          <img
+            style={{ height: '100%', width: '100%' }}
+            src="/icono-cicular.png"
+          />
+        </Box>
         <Box>
           <Heading mb={2} color="primary.500">
             Ubícanos en:

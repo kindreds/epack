@@ -29,11 +29,11 @@ const DesktopNav = () => {
   return (
     <>
       <Box
-        top={0}
+        top={-1}
         w="full"
         minH="60px"
         pos="sticky"
-        bg="bgPrimary"
+        bg={isPrimary ? '#562196' : 'transparent'}
         style={{ zIndex: 4 }}
       >
         <Flex
@@ -89,7 +89,7 @@ const DesktopNav = () => {
             </Link>
 
             <Link
-              offset={-92}
+              offset={-88}
               to="productos"
               fontSize={size}
               {...{ posScroll, setPosScroll }}
@@ -108,7 +108,7 @@ const DesktopNav = () => {
 
             <Link
               to="blog"
-              offset={-92}
+              offset={-88}
               fontSize={size}
               {...{ posScroll, setPosScroll }}
             >
@@ -125,7 +125,7 @@ const DesktopNav = () => {
             </Link>
 
             <Link
-              offset={-92}
+              offset={-88}
               to="clientes"
               fontSize={size}
               {...{ posScroll, setPosScroll }}

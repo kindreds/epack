@@ -7,12 +7,14 @@ import { Button } from '@chakra-ui/button'
 const Hero = (props) => {
   return (
     <Flex
+      zIndex="2"
       mx="auto"
+      mt="-65px"
       id="inicio"
-      minH="100vh"
       align="center"
       justify="center"
       maxW={{ base: '80%' }}
+      minH={{ base: '100vh', lg: '80vh' }}
       flexDir={{ base: 'column', md: 'row' }}
       {...props}
     >

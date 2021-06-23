@@ -31,7 +31,14 @@ const Home = () => {
   }, [])
 
   return (
-    <Box bg="primary.500">
+    <Box
+      bgColor="bgPrimary"
+      bgBlendMode="darken"
+      bgPosition={{ lg: 'top' }}
+      bgSize={{ base: 'contain', lg: '100% 11%' }}
+      bgRepeat={{ base: 'no-repeat', lg: 'unset' }}
+      bgImage={{ base: 'url(slide1.png)', lg: 'url(slide2.png)' }}
+    >
       <Head>
         {load && (
           <>
@@ -51,6 +58,7 @@ const Home = () => {
             />
           </>
         )}
+        <meta name="theme-color" content="#562196" />
       </Head>
 
       <Landing {...{ heroRef: ref, isDesktop }} />
@@ -64,6 +72,7 @@ const Home = () => {
         as={Link}
         to="inicio"
         pos="fixed"
+        zIndex="modal"
         fontSize="4xl"
         colorScheme="secundary"
         right={!inView ? 5 : -1005}

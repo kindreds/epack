@@ -18,7 +18,7 @@ const Bancos = () => {
   const { bancosDrawer: isOpen, onClose } = useDrawer()
 
   return (
-    <Slide direction="top" in={isOpen}>
+    <Slide direction="top" in={isOpen} style={{ zIndex: 5 }}>
       <Box
         w="full"
         pt="70px"

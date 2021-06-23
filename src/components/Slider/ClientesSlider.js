@@ -24,7 +24,15 @@ const ClientesSlider = ({
   }
 
   return (
-    <Box w="full" bg="primary.500">
+    <Box
+      w="full"
+      bgColor="bgPrimary"
+      bgBlendMode="darken"
+      bgPosition={{ lg: 'top' }}
+      bgSize={{ base: 'cover' }}
+      bgRepeat={{ base: 'no-repeat', lg: 'unset' }}
+      bgImage={{ base: 'url(slide1.png)', lg: 'url(slide2.png)' }}
+    >
       <Flex
         {...props}
         flexDir="column"

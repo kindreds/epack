@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 // import PropTypes from 'prop-types'
 import { Button } from '@chakra-ui/button'
 import { Flex, Text, Heading, Box, SimpleGrid } from '@chakra-ui/layout'
+import { useInView } from 'react-intersection-observer'
 
 const productList = [
   {
@@ -43,10 +44,19 @@ const productList = [
 ]
 
 const Productos = (props) => {
+  const { ref, inView } = useInView()
+  const [load, setLoad] = useState(false)
+
+  useEffect(() => {
+    if (inView) return setLoad(true)
+  }, [inView])
+
   return (
-    <Flex mx="auto" id="productos" flexDir="column" {...props}>
+    <Flex ref={ref} mx="auto" id="productos" flexDir="column" {...props}>
       <Box
-        bg="#503587"
+        pos="relative"
+        bgColor="#562196"
+        bgBlendMode="darken"
         py={{ base: 5, md: 10 }}
         borderTopColor="bgSecundary"
         borderTopWidth={{ base: 0, md: 5 }}
@@ -59,55 +69,75 @@ const Productos = (props) => {
         >
           Nuestros productos
         </Heading>
+        <Box
+          left={20}
+          bottom={0}
+          pos="absolute"
+          display={{ base: 'none', lg: 'block' }}
+          h={{ base: '200px' }}
+          w={{ base: '150px' }}
+        >
+          {load && (
+            <img
+              style={{ height: '100%', width: '100%' }}
+              src="/productos-recurso.png"
+            />
+          )}
+        </Box>
       </Box>
       <Box bg="white" py={8}>
-        <SimpleGrid
-          gap={{ base: 4, xl: 10 }}
-          mx="auto"
-          w={{
-            base: '90%',
-            sm: '80%'
-          }}
-          maxW="1000px"
-          templateColumns={{
-            base: 'repeat(2, minmax(0, 1fr))',
-            md: 'repeat(3, minmax(0, 1fr))'
-          }}
-        >
-          {productList.map(({ titulo, subTitulo, desc, image }, i) => (
-            <Box key={i}>
-              <Box
-                mb={4}
-                width="full"
-                rounded="lg"
-                pos="relative"
-                overflow="hidden"
-                height={{ base: '200', lg: '250' }}
-              >
-                <Image src={image} layout="fill" />
+        {load && (
+          <SimpleGrid
+            gap={{ base: 4, xl: 10 }}
+            mx="auto"
+            w={{
+              base: '90%',
+              sm: '80%'
+            }}
+            maxW="1000px"
+            templateColumns={{
+              base: 'repeat(2, minmax(0, 1fr))',
+              md: 'repeat(3, minmax(0, 1fr))'
+            }}
+          >
+            {productList.map(({ titulo, subTitulo, desc, image }, i) => (
+              <Box key={i}>
+                <Box
+                  mb={4}
+                  width="full"
+                  rounded="lg"
+                  pos="relative"
+                  overflow="hidden"
+                  height={{ base: '200', lg: '250' }}
+                >
+                  <Image src={image} layout="fill" />
+                </Box>
+                <Heading
+                  color="primary.500"
+                  fontSize={{ base: 'md', md: '2xl' }}
+                >
+                  {titulo}
+                </Heading>
+                <Text
+                  fontSize={{ base: 'sm', md: 'md' }}
+                  fontWeight={{ md: 'semibold' }}
+                  color="gray.500"
+                >
+                  {subTitulo}
+                </Text>
+                <Text
+                  fontSize={{ base: 'smaller', md: 'md' }}
+                  fontWeight={{ md: 'semibold' }}
+                  mb={2}
+                  color="gray.500"
+                >
+                  {desc}
+                </Text>
+                <Button colorScheme="secundary">Más información</Button>
               </Box>
-              <Heading color="primary.500" fontSize={{ base: 'lg', md: '2xl' }}>
-                {titulo}
-              </Heading>
-              <Text
-                fontSize={{ base: 'sm', md: 'md' }}
-                fontWeight={{ md: 'semibold' }}
-                color="gray.500"
-              >
-                {subTitulo}
-              </Text>
-              <Text
-                fontSize={{ base: 'smaller', md: 'md' }}
-                fontWeight={{ md: 'semibold' }}
-                mb={2}
-                color="gray.500"
-              >
-                {desc}
-              </Text>
-              <Button colorScheme="secundary">Más información</Button>
-            </Box>
-          ))}
-        </SimpleGrid>
+            ))}
+          </SimpleGrid>
+        )}
       </Box>
     </Flex>
   )

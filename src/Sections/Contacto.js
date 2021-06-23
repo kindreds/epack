@@ -14,13 +14,14 @@ const Contacto = (props) => {
       id="contacto"
       justify="center"
       flexDir="column"
-      pos={{ xl: 'relative' }}
+      pos={{ base: 'relative' }}
       py={{ base: 32, xl: 100 }}
       // minH={{ base: '100vh', md: '300px' }}
       align={{ base: 'center', xl: 'flex-start' }}
       {...props}
     >
       <Box
+        zIndex="2"
         w="90%"
         bg="#e0e1e0"
         flexDir="column"
@@ -68,6 +69,17 @@ const Contacto = (props) => {
 
           <Button colorScheme="secundary">ENVIAR MENSAJE</Button>
         </Stack>
+      </Box>
+      <Box
+        zIndex="1"
+        top={{ base: 80 }}
+        right={{ base: 3, lg: 44 }}
+        pos="absolute"
+        h={{ base: '300px' }}
+        w={{ base: '200px' }}
+        // display={{ base: 'none', xl: 'block' }}
+      >
+        <img style={{ height: '100%', width: '100%' }} src="/puntos.png" />
       </Box>
     </Flex>
   )

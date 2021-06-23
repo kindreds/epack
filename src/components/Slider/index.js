@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import ReactSlider from 'react-slidy'
-import { Flex, Heading } from '@chakra-ui/layout'
+import { Flex, Heading, Box } from '@chakra-ui/layout'
 
 import 'react-slidy/lib/styles.css'
 import { useMediaQuery } from '@chakra-ui/media-query'
@@ -27,10 +27,8 @@ const Slider = ({
     <Flex
       {...props}
       flexDir="column"
-      mt={{ md: 14 }}
-      pt={{ md: 40 }}
+      pt={{ md: 56 }}
       py={{ base: 28 }}
-      // minH={{ base: '100vh', md: '300px' }}
       bg={isWhite ? 'white' : 'transparent'}
       justify={{ base: 'center', md: 'flex-start' }}
     >

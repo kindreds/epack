@@ -26,7 +26,12 @@ const Header = () => {
       pos="sticky"
       zIndex="modal"
       display="flex"
-      bg="primary.500"
+      // bg="bgPrimary"
+      bgSize="cover"
+      bgRepeat="no-repeat"
+      bgImage="url(slide1.png)"
+      bgColor="bgPrimary"
+      bgBlendMode="darken"
       justifyContent="center"
       shadow={isPrimary && 'lg'}
     >

@@ -39,9 +39,22 @@ const Nosotros = (props) => {
             h="full"
             w="full"
             mx="auto"
-            mb={is670pxOrLess ? 2 : 4}
             pos="relative"
+            mb={is670pxOrLess ? 2 : 4}
           >
+            <Box
+              top={0}
+              left={{ base: -5, md: -16 }}
+              pos="absolute"
+              h={{ base: '200px', md: '300px' }}
+              w={{ base: '100px', md: '200px' }}
+              // display={{ base: 'none', lg: 'block' }}
+            >
+              <img
+                style={{ height: '100%', width: '100%' }}
+                src="/puntos.png"
+              />
+            </Box>
             <Image src="/3.png" layout="fill" objectFit="contain" />
           </Box>
           <Box>

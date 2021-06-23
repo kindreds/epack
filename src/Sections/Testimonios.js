@@ -1,6 +1,6 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
-import { Flex, Text } from '@chakra-ui/layout'
+import { Flex, Text, Box } from '@chakra-ui/layout'
 import { useMediaQuery } from '@chakra-ui/media-query'
 
 const Testimonios = (props) => {
@@ -8,6 +8,7 @@ const Testimonios = (props) => {
 
   return (
     <Flex
+      pos="relative"
       mx="auto"
       id="testimonios"
       justify="center"
@@ -15,6 +16,17 @@ const Testimonios = (props) => {
       maxW={{ base: '80%', md: '800px' }}
       {...props}
     >
+      <Box
+        opacity="0.3"
+        top={{ base: 20, md: 0 }}
+        left={-5}
+        pos="absolute"
+        h={{ base: '300px', md: '350px' }}
+        w={{ base: '200px', md: '200px' }}
+        // display={{ base: 'none', lg: 'block' }}
+      >
+        <img style={{ height: '100%', width: '100%' }} src="/puntos.png" />
+      </Box>
       <Text
         mb={4}
         fontSize="lg"

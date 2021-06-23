@@ -12,8 +12,18 @@ const Sidebar = ({ isOpen, onClose }) => {
   const [is670pxOrLess] = useMediaQuery('(max-height: 670px)')
 
   return (
-    <Slide direction="left" in={isOpen} style={{ zIndex: 1 }}>
-      <Box w="full" h="100vh" pos="relative" overflow="hidden" bg="bgPrimary">
+    <Slide direction="left" in={isOpen} style={{ zIndex: 5 }}>
+      <Box
+        w="full"
+        h="100vh"
+        pos="relative"
+        overflow="hidden"
+        bgSize="cover"
+        bgRepeat="no-repeat"
+        bgImage="url(slide1.png)"
+        bgColor="bgPrimary"
+        bgBlendMode="darken"
+      >
         <Flex h="100%" mx="auto" maxW="70%" mt={24} flexDir="column">
           <IconButton
             mb={5}
