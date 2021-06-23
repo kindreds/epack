@@ -9,6 +9,7 @@ import { IconButton } from '@chakra-ui/button'
 const Header = () => {
   const { onOpen } = useDrawer()
   const [isScrolling, setIsScrolling] = useState(0)
+
   useEffect(() => {
     const onChange = () => setIsScrolling(window.scrollY)
     window.addEventListener('scroll', onChange)
@@ -21,11 +22,11 @@ const Header = () => {
     <Box
       py={2}
       top={0}
-      w="100%"
+      w="full"
       pos="sticky"
       zIndex="modal"
       display="flex"
-      bg="bgPrimary"
+      bg="primary.500"
       justifyContent="center"
       shadow={isPrimary && 'lg'}
     >

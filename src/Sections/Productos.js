@@ -4,6 +4,44 @@ import Image from 'next/image'
 import { Button } from '@chakra-ui/button'
 import { Flex, Text, Heading, Box, SimpleGrid } from '@chakra-ui/layout'
 
+const productList = [
+  {
+    image: '/bolsa1.png',
+    titulo: 'BOLSA CON ASA',
+    subTitulo: 'KRAFT de 100gr',
+    desc: 'Varias medidas Impresión con tu logo (opcional) Cantidad mínima 100 unidades'
+  },
+  {
+    image: '/bolsa4.png',
+    titulo: 'BOLSAS SIN ASA',
+    subTitulo: 'KRAFT de 50gr, 60gr, 90gr',
+    desc: 'Varias medidas Impresión con tu logo (opcional) Cantidad mínima 100 unidades'
+  },
+  {
+    image: '/bolsa3.png',
+    titulo: 'BOLSAS DOYPACK',
+    subTitulo: 'KRAFT de 120gr con cierre Ziplock',
+    desc: 'Varias medidas Impresión con tu logo (opcional) Cantidad mínima 100 unidades'
+  },
+  {
+    image: '/bolsa2.png',
+    titulo: 'BOLSAS CON ASA RIÑON',
+    subTitulo: 'Liner de 140gr',
+    desc: 'Varias medidas Impresión con tu logo (opcional) Cantidad mínima 100 unidades'
+  },
+  {
+    image: '/bolsa5.png',
+    titulo: 'BOLSAS CON ASA YUTE',
+    subTitulo: 'KRAFT de 100gr',
+    desc: 'Varias medidas Impresión con tu logo (opcional) Cantidad mínima 100 unidades'
+  },
+  {
+    image: '/bolsa6.png',
+    titulo: 'CAJAS DE CARTÓN MICROCORRUGADO',
+    desc: 'Varias medidas Impresión con tu logo (opcional) Cantidad mínima 100 unidades'
+  }
+]
+
 const Productos = (props) => {
   return (
     <Flex mx="auto" id="productos" flexDir="column" {...props}>
@@ -36,45 +74,39 @@ const Productos = (props) => {
             md: 'repeat(3, minmax(0, 1fr))'
           }}
         >
-          {Array(6)
-            .fill(null)
-            .map((_, i) => (
-              <Box key={i}>
-                <Box
-                  mb={4}
-                  width="full"
-                  rounded="lg"
-                  pos="relative"
-                  overflow="hidden"
-                  height={{ base: '200', lg: '250' }}
-                >
-                  <Image src="/bolsa1.png" layout="fill" />
-                </Box>
-                <Heading
-                  color="primary.500"
-                  fontSize={{ base: 'lg', md: '2xl' }}
-                >
-                  BOLSA CON ASA
-                </Heading>
-                <Text
-                  fontSize={{ base: 'sm', md: 'md' }}
-                  fontWeight={{ md: 'semibold' }}
-                  color="gray.500"
-                >
-                  KRAFT de 100gr
-                </Text>
-                <Text
-                  fontSize={{ base: 'smaller', md: 'md' }}
-                  fontWeight={{ md: 'semibold' }}
-                  mb={2}
-                  color="gray.500"
-                >
-                  Varias medidas Impresión con tu logo (opcional) Cantidad
-                  mínima 100 unidades
-                </Text>
-                <Button colorScheme="secundary">Más información</Button>
+          {productList.map(({ titulo, subTitulo, desc, image }, i) => (
+            <Box key={i}>
+              <Box
+                mb={4}
+                width="full"
+                rounded="lg"
+                pos="relative"
+                overflow="hidden"
+                height={{ base: '200', lg: '250' }}
+              >
+                <Image src={image} layout="fill" />
               </Box>
-            ))}
+              <Heading color="primary.500" fontSize={{ base: 'lg', md: '2xl' }}>
+                {titulo}
+              </Heading>
+              <Text
+                fontSize={{ base: 'sm', md: 'md' }}
+                fontWeight={{ md: 'semibold' }}
+                color="gray.500"
+              >
+                {subTitulo}
+              </Text>
+              <Text
+                fontSize={{ base: 'smaller', md: 'md' }}
+                fontWeight={{ md: 'semibold' }}
+                mb={2}
+                color="gray.500"
+              >
+                {desc}
+              </Text>
+              <Button colorScheme="secundary">Más información</Button>
+            </Box>
+          ))}
         </SimpleGrid>
       </Box>
     </Flex>

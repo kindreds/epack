@@ -35,7 +35,7 @@ const Landing = ({ heroRef, isDesktop }) => {
   return (
     <>
       {isDesktop ? <DesktopNav /> : <Header />}
-      <Box bg="bgPrimary" ref={heroRef}>
+      <Box ref={heroRef}>
         <Hero />
       </Box>
       <Nosotros />

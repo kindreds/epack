@@ -16,9 +16,9 @@ const Bancos = dy(() => import('../src/components/Bancos'), { ssr: false })
 const Ubicanos = dy(() => import('../src/components/Ubicanos'), { ssr: false })
 
 const Home = () => {
-  const [load, setLoad] = useState(!!0)
   const { ref, inView } = useInView()
-  const [isDesktop] = useMediaQuery('(min-width: 1024px)')
+  const [load, setLoad] = useState(!!0)
+  const [isDesktop] = useMediaQuery(['(min-width: 1024px)'])
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -31,7 +31,7 @@ const Home = () => {
   }, [])
 
   return (
-    <Box>
+    <Box bg="primary.500">
       <Head>
         {load && (
           <>
