@@ -108,7 +108,7 @@ const Productos = (props) => {
                   rounded="lg"
                   pos="relative"
                   overflow="hidden"
-                  height={{ base: '200', lg: '250' }}
+                  height={{ base: 'calc(100vw / 2.5)', lg: '250' }}
                 >
                   <Image src={image} layout="fill" />
                 </Box>
