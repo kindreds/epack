@@ -31,55 +31,57 @@ const Home = () => {
   }, [])
 
   return (
-    <Box
-      bgColor="bgPrimary"
-      bgBlendMode="darken"
-      bgPosition={{ lg: 'top' }}
-      bgSize={{ base: 'contain', lg: '100% 11%' }}
-      bgRepeat={{ base: 'no-repeat', lg: 'unset' }}
-      bgImage={{ base: 'url(slide1.png)', lg: 'url(slide2.png)' }}
-    >
-      <Head>
-        {load && (
-          <>
-            <script
-              defer
-              src="https://www.googletagmanager.com/gtag/js?id=UA-175669111-1"
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
+    <>
+      <Box
+        bgColor="bgPrimary"
+        bgBlendMode="darken"
+        bgPosition={{ lg: 'top' }}
+        bgSize={{ base: 'contain', lg: '100% 11%' }}
+        bgRepeat={{ base: 'no-repeat', lg: 'unset' }}
+        bgImage={{ base: 'url(slide1.png)', lg: 'url(slide2.png)' }}
+      >
+        <Head>
+          {load && (
+            <>
+              <script
+                defer
+                src="https://www.googletagmanager.com/gtag/js?id=UA-175669111-1"
+              />
+              <script
+                dangerouslySetInnerHTML={{
+                  __html: `
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
                 gtag('config', 'UA-175669111-1');
               `
-              }}
-            />
-          </>
-        )}
-        <meta name="theme-color" content="#562196" />
-      </Head>
+                }}
+              />
+            </>
+          )}
+          <meta name="theme-color" content="#562196" />
+        </Head>
 
-      <Landing {...{ heroRef: ref, isDesktop }} />
-      {!isDesktop && <Navbar />}
-      {!isDesktop && <Ubicanos />}
-      {!isDesktop && <Bancos />}
+        <Landing {...{ heroRef: ref, isDesktop }} />
+        {!isDesktop && <Navbar />}
+        {!isDesktop && <Ubicanos />}
+        {!isDesktop && <Bancos />}
 
-      <IconButton
-        spy
-        smooth
-        as={Link}
-        to="inicio"
-        pos="fixed"
-        zIndex="modal"
-        fontSize="4xl"
-        colorScheme="secundary"
-        right={!inView ? 5 : -1005}
-        bottom={{ base: 100, xl: 10 }}
-        icon={<ChevronUpIcon color="bgPrimary" />}
-      />
-    </Box>
+        <IconButton
+          spy
+          smooth
+          as={Link}
+          to="inicio"
+          pos="fixed"
+          zIndex="modal"
+          fontSize="4xl"
+          colorScheme="secundary"
+          right={!inView ? 5 : -1005}
+          bottom={{ base: 100, xl: 10 }}
+          icon={<ChevronUpIcon color="bgPrimary" />}
+        />
+      </Box>
+    </>
   )
 }
 

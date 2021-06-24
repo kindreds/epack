@@ -71,6 +71,7 @@ const Nosotros = (props) => {
               mb={4}
               color="gray.700"
               fontWeight="400"
+              // textAlign="justify"
               fontSize={{ base: 'lg', lg: 'xl' }}
               lineHeight={is670pxOrLess ? 'short' : 'taller'}
             >

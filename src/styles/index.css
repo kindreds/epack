@@ -12,3 +12,16 @@
 .activeLink h2 {
   color: #2ab4a7;
 }
+
+@font-face {
+  font-family: Flexi;
+  font-weight: bold;
+  font-display: swap;
+  src: url(/fonts/Flexo-Bold.ttf);
+}
+
+@font-face {
+  font-family: Flexi-Demi;
+  font-display: swap;
+  src: url(/fonts/Flexo-Demi.ttf);
+}

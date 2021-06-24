@@ -9,6 +9,11 @@ const breakpoints = createBreakpoints({
   xl: '80em'
 })
 
+const fonts = {
+  heading: 'Flexi',
+  body: 'Flexi-Demi'
+}
+
 const colors = {
   primary: {
     50: '#f1edff',
@@ -56,6 +61,6 @@ const colors = {
   bgSecundary: '#2ab4a7'
 }
 
-const theme = extendTheme({ colors, breakpoints })
+const theme = extendTheme({ colors, breakpoints, fonts })
 
 export default theme

@@ -3,7 +3,7 @@ import { Box, Heading, Text, Flex, AspectRatio } from '@chakra-ui/layout'
 
 const UbicanosDesk = () => {
   return (
-    <Box id="ubicanos" w="full" bg="white">
+    <Box mt={-20} pb={20} id="ubicanos" w="full" bg="white">
       <Flex
         // overflow="hidden"
         mt="-1px"

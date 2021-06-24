@@ -22,7 +22,7 @@ const Nosotros = (props) => {
         ref={ref}
         mx="auto"
         mt="-1px"
-        bg="white"
+        bg="gray.200"
         id="servicios"
         align="center"
         justify="center"
@@ -71,6 +71,7 @@ const Nosotros = (props) => {
                 mb={4}
                 color="gray.700"
                 fontWeight="400"
+                textAlign="justify"
                 fontSize={{ base: 'lg', lg: 'xl' }}
                 lineHeight={is670pxOrLess ? 'short' : 'taller'}
               >
