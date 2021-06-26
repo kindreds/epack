@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import d from 'next/dynamic'
 // import TagManager from 'react-gtm-module'
@@ -22,7 +22,7 @@ const DesktopNav = d(() => import('../src/components/DesktopNav'), {
 
 const Home = () => {
   const { ref, inView } = useInView()
-  const { windowLoaded: loaded } = useDrawer()
+  const { windowLoaded: loaded, bancosDrawer, ubicanosDrawer } = useDrawer()
   const [isDesktop] = useMediaQuery(['(min-width: 1024px)'])
 
   useEffect(() => {
@@ -68,10 +68,10 @@ const Home = () => {
           <Hero />
         </div>
 
-        <Landing {...{ isDesktop, inView }} />
-        {!isDesktop && <Navbar />}
-        {!isDesktop && <Bancos />}
-        {!isDesktop && <Ubicanos />}
+        {inView ? <Landing {...{ isDesktop, inView }} /> : null}
+        <Navbar />
+        {bancosDrawer ? <Bancos /> : null}
+        {ubicanosDrawer ? <Ubicanos /> : null}
       </Box>
     </>
   )
