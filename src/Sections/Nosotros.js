@@ -53,7 +53,7 @@ const Nosotros = (props) => {
               <Image
                 layout="fill"
                 style={{ height: '100%', width: '100%' }}
-                src="/puntos.png"
+                src="/puntos_cp.webp"
               />
             </Box>
             <Image src="/3.png" layout="fill" objectFit="contain" />

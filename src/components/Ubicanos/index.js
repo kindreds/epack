@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Image from 'next/image'
 import PropTypes from 'prop-types'
 import { CloseIcon } from '@chakra-ui/icons'
 import { Slide } from '@chakra-ui/transition'
@@ -56,12 +57,10 @@ const Ubicanos = () => {
               w={{ base: '200px', md: '200px' }}
               // display={{ base: 'none', lg: 'block' }}
             >
-              {isOpen ? (
-                <img
-                  style={{ height: '100%', width: '100%' }}
-                  src="/puntos.png"
-                />
-              ) : null}
+              <Image
+                style={{ height: '100%', width: '100%' }}
+                src="puntos_cp.webp"
+              />
             </Box>
             <Box mb={6}>
               <SimpleGrid

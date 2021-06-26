@@ -80,7 +80,7 @@ const Contacto = (props) => {
         w={{ base: '200px' }}
         // display={{ base: 'none', xl: 'block' }}
       >
-        <Image layout="fill" src="/puntos.png" />
+        <Image layout="fill" src="/puntos_cp.webp" />
       </Box>
     </Flex>
   )

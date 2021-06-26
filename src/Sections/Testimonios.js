@@ -26,7 +26,7 @@ const Testimonios = (props) => {
         w={{ base: '200px', md: '200px' }}
         // display={{ base: 'none', lg: 'block' }}
       >
-        <Image layout="fill" src="/puntos.png" />
+        <Image layout="fill" src="/puntos_cp.webp" />
       </Box>
       <Text
         mb={4}
