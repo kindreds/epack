@@ -8,14 +8,17 @@ import { useInView } from 'react-intersection-observer'
 import { Center, Heading, Box } from '@chakra-ui/layout'
 
 import Hero from '../src/Sections/Hero'
-import Navbar from '../src/components/Navbar'
 import useDrawer from '../src/hooks/useDrawer'
 
+const Navbar = d(() => import('../src/components/Navbar'), { ssr: false })
 const Bancos = d(() => import('../src/components/Bancos'), { ssr: false })
 const Landing = d(() => import('../src/Sections/Landing'), { ssr: false })
 const Header = d(() => import('../src/components/Header'), { ssr: false })
 const Sidebar = d(() => import('../src/components/Sidebar'), { ssr: false })
 const Ubicanos = d(() => import('../src/components/Ubicanos'), { ssr: false })
+const DesktopNav = d(() => import('../src/components/DesktopNav'), {
+  ssr: false
+})
 
 const Home = () => {
   const { ref, inView } = useInView()
@@ -62,7 +65,7 @@ const Home = () => {
       </Center>
 
       <Box>
-        <Header />
+        {!isDesktop ? <Header /> : <DesktopNav />}
         <div ref={ref}>
           <Hero />
         </div>
@@ -71,7 +74,7 @@ const Home = () => {
         {loadChunks ? <Bancos /> : null}
         {loadChunks ? <Ubicanos /> : null}
         {loadChunks ? <Sidebar /> : null}
-        <Navbar />
+        {!isDesktop ? <Navbar /> : null}
       </Box>
     </div>
   )

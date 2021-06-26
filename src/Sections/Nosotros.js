@@ -1,15 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 // import PropTypes from 'prop-types'
 import { Button } from '@chakra-ui/button'
 import { useMediaQuery } from '@chakra-ui/media-query'
 import { Flex, Text, Heading, Box, SimpleGrid } from '@chakra-ui/layout'
+import { useInView } from 'react-intersection-observer'
 
 const Nosotros = (props) => {
+  const { ref, inView } = useInView()
+  const [load, setLoad] = useState(false)
   const [is670pxOrLess] = useMediaQuery('(max-height: 670px)')
 
+  useEffect(() => {
+    if (inView) setLoad(true)
+  }, [inView])
+
   return (
-    <Box id="nosotros" mx="auto">
+    <Box id="nosotros" mx="auto" ref={ref}>
       <Flex
         bg="white"
         align="center"
@@ -50,13 +57,17 @@ const Nosotros = (props) => {
               w={{ base: '100px', md: '200px' }}
               // display={{ base: 'none', lg: 'block' }}
             >
-              <Image
-                layout="fill"
-                style={{ height: '100%', width: '100%' }}
-                src="/puntos_cp.webp"
-              />
+              {load ? (
+                <Image
+                  layout="fill"
+                  style={{ height: '100%', width: '100%' }}
+                  src="/puntos_cp.webp"
+                />
+              ) : null}
             </Box>
-            <Image src="/3.png" layout="fill" objectFit="contain" />
+            {load ? (
+              <Image src="/3.png" layout="fill" objectFit="contain" />
+            ) : null}
           </Box>
           <Box>
             <Heading

@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react'
+import d from 'next/dynamic'
+
 import PropTypes from 'prop-types'
 import { Icon } from '@chakra-ui/icons'
 import { Image } from '@chakra-ui/image'
 import { Button } from '@chakra-ui/button'
-import { Link as LinkS } from 'react-scroll'
 import { useMediaQuery } from '@chakra-ui/react'
 import { Stack, Flex, Box } from '@chakra-ui/layout'
 import { GoLocation as LocationIcon } from 'react-icons/go'
 
 import Link from '../Sidebar/Link'
-import useScroll from '../../hooks/useScroll'
+
+const LinkS = d(() => import('react-scroll').then((e) => e.Link))
 
 const DesktopNav = () => {
-  const scroller = useScroll()
+  console.log('Desktop nav loaded')
   const [posScroll, setPosScroll] = useState()
   const [isScrolling, setIsScrolling] = useState(0)
   const [isLargerThan1280] = useMediaQuery('(min-width: 1280px)')

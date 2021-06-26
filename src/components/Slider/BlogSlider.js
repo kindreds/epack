@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import d from 'next/dynamic'
 import Image from 'next/image'
 
@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import { Button } from '@chakra-ui/button'
 import { Flex, Heading, Box } from '@chakra-ui/layout'
 import { useMediaQuery } from '@chakra-ui/media-query'
+import { useInView } from 'react-intersection-observer'
 
 const ReactSlider = d(() => import('react-slidy'))
 
@@ -16,8 +17,14 @@ const BlogSlider = ({
   sizeHeading = '4xl',
   ...props
 }) => {
+  const { ref, inView } = useInView()
+  const [load, setLoad] = useState(false)
   const [actualSlide, setActualSlide] = useState(0)
   const [is670pxOrLess] = useMediaQuery('(max-height: 670px)')
+
+  useEffect(() => {
+    if (inView) setLoad(true)
+  }, [inView])
 
   const isWhite = theme === 'white'
 
@@ -30,6 +37,7 @@ const BlogSlider = ({
       <Flex
         {...props}
         pb={100}
+        ref={ref}
         flexDir="column"
         pos={{ md: 'relative' }}
         py={{ base: 24, md: 24 }}
@@ -74,13 +82,15 @@ const BlogSlider = ({
           maxW={{ md: '90%' }}
           mx={{ md: 'auto' }}
         >
-          <ReactSlider
-            showArrows={!!0}
-            slide={actualSlide}
-            doAfterSlide={updateSlide}
-          >
-            {children}
-          </ReactSlider>
+          {load ? (
+            <ReactSlider
+              showArrows={!!0}
+              slide={actualSlide}
+              doAfterSlide={updateSlide}
+            >
+              {children}
+            </ReactSlider>
+          ) : null}
           <Flex mt={5} ml={{ base: '10%', md: 0 }} justify={{ md: 'center' }}>
             {Array(3)
               .fill(null)
