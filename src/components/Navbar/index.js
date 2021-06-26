@@ -28,7 +28,7 @@ const Navbar = () => {
         bottom="0"
         pos="sticky"
         top="inherit"
-        zIndex="modal"
+        zIndex="88"
         align="center"
         bg="bgSecundary"
         borderTopRadius="xl"

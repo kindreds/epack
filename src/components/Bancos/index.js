@@ -22,8 +22,8 @@ const Bancos = () => {
       <Box
         w="full"
         pt="70px"
-        pb="105px"
         h="100vh"
+        pb="105px"
         bg="white"
         pos="relative"
         overflow="auto"
@@ -39,7 +39,7 @@ const Bancos = () => {
           onClick={() => onClose('bancosDrawer')}
         />
 
-        <Box pos="relative" w="full" h="180px">
+        <Box pos="relative" w="full" h="150px">
           <Image src="/header-bank.png" layout="fill" />
         </Box>
 

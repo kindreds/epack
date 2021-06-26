@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import ReactSlider from 'react-slidy'
+import { Button } from '@chakra-ui/button'
 import { Flex, Heading, Box } from '@chakra-ui/layout'
+import { useMediaQuery } from '@chakra-ui/media-query'
+import { useInView } from 'react-intersection-observer'
 
 import 'react-slidy/lib/styles.css'
-import { useMediaQuery } from '@chakra-ui/media-query'
-import { Button } from '@chakra-ui/button'
-import { useInView } from 'react-intersection-observer'
 
 const BlogSlider = ({
   heading,

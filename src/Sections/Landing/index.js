@@ -1,12 +1,11 @@
 import React from 'react'
 import d from 'next/dynamic'
-// import Image from 'next/image'
 import PropTypes from 'prop-types'
-import { Box } from '@chakra-ui/layout'
-import { Image } from '@chakra-ui/image'
+import { Link } from 'react-scroll'
+import { IconButton } from '@chakra-ui/button'
+import { ChevronUpIcon } from '@chakra-ui/icons'
 import { useMediaQuery } from '@chakra-ui/media-query'
 
-import Hero from '../Hero'
 import Footer from '../Footer'
 import Nosotros from '../Nosotros'
 import Noticias from '../Noticias'
@@ -21,23 +20,15 @@ import ClientesSlider from '../../components/Slider/ClientesSlider'
 
 import { images1, images2, images4, images5, images6 } from '../../data/images'
 
-const Header = d(() => import('../../components/Header'), { ssr: false })
-const DesktopNav = d(() => import('../../components/DesktopNav'), {
-  ssr: false
-})
 const UbicanosDesk = d(() => import('../../components/Ubicanos/UbicanosDesk'), {
   ssr: false
 })
 
-const Landing = ({ heroRef, isDesktop }) => {
+const Landing = ({ inView, isDesktop }) => {
   const [isLargerThan1280] = useMediaQuery('(min-width: 1280px)')
 
   return (
     <>
-      {isDesktop ? <DesktopNav /> : <Header />}
-      <Box ref={heroRef}>
-        <Hero />
-      </Box>
       <Nosotros />
       <Productos />
       <Servicios />
@@ -85,12 +76,25 @@ const Landing = ({ heroRef, isDesktop }) => {
       <Contacto />
       {isDesktop && <UbicanosDesk />}
       {isDesktop && <Footer />}
+      <IconButton
+        spy
+        smooth
+        as={Link}
+        to="inicio"
+        pos="fixed"
+        zIndex="88"
+        fontSize="4xl"
+        colorScheme="secundary"
+        right={!inView ? 5 : -1005}
+        bottom={{ base: 100, xl: 10 }}
+        icon={<ChevronUpIcon color="bgPrimary" />}
+      />
     </>
   )
 }
 
 Landing.propTypes = {
-  heroRef: PropTypes.func,
+  inView: PropTypes.bool,
   isDesktop: PropTypes.bool
 }
 

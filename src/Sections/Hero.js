@@ -7,23 +7,24 @@ import { Button } from '@chakra-ui/button'
 const Hero = (props) => {
   return (
     <Flex
-      zIndex="2"
+      {...props}
       mx="auto"
+      zIndex="2"
       mt="-65px"
       id="inicio"
       align="center"
       justify="center"
+      transform="translateY(-20px)"
       maxW={{ base: '80%' }}
       minH={{ base: '100vh', lg: '80vh' }}
       flexDir={{ base: 'column', md: 'row' }}
-      {...props}
     >
       <Flex flexDir="column" align="flex-start">
         <Heading
           as="h1"
-          maxW={{ base: '330px', md: '700px' }}
           color="white"
           mb={{ base: 1, ms: 2 }}
+          maxW={{ base: '330px', md: '700px' }}
           fontSize={{ base: '3xl', sm: '4xl', md: '5xl', xl: '6xl' }}
         >
           BOLSAS DE PAPEL BIODEGRADABLES
@@ -48,7 +49,7 @@ const Hero = (props) => {
           Contáctanos
         </Button>
       </Flex>
-      <Box pos="relative" w={[300, 350, 400, 600]} h={[300, 350, 400, 600]}>
+      <Box pos="relative" w={[300, 350, 400, 600]} h={[250, 350, 400, 600]}>
         <Image src="/1.png" objectFit="contain" layout="fill" />
       </Box>
     </Flex>

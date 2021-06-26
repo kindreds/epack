@@ -1,38 +1,64 @@
 import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
-import dy from 'next/dynamic'
-import { Link } from 'react-scroll'
-import { Box } from '@chakra-ui/layout'
+import d from 'next/dynamic'
 import TagManager from 'react-gtm-module'
-import { IconButton } from '@chakra-ui/button'
-import { ChevronUpIcon } from '@chakra-ui/icons'
-import { useMediaQuery } from '@chakra-ui/react'
+import { Fade } from '@chakra-ui/transition'
+import { Spinner } from '@chakra-ui/spinner'
+import { useMediaQuery } from '@chakra-ui/media-query'
 import { useInView } from 'react-intersection-observer'
+import { Box, Center, Heading } from '@chakra-ui/layout'
 
+import Hero from '../src/Sections/Hero'
+import Navbar from '../src/components/Navbar'
 import Landing from '../src/Sections/Landing'
 
-const Navbar = dy(() => import('../src/components/Navbar'), { ssr: false })
-const Bancos = dy(() => import('../src/components/Bancos'), { ssr: false })
-const Ubicanos = dy(() => import('../src/components/Ubicanos'), { ssr: false })
+const Bancos = d(() => import('../src/components/Bancos'), { ssr: false })
+const Header = d(() => import('../src/components/Header'), { ssr: false })
+const Ubicanos = d(() => import('../src/components/Ubicanos'), { ssr: false })
+const DesktopNav = d(() => import('../src/components/DesktopNav'), {
+  ssr: false
+})
 
 const Home = () => {
   const { ref, inView } = useInView()
-  const [load, setLoad] = useState(!!0)
+  const [loaded, setLoaded] = useState(true)
   const [isDesktop] = useMediaQuery(['(min-width: 1024px)'])
 
   useEffect(() => {
     const timer = setTimeout(() => {
       const tagManagerArgs = { gtmId: 'GTM-KBLCP3J' }
       TagManager.initialize(tagManagerArgs)
-      setLoad(!0)
     }, 1000 * 10)
 
     return () => clearTimeout(timer)
   }, [])
 
+  useEffect(() => {
+    window.addEventListener('load', () => setLoaded(false))
+    return () => window.removeEventListener('load', () => setLoaded(false))
+  }, [])
+
   return (
     <>
+      <Center
+        as={Fade}
+        in={loaded}
+        w="full"
+        h="100vh"
+        pos="fixed"
+        zIndex="999"
+        bg="bgPrimary"
+        flexDir="column"
+      >
+        <Spinner size="lg" />
+        <Heading mt={5} color="white">
+          ePack
+        </Heading>
+      </Center>
+
       <Box
+        as={Fade}
+        in={!loaded}
         bgColor="bgPrimary"
         bgBlendMode="darken"
         bgPosition={{ lg: 'top' }}
@@ -41,45 +67,18 @@ const Home = () => {
         bgImage={{ base: 'url(slide1.png)', lg: 'url(slide2.png)' }}
       >
         <Head>
-          {load && (
-            <>
-              <script
-                defer
-                src="https://www.googletagmanager.com/gtag/js?id=UA-175669111-1"
-              />
-              <script
-                dangerouslySetInnerHTML={{
-                  __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'UA-175669111-1');
-              `
-                }}
-              />
-            </>
-          )}
           <meta name="theme-color" content="#562196" />
         </Head>
 
-        <Landing {...{ heroRef: ref, isDesktop }} />
-        {!isDesktop && <Navbar />}
-        {!isDesktop && <Ubicanos />}
-        {!isDesktop && <Bancos />}
+        {isDesktop ? <DesktopNav /> : <Header />}
+        <div ref={ref}>
+          <Hero />
+        </div>
 
-        <IconButton
-          spy
-          smooth
-          as={Link}
-          to="inicio"
-          pos="fixed"
-          zIndex="modal"
-          fontSize="4xl"
-          colorScheme="secundary"
-          right={!inView ? 5 : -1005}
-          bottom={{ base: 100, xl: 10 }}
-          icon={<ChevronUpIcon color="bgPrimary" />}
-        />
+        <Landing {...{ isDesktop, inView }} />
+        {!isDesktop && <Navbar />}
+        {!isDesktop && <Bancos />}
+        {!isDesktop && <Ubicanos />}
       </Box>
     </>
   )

@@ -24,7 +24,7 @@ const Header = () => {
       top={0}
       w="full"
       pos="sticky"
-      zIndex="modal"
+      zIndex="88"
       display="flex"
       // bg="bgPrimary"
       bgSize="cover"
