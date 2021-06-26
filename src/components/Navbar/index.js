@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
+import d from 'next/dynamic'
 import PropTypes from 'prop-types'
-import Sidebar from '../Sidebar'
+
 import { FaWhatsapp } from 'react-icons/fa'
 import { Link as LinkS } from 'react-scroll'
 import { Box, Flex } from '@chakra-ui/layout'
@@ -10,6 +11,8 @@ import { HamburgerIcon, Icon } from '@chakra-ui/icons'
 import useDrawer from '../../hooks/useDrawer'
 import { BankIcon, MailIcon, HomeIcon } from '../../SVGS'
 import { Portal } from '@chakra-ui/portal'
+
+const Sidebar = d(() => import('../Sidebar'))
 
 const Navbar = () => {
   const { onOpen, onClose, closeAll, sidebarDrawer } = useDrawer()
@@ -94,10 +97,12 @@ const Navbar = () => {
         </Button>
       </Flex>
       <Portal>
-        <Sidebar
-          isOpen={sidebarDrawer}
-          onClose={() => onClose('sidebarDrawer')}
-        />
+        {sidebarDrawer ? (
+          <Sidebar
+            isOpen={sidebarDrawer}
+            onClose={() => onClose('sidebarDrawer')}
+          />
+        ) : null}
       </Portal>
     </>
   )

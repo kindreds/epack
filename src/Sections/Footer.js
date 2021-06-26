@@ -60,7 +60,7 @@ const Footer = (props) => {
       bgPosition={{ lg: 'top' }}
       bgSize={{ base: 'cover', lg: '100% 100%' }}
       bgRepeat={{ base: 'no-repeat', lg: 'unset' }}
-      bgImage={{ base: 'url(slide1.png)', lg: 'url(slide2.png)' }}
+      bgImage={{ base: 'url(slide1_cp.webp)', lg: 'url(slide2.png)' }}
       templateColumns={{
         lg: 'repeat(2, minmax(0, 1fr))',
         xl: 'repeat(3, minmax(0, 1fr))'

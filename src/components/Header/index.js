@@ -29,7 +29,7 @@ const Header = () => {
       // bg="bgPrimary"
       bgSize="cover"
       bgRepeat="no-repeat"
-      bgImage="url(slide1.png)"
+      bgImage="url(slide1_cp.webp)"
       bgColor="bgPrimary"
       bgBlendMode="darken"
       justifyContent="center"

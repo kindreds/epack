@@ -32,7 +32,7 @@ const ClientesSlider = ({
       bgPosition={{ lg: 'top' }}
       bgSize={{ base: 'cover' }}
       bgRepeat={{ base: 'no-repeat', lg: 'unset' }}
-      bgImage={{ base: 'url(slide1.png)', lg: 'url(slide2.png)' }}
+      bgImage={{ base: 'url(slide1_cp.webp)', lg: 'url(slide2.png)' }}
     >
       <Flex
         {...props}

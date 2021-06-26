@@ -20,7 +20,7 @@ const Sidebar = ({ isOpen, onClose }) => {
         overflow="hidden"
         bgSize="cover"
         bgRepeat="no-repeat"
-        bgImage="url(slide1.png)"
+        bgImage="url(slide1_cp.webp)"
         bgColor="bgPrimary"
         bgBlendMode="darken"
       >

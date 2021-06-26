@@ -46,7 +46,7 @@ const BlogSlider = ({
         bgPosition={{ lg: 'top' }}
         bgSize={{ base: 'cover', lg: '100% 100%' }}
         bgRepeat={{ base: 'no-repeat', lg: 'unset' }}
-        bgImage={{ base: 'url(slide1.png)', lg: 'url(slide2.png)' }}
+        bgImage={{ base: 'url(slide1_cp.webp)', lg: 'url(slide2.png)' }}
       >
         <Box
           right={44}

@@ -16,9 +16,6 @@ const Bancos = d(() => import('../src/components/Bancos'), { ssr: false })
 const Landing = d(() => import('../src/Sections/Landing'), { ssr: false })
 const Header = d(() => import('../src/components/Header'), { ssr: false })
 const Ubicanos = d(() => import('../src/components/Ubicanos'), { ssr: false })
-const DesktopNav = d(() => import('../src/components/DesktopNav'), {
-  ssr: false
-})
 
 const Home = () => {
   const { ref, inView } = useInView()
@@ -61,15 +58,15 @@ const Home = () => {
         bgPosition={{ lg: 'top' }}
         bgSize={{ base: 'contain', lg: '100% 11%' }}
         bgRepeat={{ base: 'no-repeat', lg: 'unset' }}
-        bgImage={{ base: 'url(slide1.png)', lg: 'url(slide2.png)' }}
+        bgImage={{ base: 'url(slide1_cp.webp)', lg: 'url(slide2.png)' }}
       >
-        {isDesktop ? <DesktopNav /> : <Header />}
+        {loaded ? <Header /> : null}
         <div ref={ref}>
           <Hero />
         </div>
 
-        {inView ? <Landing {...{ isDesktop, inView }} /> : null}
-        <Navbar />
+        {loaded ? <Landing {...{ isDesktop, inView }} /> : null}
+        {loaded ? <Navbar /> : null}
         {bancosDrawer ? <Bancos /> : null}
         {ubicanosDrawer ? <Ubicanos /> : null}
       </Box>

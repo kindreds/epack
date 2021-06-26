@@ -6,7 +6,6 @@ import { IconButton } from '@chakra-ui/button'
 import { ChevronUpIcon } from '@chakra-ui/icons'
 import { useMediaQuery } from '@chakra-ui/media-query'
 
-import Footer from '../Footer'
 import Nosotros from '../Nosotros'
 import Noticias from '../Noticias'
 import Clientes from '../Clientes'
@@ -20,9 +19,8 @@ import ClientesSlider from '../../components/Slider/ClientesSlider'
 
 import { images1, images2, images4, images5, images6 } from '../../data/images'
 
-const UbicanosDesk = d(() => import('../../components/Ubicanos/UbicanosDesk'), {
-  ssr: false
-})
+const Footer = d(() => import('../Footer'))
+const UbicanosDesk = d(() => import('../../components/Ubicanos/UbicanosDesk'))
 
 const Landing = ({ inView, isDesktop }) => {
   const [isLargerThan1280] = useMediaQuery('(min-width: 1280px)')
