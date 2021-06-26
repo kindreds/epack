@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import d from 'next/dynamic'
+
 import Image from 'next/image'
 import PropTypes from 'prop-types'
 import { CloseIcon } from '@chakra-ui/icons'
-import { Slide } from '@chakra-ui/transition'
 import { IconButton } from '@chakra-ui/button'
 import {
   Box,
@@ -13,6 +14,10 @@ import {
   Text
 } from '@chakra-ui/layout'
 import useDrawer from '../../hooks/useDrawer'
+
+const Slide = d(() => import('@chakra-ui/transition').then((e) => e.Slide), {
+  ssr: false
+})
 
 const Ubicanos = () => {
   const [load, setLoad] = useState(false)

@@ -1,12 +1,18 @@
 import React, { useState } from 'react'
+import d from 'next/dynamic'
 import PropTypes from 'prop-types'
+
 import Link from './Link'
 import { CloseIcon } from '@chakra-ui/icons'
-import { Slide } from '@chakra-ui/transition'
 import { IconButton } from '@chakra-ui/button'
 import { useMediaQuery } from '@chakra-ui/media-query'
 import { Box, Flex, Heading, Stack, Divider } from '@chakra-ui/layout'
+
 import useDrawer from '../../hooks/useDrawer'
+
+const Slide = d(() => import('@chakra-ui/transition').then((e) => e.Slide), {
+  ssr: false
+})
 
 const Sidebar = () => {
   const [posScroll, setPosScroll] = useState()
