@@ -14,7 +14,7 @@
   font-display: swap;
   src: url(/fonts/Flexo-Demi.ttf);
 }
-
+/* 
 input[type='text'] {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
@@ -25,8 +25,8 @@ input[type='text'] {
 
 input[type='text']:focus,
 input[type='text']:active {
-  /* outline: 2px solid #564596; */
+  outline: 2px solid #564596;
   outline: none;
   border-radius: 0.5rem;
   border: 2px solid #564596;
-}
+} */

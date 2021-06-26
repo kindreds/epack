@@ -71,7 +71,9 @@ const Landing = ({ inView, isDesktop }) => {
           <Clientes images={images2} />
         </ClientesSlider>
       )}
-      <Contacto />
+      <div id="contacto">
+        <Contacto />
+      </div>
       {isDesktop && <UbicanosDesk />}
       {isDesktop && <Footer />}
       <IconButton

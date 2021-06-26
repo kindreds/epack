@@ -3,19 +3,19 @@ import Head from 'next/head'
 import d from 'next/dynamic'
 // import TagManager from 'react-gtm-module'
 import { Spinner } from '@chakra-ui/spinner'
-import { Center, Heading } from '@chakra-ui/layout'
 import { useMediaQuery } from '@chakra-ui/media-query'
 import { useInView } from 'react-intersection-observer'
+import { Center, Heading, Box } from '@chakra-ui/layout'
 
 import Hero from '../src/Sections/Hero'
 import Navbar from '../src/components/Navbar'
 import useDrawer from '../src/hooks/useDrawer'
 
-const Bancos = d(() => import('../src/components/Bancos'))
-const Landing = d(() => import('../src/Sections/Landing'))
-const Header = d(() => import('../src/components/Header'))
-const Sidebar = d(() => import('../src/components/Sidebar'))
-const Ubicanos = d(() => import('../src/components/Ubicanos'))
+const Bancos = d(() => import('../src/components/Bancos'), { ssr: false })
+const Landing = d(() => import('../src/Sections/Landing'), { ssr: false })
+const Header = d(() => import('../src/components/Header'), { ssr: false })
+const Sidebar = d(() => import('../src/components/Sidebar'), { ssr: false })
+const Ubicanos = d(() => import('../src/components/Ubicanos'), { ssr: false })
 
 const Home = () => {
   const { ref, inView } = useInView()
@@ -41,7 +41,7 @@ const Home = () => {
   }, [bancosDrawer, ubicanosDrawer, sidebarDrawer])
 
   return (
-    <>
+    <div>
       <Head>
         <meta name="theme-color" content="#562196" />
       </Head>
@@ -61,17 +61,19 @@ const Home = () => {
         </Heading>
       </Center>
 
-      <Header />
-      <div ref={ref}>
-        <Hero />
-      </div>
+      <Box>
+        <Header />
+        <div ref={ref}>
+          <Hero />
+        </div>
 
-      <Landing {...{ isDesktop, inView }} />
-      {loadChunks ? <Bancos /> : null}
-      {loadChunks ? <Ubicanos /> : null}
-      {loadChunks ? <Sidebar /> : null}
-      <Navbar />
-    </>
+        <Landing {...{ isDesktop, inView }} />
+        {loadChunks ? <Bancos /> : null}
+        {loadChunks ? <Ubicanos /> : null}
+        {loadChunks ? <Sidebar /> : null}
+        <Navbar />
+      </Box>
+    </div>
   )
 }
 

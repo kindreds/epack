@@ -1,22 +1,28 @@
 import React from 'react'
+import d from 'next/dynamic'
 import Image from 'next/image'
 // import PropTypes from 'prop-types'
-// import { Input } from '@chakra-ui/input'
+
 import { Button } from '@chakra-ui/button'
-// import { Checkbox } from '@chakra-ui/checkbox'
-// import { Textarea } from '@chakra-ui/textarea'
 import { Flex, Text, Box, Stack, Heading } from '@chakra-ui/layout'
+
+const Input = d(() => import('@chakra-ui/input').then((e) => e.Input), {
+  ssr: false
+})
+const Textarea = d(
+  () => import('@chakra-ui/textarea').then((e) => e.Textarea),
+  { ssr: false }
+)
 
 const Contacto = (props) => {
   return (
     <Flex
       mx="auto"
       bg="white"
-      id="contacto"
       justify="center"
       flexDir="column"
       pos={{ base: 'relative' }}
-      py={{ base: 32, xl: 100 }}
+      py={{ base: 40, xl: 100 }}
       // minH={{ base: '100vh', md: '300px' }}
       align={{ base: 'center', xl: 'flex-start' }}
       {...props}
@@ -36,26 +42,26 @@ const Contacto = (props) => {
         <Box bg="bgSecundary" py={5} pl={5} w="full">
           <Heading color="white">Contacto</Heading>
         </Box>
-        <Stack mx={6} mt={8} mb={4}>
-          <input
+        <Stack spacing={4} mx={6} mt={8} mb={4}>
+          <Input
             size="lg"
             bg="white"
             type="text"
             placeholder="Nombes y Apellidos"
           />
-          <input
+          <Input
             size="lg"
             bg="white"
             type="text"
             placeholder="Telefono de contacto"
           />
-          <input
+          <Input
             size="lg"
             bg="white"
             type="text"
             placeholder="Correo electrónico"
           />
-          {/* <Textarea size="lg" bg="white" placeholder="Mensaje" resize="none" />  */}
+          <Textarea size="lg" bg="white" placeholder="Mensaje" resize="none" />
 
           <Flex mt={4} aling="center">
             {/* <Checkbox

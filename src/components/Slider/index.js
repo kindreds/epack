@@ -6,7 +6,7 @@ import { Flex, Heading } from '@chakra-ui/layout'
 import { useMediaQuery } from '@chakra-ui/media-query'
 import { Button } from '@chakra-ui/button'
 
-const ReactSlider = d(() => import('react-slidy'))
+const ReactSlider = d(() => import('react-slidy'), { ssr: false })
 
 const Slider = ({
   heading,
