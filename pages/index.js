@@ -19,22 +19,26 @@ const Ubicanos = d(() => import('../src/components/Ubicanos'), { ssr: false })
 
 const Home = () => {
   const { ref, inView } = useInView()
-  const [loaded, setLoaded] = useState(false)
+  const [loadChunks, setLoadChunks] = useState(false)
   const { bancosDrawer, ubicanosDrawer } = useDrawer()
   const [isDesktop] = useMediaQuery(['(min-width: 1024px)'])
 
   useEffect(() => {
-    const preloader = document.getElementById('preloader')
-    if (loaded) {
+    const onLoad = () => {
+      const preloader = document.getElementById('preloader')
       preloader.style.pointerEvents = 'none'
       preloader.style.opacity = 0
     }
-  }, [loaded])
+
+    window.addEventListener('load', onLoad)
+    return () => window.removeEventListener('load', onLoad)
+  }, [])
 
   useEffect(() => {
-    window.addEventListener('load', () => setLoaded(true))
-    return () => window.removeEventListener('load', () => setLoaded(false))
-  }, [])
+    if (bancosDrawer || ubicanosDrawer) {
+      setLoadChunks(true)
+    }
+  }, [bancosDrawer, ubicanosDrawer])
 
   return (
     <>
@@ -57,15 +61,15 @@ const Home = () => {
         </Heading>
       </Center>
 
-      {loaded ? <Header /> : null}
+      <Header />
       <div ref={ref}>
         <Hero />
       </div>
 
       <Landing {...{ isDesktop, inView }} />
-      {bancosDrawer ? <Bancos /> : null}
-      {ubicanosDrawer ? <Ubicanos /> : null}
-      {loaded ? <Navbar /> : null}
+      {loadChunks ? <Bancos /> : null}
+      {loadChunks ? <Ubicanos /> : null}
+      <Navbar />
     </>
   )
 }

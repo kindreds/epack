@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from 'react'
+import React, { useReducer } from 'react'
 import PropTypes from 'prop-types'
 import AppContext from './AppContext'
 import { AppReducer } from './AppReducer'
@@ -17,20 +17,7 @@ const initialState = {
 }
 
 const AppState = ({ children }) => {
-  const [windowLoaded, setWindowLoaded] = useState(false)
   const [state, dispatch] = useReducer(AppReducer, initialState)
-
-  useEffect(() => {
-    window.addEventListener('load', () => {
-      setWindowLoaded(true)
-      console.log('loaded')
-    })
-    return () =>
-      window.addEventListener('load', () => {
-        setWindowLoaded(false)
-        console.log('not-loaded')
-      })
-  }, [])
 
   const onOpen = (drawer) => {
     dispatch({ type: OPEN_DRAWER, payload: drawer })
@@ -46,8 +33,6 @@ const AppState = ({ children }) => {
   }
 
   const exports = {
-    /* Window loaded */
-    windowLoaded,
     /* States */
     bancosDrawer: state.bancosDrawer,
     sidebarDrawer: state.sidebarDrawer,
