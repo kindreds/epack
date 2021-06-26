@@ -13,7 +13,6 @@ const fonts = {
   heading: 'Flexi',
   body: 'Flexi-Demi'
 }
-// const fonts = {}
 
 const colors = {
   primary: {

@@ -1,10 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
 // import PropTypes from 'prop-types'
-import { Input } from '@chakra-ui/input'
+// import { Input } from '@chakra-ui/input'
 import { Button } from '@chakra-ui/button'
 // import { Checkbox } from '@chakra-ui/checkbox'
-import { Textarea } from '@chakra-ui/textarea'
+// import { Textarea } from '@chakra-ui/textarea'
 import { Flex, Text, Box, Stack, Heading } from '@chakra-ui/layout'
 
 const Contacto = (props) => {
@@ -37,25 +37,25 @@ const Contacto = (props) => {
           <Heading color="white">Contacto</Heading>
         </Box>
         <Stack mx={6} mt={8} mb={4}>
-          <Input
+          <input
             size="lg"
             bg="white"
             type="text"
             placeholder="Nombes y Apellidos"
           />
-          <Input
+          <input
             size="lg"
             bg="white"
             type="text"
             placeholder="Telefono de contacto"
           />
-          <Input
+          <input
             size="lg"
             bg="white"
             type="text"
             placeholder="Correo electrónico"
           />
-          <Textarea size="lg" bg="white" placeholder="Mensaje" resize="none" />
+          {/* <Textarea size="lg" bg="white" placeholder="Mensaje" resize="none" />  */}
 
           <Flex mt={4} aling="center">
             {/* <Checkbox
