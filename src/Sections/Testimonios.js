@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 // import PropTypes from 'prop-types'
 import { Flex, Text, Box } from '@chakra-ui/layout'
 import { useMediaQuery } from '@chakra-ui/media-query'
@@ -25,7 +26,7 @@ const Testimonios = (props) => {
         w={{ base: '200px', md: '200px' }}
         // display={{ base: 'none', lg: 'block' }}
       >
-        <img style={{ height: '100%', width: '100%' }} src="/puntos.png" />
+        <Image layout="fill" src="/puntos.png" />
       </Box>
       <Text
         mb={4}

@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
+import d from 'next/dynamic'
 import PropTypes from 'prop-types'
-import ReactSlider from 'react-slidy'
 import { Flex, Heading, Box } from '@chakra-ui/layout'
 
-import 'react-slidy/lib/styles.css'
 import { useMediaQuery } from '@chakra-ui/media-query'
 import { Button } from '@chakra-ui/button'
+
+const ReactSlider = d(() => import('react-slidy'))
 
 const ClientesSlider = ({
   heading,

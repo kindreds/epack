@@ -10,10 +10,10 @@ import { Box, Center, Heading } from '@chakra-ui/layout'
 
 import Hero from '../src/Sections/Hero'
 import Navbar from '../src/components/Navbar'
-import Landing from '../src/Sections/Landing'
 import useDrawer from '../src/hooks/useDrawer'
 
 const Bancos = d(() => import('../src/components/Bancos'), { ssr: false })
+const Landing = d(() => import('../src/Sections/Landing'), { ssr: false })
 const Header = d(() => import('../src/components/Header'), { ssr: false })
 const Ubicanos = d(() => import('../src/components/Ubicanos'), { ssr: false })
 const DesktopNav = d(() => import('../src/components/DesktopNav'), {

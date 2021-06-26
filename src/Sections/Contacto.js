@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 // import PropTypes from 'prop-types'
 import { Input } from '@chakra-ui/input'
 import { Button } from '@chakra-ui/button'
@@ -79,7 +80,7 @@ const Contacto = (props) => {
         w={{ base: '200px' }}
         // display={{ base: 'none', xl: 'block' }}
       >
-        <img style={{ height: '100%', width: '100%' }} src="/puntos.png" />
+        <Image layout="fill" src="/puntos.png" />
       </Box>
     </Flex>
   )

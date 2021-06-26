@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import d from 'next/dynamic'
+
 import PropTypes from 'prop-types'
-import ReactSlider from 'react-slidy'
 import { Button } from '@chakra-ui/button'
 import { Flex, Heading, Box } from '@chakra-ui/layout'
 import { useMediaQuery } from '@chakra-ui/media-query'
 import { useInView } from 'react-intersection-observer'
 
-import 'react-slidy/lib/styles.css'
+const ReactSlider = d(() => import('react-slidy'))
 
 const BlogSlider = ({
   heading,
