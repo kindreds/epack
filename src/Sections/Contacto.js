@@ -3,7 +3,7 @@ import Image from 'next/image'
 // import PropTypes from 'prop-types'
 import { Input } from '@chakra-ui/input'
 import { Button } from '@chakra-ui/button'
-import { Checkbox } from '@chakra-ui/checkbox'
+// import { Checkbox } from '@chakra-ui/checkbox'
 import { Textarea } from '@chakra-ui/textarea'
 import { Flex, Text, Box, Stack, Heading } from '@chakra-ui/layout'
 
@@ -57,12 +57,15 @@ const Contacto = (props) => {
           />
           <Textarea size="lg" bg="white" placeholder="Mensaje" resize="none" />
 
-          <Flex mt={4}>
-            <Checkbox
+          <Flex mt={4} aling="center">
+            {/* <Checkbox
               mx={3}
               colorScheme="secundary"
               borderColor="bgSecundary"
-            />
+            /> */}
+            <Box mr={1} transform="translateY(0px)">
+              <input type="checkbox" />
+            </Box>
             <Text fontSize="sm" color="bgPrimary" fontWeight="medium">
               Acepta los terminos y condiciones
             </Text>

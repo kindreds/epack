@@ -58,8 +58,9 @@ const Ubicanos = () => {
               // display={{ base: 'none', lg: 'block' }}
             >
               <Image
+                layout="fill"
                 style={{ height: '100%', width: '100%' }}
-                src="puntos_cp.webp"
+                src="/puntos_cp.webp"
               />
             </Box>
             <Box mb={6}>

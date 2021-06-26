@@ -6,10 +6,14 @@ import { Slide } from '@chakra-ui/transition'
 import { IconButton } from '@chakra-ui/button'
 import { useMediaQuery } from '@chakra-ui/media-query'
 import { Box, Flex, Heading, Stack, Divider } from '@chakra-ui/layout'
+import useDrawer from '../../hooks/useDrawer'
 
-const Sidebar = ({ isOpen, onClose }) => {
+const Sidebar = () => {
   const [posScroll, setPosScroll] = useState()
   const [is670pxOrLess] = useMediaQuery('(max-height: 670px)')
+  const { sidebarDrawer: isOpen, onClose } = useDrawer()
+
+  const HandleClose = () => onClose('sidebarDrawer')
 
   return (
     <Slide direction="left" in={isOpen} style={{ zIndex: 5 }}>
@@ -20,16 +24,16 @@ const Sidebar = ({ isOpen, onClose }) => {
         overflow="hidden"
         bgSize="cover"
         bgRepeat="no-repeat"
-        bgImage="url(slide1_cp.webp)"
         bgColor="bgPrimary"
         bgBlendMode="darken"
+        bgImage="url(slide1_cp.webp)"
       >
         <Flex h="100%" mx="auto" maxW="70%" mt={24} flexDir="column">
           <IconButton
             mb={5}
             right={10}
             pos="absolute"
-            onClick={onClose}
+            onClick={HandleClose}
             icon={<CloseIcon />}
             style={{ zIndex: 5 }}
             colorScheme="secundary"
@@ -38,7 +42,7 @@ const Sidebar = ({ isOpen, onClose }) => {
           <Link
             isSidebar
             to="inicio"
-            onClose={onClose}
+            onClose={HandleClose}
             {...{ posScroll, setPosScroll }}
           />
           <Stack
@@ -59,7 +63,7 @@ const Sidebar = ({ isOpen, onClose }) => {
             <Link
               isSidebar
               to="nosotros"
-              onClose={onClose}
+              onClose={HandleClose}
               {...{ posScroll, setPosScroll }}
             >
               Nosotros
@@ -69,14 +73,14 @@ const Sidebar = ({ isOpen, onClose }) => {
               offset={-64}
               to="productos"
               {...{ posScroll, setPosScroll }}
-              onClose={onClose}
+              onClose={HandleClose}
             >
               Productos
             </Link>
             <Link
               isSidebar
               to="servicios"
-              onClose={onClose}
+              onClose={HandleClose}
               {...{ posScroll, setPosScroll }}
             >
               Servicios
@@ -85,14 +89,14 @@ const Sidebar = ({ isOpen, onClose }) => {
               isSidebar
               {...{ posScroll, setPosScroll }}
               to="blog"
-              onClose={onClose}
+              onClose={HandleClose}
             >
               Blog
             </Link>
             <Link
               isSidebar
               to="testimonios"
-              onClose={onClose}
+              onClose={HandleClose}
               {...{ posScroll, setPosScroll }}
             >
               Testimonios
@@ -100,7 +104,7 @@ const Sidebar = ({ isOpen, onClose }) => {
             <Link
               isSidebar
               to="clientes"
-              onClose={onClose}
+              onClose={HandleClose}
               {...{ posScroll, setPosScroll }}
             >
               Clientes
@@ -108,7 +112,7 @@ const Sidebar = ({ isOpen, onClose }) => {
             <Link
               isSidebar
               to="contacto"
-              onClose={onClose}
+              onClose={HandleClose}
               {...{ posScroll, setPosScroll }}
             >
               Contacto

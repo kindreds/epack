@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 import Image from 'next/image'
+import PropTypes from 'prop-types'
+
 import Link from '../Sidebar/Link'
 import { Box } from '@chakra-ui/layout'
-import useDrawer from '../../hooks/useDrawer'
 import { IconButton } from '@chakra-ui/button'
+
+import useDrawer from '../../hooks/useDrawer'
 
 const Header = () => {
   const { onOpen } = useDrawer()
