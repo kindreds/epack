@@ -14,48 +14,55 @@ const Hero = (props) => {
       id="inicio"
       align="center"
       justify="center"
-      bgSize="cover"
-      bgRepeat="no-repeat"
-      bgImage="url(slide1_cp.webp)"
       bgColor="bgPrimary"
       bgBlendMode="darken"
-      transform="translateY(-20px)"
-      minH={{ base: '100vh', lg: '80vh' }}
-      flexDir={{ base: 'column', md: 'row' }}
+      bgPosition={{ lg: '100% 30%' }}
+      minH={{ base: 'calc(100vh + 50px)' }}
+      bgSize={{ base: 'cover', lg: '100% 80%' }}
+      bgRepeat={{ base: 'no-repeat', lg: 'repeat' }}
+      bgImage={{ base: 'url(slide1_cp.webp)', lg: 'url(slide2.png)' }}
+      transform={{ base: 'translateY(-20px)', md: 'translateY(-50px)' }}
     >
-      <Flex maxW={{ base: '80%' }} flexDir="column" align="flex-start">
-        <Heading
-          as="h1"
-          color="white"
-          mb={{ base: 1, ms: 2 }}
-          maxW={{ base: '330px', md: '700px' }}
-          fontSize={{ base: '3xl', sm: '4xl', md: '5xl', xl: '6xl' }}
-        >
-          BOLSAS DE PAPEL BIODEGRADABLES
-        </Heading>
-        <Text
-          mb={1}
-          color="white"
-          fontSize="lg"
-          fontWeight="400"
-          display={{ base: 'block', sm: 'none' }}
-        >
-          Bolsas con asa, sin asa, Doy Pack, Cajas, Hang tag, Scker
-        </Text>
-        <Heading color="bgSecundary" size="lg" mb={{ base: 2, ms: 3 }}>
-          Pedido mínimo: 100und
-        </Heading>
-        <Button
-          fontSize="lg"
-          colorScheme="secundary"
-          display={{ base: 'none', sm: 'block' }}
-        >
-          Contáctanos
-        </Button>
+      <Flex
+        maxW={{ base: '90%' }}
+        flexDir={{ base: 'column', md: 'row' }}
+        align="center"
+        justify="center"
+      >
+        <Flex maxW={{ base: '80%' }} flexDir="column" align="flex-start">
+          <Heading
+            as="h1"
+            color="white"
+            mb={{ base: 1, ms: 2 }}
+            maxW={{ base: '330px', md: '700px' }}
+            fontSize={{ base: '3xl', sm: '4xl', md: '5xl', xl: '6xl' }}
+          >
+            BOLSAS DE PAPEL BIODEGRADABLES
+          </Heading>
+          <Text
+            mb={1}
+            color="white"
+            fontSize="lg"
+            fontWeight="400"
+            display={{ base: 'block', sm: 'none' }}
+          >
+            Bolsas con asa, sin asa, Doy Pack, Cajas, Hang tag, Scker
+          </Text>
+          <Heading color="bgSecundary" size="lg" mb={{ base: 2, ms: 3 }}>
+            Pedido mínimo: 100und
+          </Heading>
+          <Button
+            fontSize="lg"
+            colorScheme="secundary"
+            display={{ base: 'none', sm: 'block' }}
+          >
+            Contáctanos
+          </Button>
+        </Flex>
+        <Box pos="relative" w={[300, 350, 400, 600]} h={[250, 350, 400, 600]}>
+          <Image src="/1.png" objectFit="contain" layout="fill" />
+        </Box>
       </Flex>
-      <Box pos="relative" w={[300, 350, 400, 600]} h={[250, 350, 400, 600]}>
-        <Image src="/1.png" objectFit="contain" layout="fill" />
-      </Box>
     </Flex>
   )
 }
