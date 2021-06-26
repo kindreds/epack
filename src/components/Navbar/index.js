@@ -17,12 +17,6 @@ const Sidebar = d(() => import('../Sidebar'))
 const Navbar = () => {
   const { onOpen, onClose, closeAll, sidebarDrawer } = useDrawer()
 
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      console.log(window.pageYOffset)
-    })
-  }, [])
-
   return (
     <>
       <Flex

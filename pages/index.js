@@ -19,13 +19,22 @@ const Ubicanos = d(() => import('../src/components/Ubicanos'), { ssr: false })
 
 const Home = () => {
   const { ref, inView } = useInView()
-  const { windowLoaded: loaded, bancosDrawer, ubicanosDrawer } = useDrawer()
+  const [loaded, setLoaded] = useState(false)
+  const { bancosDrawer, ubicanosDrawer } = useDrawer()
   const [isDesktop] = useMediaQuery(['(min-width: 1024px)'])
 
   useEffect(() => {
     const preloader = document.getElementById('preloader')
-    if (loaded) preloader.style.pointerEvents = 'none'
+    if (loaded) {
+      preloader.style.pointerEvents = 'none'
+      preloader.style.opacity = 0
+    }
   }, [loaded])
+
+  useEffect(() => {
+    window.addEventListener('load', () => setLoaded(true))
+    return () => window.removeEventListener('load', () => setLoaded(false))
+  }, [])
 
   return (
     <>
@@ -34,15 +43,13 @@ const Home = () => {
       </Head>
       <Center
         id="preloader"
-        as={Fade}
-        in={!loaded}
-        delay={0.3}
         w="full"
-        h="100vh"
+        h="120vh"
         pos="fixed"
         zIndex="999"
         bg="bgPrimary"
         flexDir="column"
+        transition="opacity 1.5s ease"
       >
         <Spinner size="lg" />
         <Heading mt={5} color="white">
@@ -50,26 +57,15 @@ const Home = () => {
         </Heading>
       </Center>
 
-      <Box
-        as={Fade}
-        in={loaded}
-        bgColor="bgPrimary"
-        bgBlendMode="darken"
-        bgPosition={{ lg: 'top' }}
-        bgSize={{ base: 'contain', lg: '100% 11%' }}
-        bgRepeat={{ base: 'no-repeat', lg: 'unset' }}
-        bgImage={{ base: 'url(slide1_cp.webp)', lg: 'url(slide2.png)' }}
-      >
-        {loaded ? <Header /> : null}
-        <div ref={ref}>
-          <Hero />
-        </div>
+      {loaded ? <Header /> : null}
+      <div ref={ref}>
+        <Hero />
+      </div>
 
-        {loaded ? <Landing {...{ isDesktop, inView }} /> : null}
-        {loaded ? <Navbar /> : null}
-        {bancosDrawer ? <Bancos /> : null}
-        {ubicanosDrawer ? <Ubicanos /> : null}
-      </Box>
+      <Landing {...{ isDesktop, inView }} />
+      {bancosDrawer ? <Bancos /> : null}
+      {ubicanosDrawer ? <Ubicanos /> : null}
+      {loaded ? <Navbar /> : null}
     </>
   )
 }

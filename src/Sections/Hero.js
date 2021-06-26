@@ -14,12 +14,16 @@ const Hero = (props) => {
       id="inicio"
       align="center"
       justify="center"
+      bgSize="cover"
+      bgRepeat="no-repeat"
+      bgImage="url(slide1_cp.webp)"
+      bgColor="bgPrimary"
+      bgBlendMode="darken"
       transform="translateY(-20px)"
-      maxW={{ base: '80%' }}
       minH={{ base: '100vh', lg: '80vh' }}
       flexDir={{ base: 'column', md: 'row' }}
     >
-      <Flex flexDir="column" align="flex-start">
+      <Flex maxW={{ base: '80%' }} flexDir="column" align="flex-start">
         <Heading
           as="h1"
           color="white"
