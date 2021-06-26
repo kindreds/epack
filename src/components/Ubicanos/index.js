@@ -56,10 +56,12 @@ const Ubicanos = () => {
               w={{ base: '200px', md: '200px' }}
               // display={{ base: 'none', lg: 'block' }}
             >
-              <img
-                style={{ height: '100%', width: '100%' }}
-                src="/puntos.png"
-              />
+              {isOpen ? (
+                <img
+                  style={{ height: '100%', width: '100%' }}
+                  src="/puntos.png"
+                />
+              ) : null}
             </Box>
             <Box mb={6}>
               <SimpleGrid

@@ -40,7 +40,7 @@ const Bancos = () => {
         />
 
         <Box pos="relative" w="full" h="150px">
-          <Image src="/header-bank.png" layout="fill" />
+          {isOpen ? <Image src="/header-bank.png" layout="fill" /> : null}
         </Box>
 
         <Box maxW="90%" mx="auto" mt={8}>
@@ -50,11 +50,13 @@ const Bancos = () => {
             <Box>
               <SimpleGrid gap={5} templateColumns="repeat(2, minmax(0, 1fr))">
                 <Box pos="relative" w="full" h="50px">
-                  <Image
-                    layout="fill"
-                    objectFit="contain"
-                    src="/logo-interbank.png"
-                  />
+                  {isOpen ? (
+                    <Image
+                      layout="fill"
+                      objectFit="contain"
+                      src="/logo-interbank.png"
+                    />
+                  ) : null}
                 </Box>
                 <Box>
                   <Heading color="greenInter" fontSize="md" textAlign="right">
@@ -72,11 +74,13 @@ const Bancos = () => {
             <Box>
               <SimpleGrid gap={5} templateColumns="1fr 2fr">
                 <Box pos="relative" w="full" h="50px">
-                  <Image
-                    layout="fill"
-                    objectFit="contain"
-                    src="/logo-bcp.png"
-                  />
+                  {isOpen ? (
+                    <Image
+                      layout="fill"
+                      objectFit="contain"
+                      src="/logo-bcp.png"
+                    />
+                  ) : null}
                 </Box>
                 <Box>
                   <Heading color="orangeBcp" fontSize="md" textAlign="right">
@@ -94,11 +98,13 @@ const Bancos = () => {
             <Box>
               <SimpleGrid gap={5} templateColumns="1fr 2fr">
                 <Box pos="relative" w="full" h="50px">
-                  <Image
-                    layout="fill"
-                    objectFit="contain"
-                    src="/logo-bbva.png"
-                  />
+                  {isOpen ? (
+                    <Image
+                      layout="fill"
+                      objectFit="contain"
+                      src="/logo-bbva.png"
+                    />
+                  ) : null}
                 </Box>
                 <Box>
                   <Heading color="blueBBVA" fontSize="md" textAlign="right">
@@ -116,11 +122,13 @@ const Bancos = () => {
             <Box>
               <SimpleGrid templateColumns="minmax(0, 1fr) 190px">
                 <Box pos="relative" w="full" h="50px">
-                  <Image
-                    layout="fill"
-                    objectFit="contain"
-                    src="/logo-bancos.png"
-                  />
+                  {isOpen ? (
+                    <Image
+                      layout="fill"
+                      objectFit="contain"
+                      src="/logo-bancos.png"
+                    />
+                  ) : null}
                 </Box>
                 <Heading color="blue.700" fontSize="3xl" textAlign="right">
                   923 503 529

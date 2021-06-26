@@ -1,12 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 // import PropTypes from 'prop-types'
 import { Button } from '@chakra-ui/button'
 import { useMediaQuery } from '@chakra-ui/media-query'
 import { Flex, Text, Heading, Box, SimpleGrid } from '@chakra-ui/layout'
 
+import useDrawer from '../hooks/useDrawer'
+
 const Nosotros = (props) => {
+  const [load, setLoad] = useState(false)
+  const { windowLoaded: loaded } = useDrawer()
   const [is670pxOrLess] = useMediaQuery('(max-height: 670px)')
+
+  useEffect(() => {
+    let timer
+    if (loaded) timer = setTimeout(() => setLoad(true), 2000)
+    return () => clearTimeout(timer)
+  }, [loaded])
 
   return (
     <Box id="nosotros" mx="auto">
@@ -50,12 +60,16 @@ const Nosotros = (props) => {
               w={{ base: '100px', md: '200px' }}
               // display={{ base: 'none', lg: 'block' }}
             >
-              <img
-                style={{ height: '100%', width: '100%' }}
-                src="/puntos.png"
-              />
+              {load ? (
+                <img
+                  style={{ height: '100%', width: '100%' }}
+                  src="/puntos.png"
+                />
+              ) : null}
             </Box>
-            <Image src="/3.png" layout="fill" objectFit="contain" />
+            {load ? (
+              <Image src="/3.png" layout="fill" objectFit="contain" />
+            ) : null}
           </Box>
           <Box>
             <Heading
