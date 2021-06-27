@@ -233,11 +233,26 @@ const Footer = (props) => {
       <GridItem pr="20%">
         <Flex align="center" justify="center" h="full">
           <HStack mr={4}>
-            <IconButton icon={<FaFacebookF fontSize="23px" />} />
-            <IconButton icon={<FaInstagram fontSize="23px" />} />
+            <IconButton
+              as={Link}
+              isExternal
+              href="https://www.facebook.com/epack.pe"
+              icon={<FaFacebookF fontSize="23px" />}
+            />
+            <IconButton
+              as={Link}
+              isExternal
+              href="https://www.instagram.com/epack.pe/"
+              icon={<FaInstagram fontSize="23px" />}
+            />
             <IconButton icon={<FaFacebookMessenger fontSize="23px" />} />
             <IconButton icon={<MdEmail fontSize="23px" />} />
-            <IconButton icon={<FaLinkedinIn fontSize="23px" />} />
+            <IconButton
+              as={Link}
+              isExternal
+              href="https://linkedin.com/company/epackperu/"
+              icon={<FaLinkedinIn fontSize="23px" />}
+            />
           </HStack>
           <Icon as={FaWhatsapp} cursor="pointer" fontSize="50px" fill="white" />
         </Flex>

@@ -96,14 +96,14 @@ const Producto = ({ titulo, subTitulo, desc, image }, i) => (
         base: 'calc(100vw / 2.5)',
         sm: '150px',
         md: '200px',
-        lg: '250'
+        lg: '250px'
       }}
     >
       <Image src={image} layout="fill" />
     </Box>
     <Flex
       p={{ md: 5 }}
-      minH={{ base: '191px', sm: '200px', md: '250px' }}
+      minH={{ base: '200px', sm: '200px', md: '250px' }}
       bg="white"
       borderBottomRadius="lg"
       flexDirection="column"
