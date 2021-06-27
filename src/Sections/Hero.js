@@ -21,13 +21,13 @@ const Hero = (props) => {
       bgSize={{ base: 'cover', lg: '100% 80%' }}
       bgRepeat={{ base: 'no-repeat', lg: 'repeat' }}
       bgImage={{ base: 'url(slide1_cp.webp)', lg: 'url(slide2.png)' }}
-      transform={{ base: 'translateY(-20px)', md: 'translateY(-50px)' }}
     >
       <Flex
-        maxW={{ base: '90%' }}
-        flexDir={{ base: 'column', md: 'row' }}
         align="center"
         justify="center"
+        maxW={{ base: '90%' }}
+        flexDir={{ base: 'column', md: 'row' }}
+        transform={{ base: 'translateY(-20px)', md: 'translateY(-50px)' }}
       >
         <Flex maxW={{ base: '80%' }} flexDir="column" align="flex-start">
           <Heading
