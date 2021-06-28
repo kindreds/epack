@@ -9,17 +9,14 @@ import Spinner from '../src/components/Spinner'
 
 import Hero from '../src/Sections/Hero'
 import Navbar from '../src/components/Navbar'
+import Landing from '../src/Sections/Landing'
 import Header from '../src/components/Header'
-// import Landing from '../src/Sections/Landing'
 import useDrawer from '../src/hooks/useDrawer'
 
-const Bancos = d(() => import('../src/components/Bancos'), { ssr: false })
-const Landing = d(() => import('../src/Sections/Landing'), { ssr: false })
-const Sidebar = d(() => import('../src/components/Sidebar'), { ssr: false })
-const Ubicanos = d(() => import('../src/components/Ubicanos'), { ssr: false })
-const DesktopNav = d(() => import('../src/components/DesktopNav'), {
-  ssr: false
-})
+const Bancos = d(() => import('../src/components/Bancos'))
+const Sidebar = d(() => import('../src/components/Sidebar'))
+const Ubicanos = d(() => import('../src/components/Ubicanos'))
+const DesktopNav = d(() => import('../src/components/DesktopNav'))
 
 const Home = () => {
   const { ref, inView } = useInView()
@@ -44,8 +41,6 @@ const Home = () => {
     }
   }, [bancosDrawer, ubicanosDrawer, sidebarDrawer])
 
-  console.log('HERO', inView)
-
   return (
     <div>
       <Head>
@@ -66,7 +61,7 @@ const Home = () => {
         <Hero />
       </div>
 
-      {inView ? <Landing {...{ isDesktop, inView }} /> : null}
+      <Landing {...{ isDesktop, inView }} />
       {loadChunks ? <Bancos /> : null}
       {loadChunks ? <Ubicanos /> : null}
       {loadChunks ? <Sidebar /> : null}
