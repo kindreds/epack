@@ -44,7 +44,7 @@ const Home = () => {
   }, [bancosDrawer, ubicanosDrawer, sidebarDrawer])
 
   return (
-    <div>
+    <>
       <Head>
         <meta name="theme-color" content="#562196" />
       </Head>
@@ -74,7 +74,7 @@ const Home = () => {
       {loadChunks ? <Ubicanos /> : null}
       {loadChunks ? <Sidebar /> : null}
       {!isDesktop ? <Navbar /> : null}
-    </div>
+    </>
   )
 }
 

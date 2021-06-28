@@ -46,7 +46,7 @@ const Slider = ({
       flexDir="column"
       pt={{ md: 56 }}
       py={{ base: 28 }}
-      minH={{ base: '100vh', lg: 'unset' }}
+      minH={{ base: '800px', lg: 'unset' }}
       bg={isWhite ? 'white' : 'transparent'}
       justify={{ base: 'center', md: 'flex-start' }}
     >

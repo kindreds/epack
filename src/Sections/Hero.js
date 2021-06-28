@@ -19,14 +19,14 @@ const Hero = (props) => {
         bgBlendMode="darken"
         minH={{ base: 'calc(100vh + 50px)' }}
         transform={{ lg: 'translateY(-50px)' }}
+        bgRepeat={{ base: 'no-repeat', lg: 'repeat' }}
+        bgPosition={{ base: '100% 5%', lg: '100% 30%' }}
+        bgImage={{ base: 'url(slide1_cp.webp)', lg: 'url(slide2.png)' }}
         bgSize={{
           base: 'cover',
           lg: 'calc(100vw + 180px) 90vh',
           '2xl': '100% 80%'
         }}
-        bgRepeat={{ base: 'no-repeat', lg: 'repeat' }}
-        bgPosition={{ base: '100% 5%', lg: '100% 30%' }}
-        bgImage={{ base: 'url(slide1_cp.webp)', lg: 'url(slide2.png)' }}
       >
         <Flex
           align="center"

@@ -43,7 +43,7 @@ const ClientesSlider = ({
     <Box
       w="full"
       ref={ref}
-      minH={{ base: '100vh', lg: 'unset' }}
+      minH={{ base: '800px', lg: 'unset' }}
       bgColor="bgPrimary"
       bgBlendMode="darken"
       bgPosition={{ lg: 'top' }}
