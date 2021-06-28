@@ -1,22 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import d from 'next/dynamic'
-// import TagManager from 'react-gtm-module'
-// import { Spinner } from '@chakra-ui/spinner'
-// import { Center, Heading } from '@chakra-ui/layout'
+
 import { useMediaQuery } from '@chakra-ui/media-query'
 import { useInView } from 'react-intersection-observer'
 
 import Spinner from '../src/components/Spinner'
 
-import theme from '../theme'
 import Hero from '../src/Sections/Hero'
 import useDrawer from '../src/hooks/useDrawer'
-
-const ChakraProvider = d(
-  () => import('@chakra-ui/react').then((e) => e.ChakraProvider),
-  { ssr: false }
-)
 
 const Navbar = d(() => import('../src/components/Navbar'), { ssr: false })
 const Bancos = d(() => import('../src/components/Bancos'), { ssr: false })
@@ -46,9 +38,8 @@ const Home = () => {
   }, [])
 
   useEffect(() => {
-    if (bancosDrawer || ubicanosDrawer || sidebarDrawer) {
-      setLoadChunks(true)
-    }
+    const isMoving = bancosDrawer || ubicanosDrawer || sidebarDrawer
+    if (isMoving) setLoadChunks(true)
   }, [bancosDrawer, ubicanosDrawer, sidebarDrawer])
 
   return (
@@ -57,6 +48,7 @@ const Home = () => {
         <meta name="theme-color" content="#562196" />
       </Head>
 
+      {/* PRELOADER */}
       <div id="preloader">
         <div classnames="center">
           <Spinner />
@@ -65,18 +57,18 @@ const Home = () => {
           </h1>
         </div>
       </div>
-      <ChakraProvider theme={theme}>
-        {!isDesktop ? <Header /> : <DesktopNav />}
-        <div ref={ref}>
-          <Hero />
-        </div>
 
-        <Landing {...{ isDesktop, inView }} />
-        {loadChunks ? <Bancos /> : null}
-        {loadChunks ? <Ubicanos /> : null}
-        {loadChunks ? <Sidebar /> : null}
-        {!isDesktop ? <Navbar /> : null}
-      </ChakraProvider>
+      {/* CONTENT */}
+      {!isDesktop ? <Header /> : <DesktopNav />}
+      <div ref={ref}>
+        <Hero />
+      </div>
+
+      <Landing {...{ isDesktop, inView }} />
+      {loadChunks ? <Bancos /> : null}
+      {loadChunks ? <Ubicanos /> : null}
+      {loadChunks ? <Sidebar /> : null}
+      {!isDesktop ? <Navbar /> : null}
       <style jsx global>{`
         * {
           margin: 0;

@@ -1,5 +1,7 @@
+import { ChakraProvider } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
 
+import theme from '../theme'
 import meta from '../src/meta'
 import AppState from '../src/context/AppState'
 
@@ -10,10 +12,12 @@ import 'react-slidy/lib/styles.css'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <AppState>
-      <NextSeo {...meta} />
-      <Component {...pageProps} />
-    </AppState>
+    <ChakraProvider theme={theme}>
+      <AppState>
+        <NextSeo {...meta} />
+        <Component {...pageProps} />
+      </AppState>
+    </ChakraProvider>
   )
 }
 
