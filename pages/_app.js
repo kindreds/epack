@@ -5,7 +5,6 @@ import theme from '../theme'
 import meta from '../src/meta'
 import AppState from '../src/context/AppState'
 
-import '../src/styles/index.css'
 import 'react-slidy/lib/styles.css'
 
 /* eslint-disable */

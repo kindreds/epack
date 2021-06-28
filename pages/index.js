@@ -68,7 +68,20 @@ const Home = () => {
         {loadChunks ? <Ubicanos /> : null}
         {!isDesktop ? <Navbar /> : null}
       </div>
-      <style jsx>{`
+      <style jsx global>{`
+        @font-face {
+          font-family: Flexo;
+          font-weight: bold;
+          font-display: swap;
+          src: url(/fonts/Flexo-Bold.woff2) format('woff2');
+        }
+
+        @font-face {
+          font-family: Flexo-Demi;
+          font-display: swap;
+          src: url(/fonts/Flexo-Regular.woff2) format('woff2');
+        }
+
         #preloader {
           width: 100%;
           height: 110vh;
@@ -91,9 +104,14 @@ const Home = () => {
         #preloader h1 {
           color: white;
           font-size: 5rem;
-          font-family: Flexo;
           text-align: center;
+          font-family: Flexo, sans-serif;
           animation: fadeIn 1s linear;
+        }
+
+        .activeLink h2,
+        .activeLink p {
+          color: #2ab4a7;
         }
 
         @keyframes fadeDown {
