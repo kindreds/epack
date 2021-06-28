@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-import { FaWhatsapp } from 'react-icons/fa'
 import { Button, IconButton } from '@chakra-ui/button'
 import { HamburgerIcon, Icon } from '@chakra-ui/icons'
 import LinkS from 'react-scroll/modules/components/Link'
 import { Box, SimpleGrid, Text } from '@chakra-ui/layout'
 
 import useDrawer from '../../hooks/useDrawer'
-import { BankIcon, MailIcon, HomeIcon } from '../../SVGS'
+import { BankIcon, MailIcon, HomeIcon, WspIcon } from '../../SVGS'
 
 const Navbar = () => {
   const { onOpen, closeAll } = useDrawer()
@@ -73,7 +72,7 @@ const Navbar = () => {
           sx={{ transform: 'translateY(-23px)' }}
         >
           <Box rounded="full" bg="bgSecundary" p={1}>
-            <Icon color="white" fontSize="6xl" as={FaWhatsapp} />
+            <Icon color="white" fontSize="6xl" as={WspIcon} fill="white" />
           </Box>
           <Text sx={{ transform: 'translateY(6px)' }}>Whatsapp</Text>
         </Button>

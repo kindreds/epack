@@ -10,10 +10,12 @@ const breakpoints = createBreakpoints({
   '2xl': '93em'
 })
 
-const fonts = {
-  heading: 'Flexi',
-  body: 'Flexi-Demi'
-}
+// const fonts = {
+//   heading: 'Flexi',
+//   body: 'Flexi-Demi'
+// }
+
+const fonts = {}
 
 const colors = {
   primary: {
