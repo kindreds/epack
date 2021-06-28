@@ -1,8 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
 // import PropTypes from 'prop-types'
-import { Flex, Text, Heading, Box } from '@chakra-ui/layout'
 import { Button } from '@chakra-ui/button'
+import { Flex, Text, Heading, Box } from '@chakra-ui/layout'
 
 const Hero = (props) => {
   return (

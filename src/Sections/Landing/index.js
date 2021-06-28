@@ -74,8 +74,8 @@ const Landing = ({ inView, isDesktop }) => {
       <div id="contacto">
         <Contacto />
       </div>
-      {isDesktop && <UbicanosDesk />}
-      {isDesktop && <Footer />}
+      {isDesktop ? <UbicanosDesk /> : null}
+      {isDesktop ? <Footer /> : null}
       <IconButton
         spy
         smooth

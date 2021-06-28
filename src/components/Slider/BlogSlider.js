@@ -4,7 +4,6 @@ import Image from 'next/image'
 
 import PropTypes from 'prop-types'
 import { Button } from '@chakra-ui/button'
-import { Skeleton } from '@chakra-ui/skeleton'
 import { useMediaQuery } from '@chakra-ui/media-query'
 import { Flex, Heading, Box } from '@chakra-ui/layout'
 import { useInView } from 'react-intersection-observer'

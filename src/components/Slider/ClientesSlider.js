@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import d from 'next/dynamic'
 import PropTypes from 'prop-types'
-import { Skeleton } from '@chakra-ui/skeleton'
-import { Flex, Heading, Box } from '@chakra-ui/layout'
-
 import { Button } from '@chakra-ui/button'
+import { Flex, Heading, Box } from '@chakra-ui/layout'
 import { useMediaQuery } from '@chakra-ui/media-query'
 import { useInView } from 'react-intersection-observer'
+
 import useDrawer from '../../hooks/useDrawer'
 import { SliderLoader } from './SliderLoader'
 

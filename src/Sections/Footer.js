@@ -5,20 +5,18 @@ import { Icon } from '@chakra-ui/icons'
 import { Link as LinkS } from 'react-scroll'
 import {
   Box,
+  Link,
   Grid,
   Text,
   Flex,
   Stack,
   HStack,
-  Button,
   Divider,
   Heading,
   GridItem,
-  SimpleGrid,
-  IconButton,
-  Link
-} from '@chakra-ui/react'
-
+  SimpleGrid
+} from '@chakra-ui/layout'
+import { Button, IconButton } from '@chakra-ui/button'
 import {
   FaWhatsapp,
   FaFacebookF,

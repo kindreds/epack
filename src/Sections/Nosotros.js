@@ -3,8 +3,8 @@ import Image from 'next/image'
 // import PropTypes from 'prop-types'
 import { Button } from '@chakra-ui/button'
 import { useMediaQuery } from '@chakra-ui/media-query'
-import { Flex, Text, Heading, Box, SimpleGrid } from '@chakra-ui/layout'
 import { useInView } from 'react-intersection-observer'
+import { Flex, Text, Heading, Box, SimpleGrid } from '@chakra-ui/layout'
 
 const Nosotros = (props) => {
   const { ref, inView } = useInView()

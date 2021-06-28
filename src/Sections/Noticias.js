@@ -1,7 +1,7 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
-import { Flex, Text, SimpleGrid } from '@chakra-ui/layout'
 import { useMediaQuery } from '@chakra-ui/media-query'
+import { Flex, Text, SimpleGrid } from '@chakra-ui/layout'
 
 const Noticias = (props) => {
   const [is670pxOrLess, is832pxOrLess] = useMediaQuery([
