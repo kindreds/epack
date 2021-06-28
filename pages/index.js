@@ -9,7 +9,6 @@ import Spinner from '../src/components/Spinner'
 
 import Hero from '../src/Sections/Hero'
 import useDrawer from '../src/hooks/useDrawer'
-import { Heading } from '@chakra-ui/react'
 
 const Navbar = d(() => import('../src/components/Navbar'), { ssr: false })
 const Bancos = d(() => import('../src/components/Bancos'), { ssr: false })
@@ -39,8 +38,9 @@ const Home = () => {
   }, [])
 
   useEffect(() => {
-    const isMoving = bancosDrawer || ubicanosDrawer || sidebarDrawer
-    if (isMoving) setLoadChunks(true)
+    if (bancosDrawer || ubicanosDrawer || sidebarDrawer) {
+      setLoadChunks(true)
+    }
   }, [bancosDrawer, ubicanosDrawer, sidebarDrawer])
 
   return (
@@ -53,7 +53,7 @@ const Home = () => {
       <div id="preloader">
         <div classnames="center">
           <Spinner />
-          <Heading as="h1">ePack</Heading>
+          <h1>ePack</h1>
         </div>
       </div>
 
@@ -68,13 +68,7 @@ const Home = () => {
       {loadChunks ? <Ubicanos /> : null}
       {loadChunks ? <Sidebar /> : null}
       {!isDesktop ? <Navbar /> : null}
-      <style jsx global>{`
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
-
+      <style jsx>{`
         #preloader {
           width: 100%;
           height: 110vh;
