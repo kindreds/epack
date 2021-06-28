@@ -42,7 +42,7 @@ const Home = () => {
   }, [bancosDrawer, ubicanosDrawer, sidebarDrawer])
 
   return (
-    <div>
+    <>
       <Head>
         <meta name="theme-color" content="#562196" />
       </Head>
@@ -55,20 +55,19 @@ const Home = () => {
         </div>
       </div>
 
-      <div>
-        {/* CONTENT */}
-        {!isDesktop ? <Header /> : <DesktopNav />}
-        <div ref={ref}>
-          <Hero />
-        </div>
-
-        <Landing {...{ isDesktop, inView }} />
-        {loadChunks ? <Bancos /> : null}
-        {loadChunks ? <Sidebar /> : null}
-        {loadChunks ? <Ubicanos /> : null}
-        {!isDesktop ? <Navbar /> : null}
+      {/* CONTENT */}
+      <Header topRef={ref} />
+      {isDesktop ? <DesktopNav /> : null}
+      <div ref={ref}>
+        <Hero />
       </div>
-    </div>
+
+      <Landing {...{ isDesktop, inView }} />
+      {loadChunks ? <Bancos /> : null}
+      {loadChunks ? <Sidebar /> : null}
+      {loadChunks ? <Ubicanos /> : null}
+      {!isDesktop ? <Navbar /> : null}
+    </>
   )
 }
 

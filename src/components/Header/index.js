@@ -27,7 +27,6 @@ const Header = () => {
       w="full"
       pos="sticky"
       zIndex="88"
-      display="flex"
       // bg="bgPrimary"
       bgSize="cover"
       bgRepeat="no-repeat"
@@ -36,6 +35,7 @@ const Header = () => {
       bgBlendMode="darken"
       justifyContent="center"
       shadow={isPrimary && 'lg'}
+      display={{ base: 'flex', lg: 'none' }}
     >
       <Link to="inicio">
         <Image width={150} height={50} src="/logo.png" objectFit="contain" />

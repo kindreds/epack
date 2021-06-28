@@ -19,8 +19,10 @@ import ClientesSlider from '../../components/Slider/ClientesSlider'
 
 import { images1, images2, images4, images5, images6 } from '../../data/images'
 
-const Footer = d(() => import('../Footer'))
-const UbicanosDesk = d(() => import('../../components/Ubicanos/UbicanosDesk'))
+const Footer = d(() => import('../Footer'), { ssr: false })
+const UbicanosDesk = d(() => import('../../components/Ubicanos/UbicanosDesk'), {
+  ssr: false
+})
 
 const Landing = ({ inView, isDesktop }) => {
   const [isLargerThan1280] = useMediaQuery('(min-width: 1280px)')
