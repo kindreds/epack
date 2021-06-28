@@ -3,11 +3,17 @@ import d from 'next/dynamic'
 import PropTypes from 'prop-types'
 import { Flex, Heading } from '@chakra-ui/layout'
 
-import { useMediaQuery } from '@chakra-ui/media-query'
 import { Button } from '@chakra-ui/button'
+import { useMediaQuery } from '@chakra-ui/media-query'
 import { useInView } from 'react-intersection-observer'
 
-const ReactSlider = d(() => import('react-slidy'), { ssr: false })
+import useDrawer from '../../hooks/useDrawer'
+import { SliderLoader } from './SliderLoader'
+
+const ReactSlider = d(() => import('react-slidy'), {
+  ssr: false,
+  loading: SliderLoader
+})
 
 const Slider = ({
   heading,
@@ -16,6 +22,7 @@ const Slider = ({
   sizeHeading = '4xl',
   ...props
 }) => {
+  const { loadChunks } = useDrawer()
   const { ref, inView } = useInView()
   const [load, setLoad] = useState(false)
   const [actualSlide, setActualSlide] = useState(0)
@@ -23,7 +30,8 @@ const Slider = ({
 
   useEffect(() => {
     if (inView) setLoad(true)
-  }, [inView])
+    if (loadChunks) setLoad(true)
+  }, [inView, loadChunks])
 
   const isWhite = theme === 'white'
 
@@ -38,6 +46,7 @@ const Slider = ({
       flexDir="column"
       pt={{ md: 56 }}
       py={{ base: 28 }}
+      minH={{ base: '100vh', lg: 'unset' }}
       bg={isWhite ? 'white' : 'transparent'}
       justify={{ base: 'center', md: 'flex-start' }}
     >

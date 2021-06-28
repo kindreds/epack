@@ -4,11 +4,17 @@ import Image from 'next/image'
 
 import PropTypes from 'prop-types'
 import { Button } from '@chakra-ui/button'
-import { Flex, Heading, Box } from '@chakra-ui/layout'
+import { Skeleton } from '@chakra-ui/skeleton'
 import { useMediaQuery } from '@chakra-ui/media-query'
+import { Flex, Heading, Box } from '@chakra-ui/layout'
 import { useInView } from 'react-intersection-observer'
+import useDrawer from '../../hooks/useDrawer'
+import { SliderLoader } from './SliderLoader'
 
-const ReactSlider = d(() => import('react-slidy'))
+const ReactSlider = d(() => import('react-slidy'), {
+  ssr: false,
+  loading: SliderLoader
+})
 
 const BlogSlider = ({
   heading,
@@ -17,6 +23,7 @@ const BlogSlider = ({
   sizeHeading = '4xl',
   ...props
 }) => {
+  const { loadChunks } = useDrawer()
   const { ref, inView } = useInView()
   const [load, setLoad] = useState(false)
   const [actualSlide, setActualSlide] = useState(0)
@@ -24,7 +31,8 @@ const BlogSlider = ({
 
   useEffect(() => {
     if (inView) setLoad(true)
-  }, [inView])
+    if (loadChunks) setLoad(true)
+  }, [inView, loadChunks])
 
   const isWhite = theme === 'white'
 
@@ -39,14 +47,15 @@ const BlogSlider = ({
         pb={100}
         ref={ref}
         flexDir="column"
-        pos={{ md: 'relative' }}
-        py={{ base: 24, md: 24 }}
-        justify={{ base: 'center', md: 'flex-start' }}
         bgColor="bgPrimary"
         bgBlendMode="darken"
+        pos={{ md: 'relative' }}
+        py={{ base: 24, md: 24 }}
         bgPosition={{ lg: 'top' }}
+        minH={{ base: '100vh', lg: 'unset' }}
         bgSize={{ base: 'cover', lg: '100% 100%' }}
         bgRepeat={{ base: 'no-repeat', lg: 'unset' }}
+        justify={{ base: 'center', md: 'flex-start' }}
         bgImage={{ base: 'url(slide1_cp.webp)', lg: 'url(slide2.png)' }}
       >
         <Box

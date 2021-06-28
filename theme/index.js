@@ -6,7 +6,8 @@ const breakpoints = createBreakpoints({
   sm: '40em',
   md: '52em',
   lg: '64em',
-  xl: '80em'
+  xl: '80em',
+  '2xl': '93em'
 })
 
 const fonts = {

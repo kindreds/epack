@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import d from 'next/dynamic'
 import PropTypes from 'prop-types'
+import { Skeleton } from '@chakra-ui/skeleton'
 import { Flex, Heading, Box } from '@chakra-ui/layout'
 
-import { useMediaQuery } from '@chakra-ui/media-query'
 import { Button } from '@chakra-ui/button'
+import { useMediaQuery } from '@chakra-ui/media-query'
 import { useInView } from 'react-intersection-observer'
+import useDrawer from '../../hooks/useDrawer'
+import { SliderLoader } from './SliderLoader'
 
-const ReactSlider = d(() => import('react-slidy'), { ssr: false })
+const ReactSlider = d(() => import('react-slidy'), {
+  ssr: false,
+  loading: SliderLoader
+})
 
 const ClientesSlider = ({
   heading,
@@ -16,6 +22,7 @@ const ClientesSlider = ({
   sizeHeading = '4xl',
   ...props
 }) => {
+  const { loadChunks } = useDrawer()
   const { ref, inView } = useInView()
   const [load, setLoad] = useState(false)
   const [actualSlide, setActualSlide] = useState(0)
@@ -23,7 +30,8 @@ const ClientesSlider = ({
 
   useEffect(() => {
     if (inView) setLoad(true)
-  }, [inView])
+    if (loadChunks) setLoad(true)
+  }, [inView, loadChunks])
 
   const isWhite = theme === 'white'
 
@@ -35,6 +43,7 @@ const ClientesSlider = ({
     <Box
       w="full"
       ref={ref}
+      minH={{ base: '100vh', lg: 'unset' }}
       bgColor="bgPrimary"
       bgBlendMode="darken"
       bgPosition={{ lg: 'top' }}

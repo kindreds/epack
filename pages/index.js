@@ -3,9 +3,9 @@ import Head from 'next/head'
 import d from 'next/dynamic'
 // import TagManager from 'react-gtm-module'
 import { Spinner } from '@chakra-ui/spinner'
+import { Center, Heading } from '@chakra-ui/layout'
 import { useMediaQuery } from '@chakra-ui/media-query'
 import { useInView } from 'react-intersection-observer'
-import { Center, Heading, Box } from '@chakra-ui/layout'
 
 import Hero from '../src/Sections/Hero'
 import useDrawer from '../src/hooks/useDrawer'
@@ -64,18 +64,16 @@ const Home = () => {
         </Heading>
       </Center>
 
-      <Box>
-        {!isDesktop ? <Header /> : <DesktopNav />}
-        <div ref={ref}>
-          <Hero />
-        </div>
+      {!isDesktop ? <Header /> : <DesktopNav />}
+      <div ref={ref}>
+        <Hero />
+      </div>
 
-        <Landing {...{ isDesktop, inView }} />
-        {loadChunks ? <Bancos /> : null}
-        {loadChunks ? <Ubicanos /> : null}
-        {loadChunks ? <Sidebar /> : null}
-        {!isDesktop ? <Navbar /> : null}
-      </Box>
+      <Landing {...{ isDesktop, inView }} />
+      {loadChunks ? <Bancos /> : null}
+      {loadChunks ? <Ubicanos /> : null}
+      {loadChunks ? <Sidebar /> : null}
+      {!isDesktop ? <Navbar /> : null}
     </div>
   )
 }

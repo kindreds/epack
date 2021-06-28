@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import d from 'next/dynamic'
 import PropTypes from 'prop-types'
 
 import { FaWhatsapp } from 'react-icons/fa'
-import { Box, Flex } from '@chakra-ui/layout'
+import { Box, SimpleGrid, Text } from '@chakra-ui/layout'
 import { Button, IconButton } from '@chakra-ui/button'
 import { HamburgerIcon, Icon } from '@chakra-ui/icons'
 
@@ -16,10 +16,11 @@ const LinkS = d(() => import('react-scroll/modules/components/Link'), {
 
 const Navbar = () => {
   const { onOpen, closeAll } = useDrawer()
+  const [posScroll, setPosScroll] = useState(null)
 
   return (
     <>
-      <Flex
+      <SimpleGrid
         h={20}
         w="full"
         bottom="0"
@@ -28,12 +29,20 @@ const Navbar = () => {
         zIndex="88"
         align="center"
         bg="bgSecundary"
+        alignItems="center"
+        // gap={5}
         borderTopRadius="xl"
-        justify="space-around"
+        justifyContent="center"
+        templateColumns={{
+          base: 'minmax(0, 1fr) minmax(0, 1fr) 80px minmax(0, 1fr) minmax(0, 1fr)',
+          ms: 'minmax(0, 1fr) minmax(0, 1fr) minmax(80px, 1fr)  minmax(0, 1fr) minmax(0, 1fr)'
+        }}
       >
         <IconButton
-          onClick={() => onOpen('sidebarDrawer')}
+          mx="auto"
+          maxW="40px"
           colorScheme="primary"
+          onClick={() => onOpen('sidebarDrawer')}
           icon={<HamburgerIcon fontSize="xl" />}
         />
         <Button
@@ -41,6 +50,7 @@ const Navbar = () => {
           smooth
           py={2}
           as={LinkS}
+          offset={-100}
           to="inicio"
           color="white"
           display="flex"
@@ -48,9 +58,14 @@ const Navbar = () => {
           variant="unstyled"
           colorScheme="primary"
           flexDirection="column"
+          onSetActive={setPosScroll}
+          onSetInactive={() => setPosScroll(null)}
+          mr={{ base: 3, ms: 5 }}
         >
           <Icon color="white" as={HomeIcon} fontSize="4xl" />
-          Inicio
+          <Text color={posScroll === 'inicio' ? 'primary.500' : 'white'}>
+            Inicio
+          </Text>
         </Button>
         <Button
           py={2}
@@ -64,9 +79,10 @@ const Navbar = () => {
           <Box rounded="full" bg="bgSecundary" p={1}>
             <Icon color="white" fontSize="6xl" as={FaWhatsapp} />
           </Box>
-          Whatsapp
+          <Text sx={{ transform: 'translateY(6px)' }}>Whatsapp</Text>
         </Button>
         <Button
+          ml={{ base: 3, ms: 5 }}
           py={2}
           color="white"
           display="flex"
@@ -89,7 +105,7 @@ const Navbar = () => {
           <Icon color="white" as={MailIcon} fontSize="4xl" />
           Correo
         </Button>
-      </Flex>
+      </SimpleGrid>
     </>
   )
 }

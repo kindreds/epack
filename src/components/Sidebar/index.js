@@ -34,7 +34,13 @@ const Sidebar = () => {
         bgBlendMode="darken"
         bgImage="url(slide1_cp.webp)"
       >
-        <Flex h="100%" mx="auto" maxW="70%" mt={24} flexDir="column">
+        <Flex
+          h="100%"
+          mx="auto"
+          maxW="70%"
+          mt={{ base: 14, ms: 24 }}
+          flexDir="column"
+        >
           <IconButton
             mb={5}
             right={10}
@@ -59,10 +65,13 @@ const Sidebar = () => {
             <Heading
               mb={-4}
               as="h1"
-              fontSize="5xl"
               variant="solid"
               textAlign="center"
               color="bgSecundary"
+              fontSize={{
+                base: '5xl',
+                xl: '6xl'
+              }}
             >
               MENÚ
             </Heading>

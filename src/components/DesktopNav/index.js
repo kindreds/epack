@@ -14,8 +14,7 @@ import Link from '../Sidebar/Link'
 const LinkS = d(() => import('react-scroll').then((e) => e.Link))
 
 const DesktopNav = () => {
-  console.log('Desktop nav loaded')
-  const [posScroll, setPosScroll] = useState()
+  const [posScroll, setPosScroll] = useState(null)
   const [isScrolling, setIsScrolling] = useState(0)
   const [isLargerThan1280] = useMediaQuery('(min-width: 1280px)')
 

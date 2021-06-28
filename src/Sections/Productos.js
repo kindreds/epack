@@ -6,83 +6,7 @@ import { useMediaQuery } from '@chakra-ui/media-query'
 import { useInView } from 'react-intersection-observer'
 import { Flex, Text, Heading, Box, SimpleGrid } from '@chakra-ui/layout'
 
-const productList = [
-  {
-    image: '/bolsa1.png',
-    titulo: 'BOLSA CON ASA',
-    subTitulo: 'KRAFT de 100gr',
-    desc: 'Varias medidas Impresión con tu logo (opcional) Cantidad mínima 100 unidades'
-  },
-  {
-    image: '/bolsa4.png',
-    titulo: 'BOLSAS SIN ASA',
-    subTitulo: 'KRAFT de 50gr, 60gr, 90gr',
-    desc: 'Varias medidas Impresión con tu logo (opcional) Cantidad mínima 100 unidades'
-  },
-  {
-    image: '/bolsa3.png',
-    titulo: 'BOLSAS DOYPACK',
-    subTitulo: 'KRAFT de 120gr con cierre Ziplock',
-    desc: 'Varias medidas Impresión con tu logo (opcional) Cantidad mínima 100 unidades'
-  },
-  {
-    image: '/bolsa2.png',
-    titulo: 'BOLSAS CON ASA RIÑON',
-    subTitulo: 'Liner de 140gr',
-    desc: 'Varias medidas Impresión con tu logo (opcional) Cantidad mínima 100 unidades'
-  },
-  {
-    image: '/bolsa5.png',
-    titulo: 'BOLSAS CON ASA YUTE',
-    subTitulo: 'KRAFT de 100gr',
-    desc: 'Varias medidas Impresión con tu logo (opcional) Cantidad mínima 100 unidades'
-  },
-  {
-    image: '/bolsa6.png',
-    titulo: 'CAJAS DE CARTÓN MICROCORRUGADO',
-    desc: 'Varias medidas Impresión con tu logo (opcional) Cantidad mínima 100 unidades'
-  }
-]
-const productList1 = [
-  {
-    image: '/bolsa1.png',
-    titulo: 'BOLSA CON ASA',
-    subTitulo: 'KRAFT de 100gr',
-    desc: 'Varias medidas Impresión con tu logo (opcional) Cantidad mínima 100 unidades'
-  },
-  {
-    image: '/bolsa4.png',
-    titulo: 'BOLSAS SIN ASA',
-    subTitulo: 'KRAFT de 50gr, 60gr, 90gr',
-    desc: 'Varias medidas Impresión con tu logo (opcional) Cantidad mínima 100 unidades'
-  },
-  {
-    image: '/bolsa3.png',
-    titulo: 'BOLSAS DOYPACK',
-    subTitulo: 'KRAFT de 120gr con cierre Ziplock',
-    desc: 'Varias medidas Impresión con tu logo (opcional) Cantidad mínima 100 unidades'
-  }
-]
-
-const productList2 = [
-  {
-    image: '/bolsa2.png',
-    titulo: 'BOLSAS CON ASA RIÑON',
-    subTitulo: 'Liner de 140gr',
-    desc: 'Varias medidas Impresión con tu logo (opcional) Cantidad mínima 100 unidades'
-  },
-  {
-    image: '/bolsa5.png',
-    titulo: 'BOLSAS CON ASA YUTE',
-    subTitulo: 'KRAFT de 100gr',
-    desc: 'Varias medidas Impresión con tu logo (opcional) Cantidad mínima 100 unidades'
-  },
-  {
-    image: '/bolsa6.png',
-    titulo: 'CAJAS DE CARTÓN MICROCORRUGADO',
-    desc: 'Varias medidas Impresión con tu logo (opcional) Cantidad mínima 100 unidades'
-  }
-]
+import { productList, productList1, productList2 } from '../data/productos'
 
 const Producto = ({ titulo, subTitulo, desc, image }, i) => (
   <Box key={i}>
@@ -138,7 +62,7 @@ const Productos = (props) => {
   const [is835px] = useMediaQuery(['(max-width: 835px)'])
 
   useEffect(() => {
-    if (inView) return setLoad(true)
+    if (inView) setLoad(true)
   }, [inView])
 
   return (
@@ -177,9 +101,29 @@ const Productos = (props) => {
       </Box>
       {is835px ? (
         <Box bg="white" py={16}>
-          {load && (
+          <SimpleGrid
+            gap={{ base: 4, xl: 20 }}
+            mx="auto"
+            w={{
+              base: '90%',
+              sm: '80%'
+            }}
+            maxW="1000px"
+            templateColumns={{
+              base: 'repeat(2, minmax(0, 1fr))',
+              sm: 'repeat(3, minmax(0, 1fr))'
+            }}
+          >
+            {productList.map((p, i) => (
+              <Producto key={i} {...p} />
+            ))}
+          </SimpleGrid>
+        </Box>
+      ) : (
+        <>
+          <Box bg="white" py={16}>
             <SimpleGrid
-              gap={{ base: 4, xl: 20 }}
+              gap={{ base: 4, xl: 10 }}
               mx="auto"
               w={{
                 base: '90%',
@@ -188,58 +132,32 @@ const Productos = (props) => {
               maxW="1000px"
               templateColumns={{
                 base: 'repeat(2, minmax(0, 1fr))',
-                sm: 'repeat(3, minmax(0, 1fr))'
+                md: 'repeat(3, minmax(0, 1fr))'
               }}
             >
-              {productList.map((p, i) => (
+              {productList1.map((p, i) => (
                 <Producto key={i} {...p} />
               ))}
             </SimpleGrid>
-          )}
-        </Box>
-      ) : (
-        <>
-          <Box bg="white" py={16}>
-            {load && (
-              <SimpleGrid
-                gap={{ base: 4, xl: 10 }}
-                mx="auto"
-                w={{
-                  base: '90%',
-                  sm: '80%'
-                }}
-                maxW="1000px"
-                templateColumns={{
-                  base: 'repeat(2, minmax(0, 1fr))',
-                  md: 'repeat(3, minmax(0, 1fr))'
-                }}
-              >
-                {productList1.map((p, i) => (
-                  <Producto key={i} {...p} />
-                ))}
-              </SimpleGrid>
-            )}
           </Box>
           <Box bg="gray.200" pt={16}>
-            {load && (
-              <SimpleGrid
-                gap={{ base: 4, xl: 10 }}
-                mx="auto"
-                w={{
-                  base: '90%',
-                  sm: '80%'
-                }}
-                maxW="1000px"
-                templateColumns={{
-                  base: 'repeat(2, minmax(0, 1fr))',
-                  md: 'repeat(3, minmax(0, 1fr))'
-                }}
-              >
-                {productList2.map((p, i) => (
-                  <Producto key={i} {...p} />
-                ))}
-              </SimpleGrid>
-            )}
+            <SimpleGrid
+              gap={{ base: 4, xl: 10 }}
+              mx="auto"
+              w={{
+                base: '90%',
+                sm: '80%'
+              }}
+              maxW="1000px"
+              templateColumns={{
+                base: 'repeat(2, minmax(0, 1fr))',
+                md: 'repeat(3, minmax(0, 1fr))'
+              }}
+            >
+              {productList2.map((p, i) => (
+                <Producto key={i} {...p} />
+              ))}
+            </SimpleGrid>
           </Box>
         </>
       )}
