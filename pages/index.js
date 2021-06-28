@@ -55,17 +55,19 @@ const Home = () => {
         </div>
       </div>
 
-      {/* CONTENT */}
-      {!isDesktop ? <Header /> : <DesktopNav />}
-      <div ref={ref}>
-        <Hero />
-      </div>
+      <div>
+        {/* CONTENT */}
+        {!isDesktop ? <Header /> : <DesktopNav />}
+        <div ref={ref}>
+          <Hero />
+        </div>
 
-      <Landing {...{ isDesktop, inView }} />
-      {loadChunks ? <Bancos /> : null}
-      {loadChunks ? <Ubicanos /> : null}
-      {loadChunks ? <Sidebar /> : null}
-      {!isDesktop ? <Navbar /> : null}
+        <Landing {...{ isDesktop, inView }} />
+        {loadChunks ? <Bancos /> : null}
+        {loadChunks ? <Sidebar /> : null}
+        {loadChunks ? <Ubicanos /> : null}
+        {!isDesktop ? <Navbar /> : null}
+      </div>
       <style jsx>{`
         #preloader {
           width: 100%;
@@ -89,6 +91,7 @@ const Home = () => {
         #preloader h1 {
           color: white;
           font-size: 5rem;
+          font-family: Flexo;
           text-align: center;
           animation: fadeIn 1s linear;
         }

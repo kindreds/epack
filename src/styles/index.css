@@ -4,14 +4,14 @@
 }
 
 @font-face {
-  font-family: Flexi;
+  font-family: Flexo;
   font-weight: bold;
   font-display: swap;
-  src: url(/fonts/Flexo-Bold.ttf);
+  src: url(/fonts/Flexo-Bold.woff2) format('woff2');
 }
 
 @font-face {
-  font-family: Flexi-Demi;
+  font-family: Flexo-Demi;
   font-display: swap;
-  src: url(/fonts/Flexo-Demi.ttf);
+  src: url(/fonts/Flexo-Regular.woff2) format('woff2');
 }
