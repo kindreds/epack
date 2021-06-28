@@ -8,12 +8,12 @@ import { useInView } from 'react-intersection-observer'
 import Spinner from '../src/components/Spinner'
 
 import Hero from '../src/Sections/Hero'
+import Navbar from '../src/components/Navbar'
+import Header from '../src/components/Header'
+import Landing from '../src/Sections/Landing'
 import useDrawer from '../src/hooks/useDrawer'
 
-const Navbar = d(() => import('../src/components/Navbar'), { ssr: false })
 const Bancos = d(() => import('../src/components/Bancos'), { ssr: false })
-const Landing = d(() => import('../src/Sections/Landing'), { ssr: false })
-const Header = d(() => import('../src/components/Header'), { ssr: false })
 const Sidebar = d(() => import('../src/components/Sidebar'), { ssr: false })
 const Ubicanos = d(() => import('../src/components/Ubicanos'), { ssr: false })
 const DesktopNav = d(() => import('../src/components/DesktopNav'), {
