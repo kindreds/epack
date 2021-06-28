@@ -30,6 +30,11 @@ export default {
     {
       rel: 'icon',
       href: '/isotipo.png'
+    },
+    {
+      as: 'font',
+      rel: 'preload',
+      href: '/fonts/Flexo-Bold.ttf'
     }
   ]
 }

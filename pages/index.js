@@ -2,13 +2,21 @@ import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import d from 'next/dynamic'
 // import TagManager from 'react-gtm-module'
-import { Spinner } from '@chakra-ui/spinner'
-import { Center, Heading } from '@chakra-ui/layout'
+// import { Spinner } from '@chakra-ui/spinner'
+// import { Center, Heading } from '@chakra-ui/layout'
 import { useMediaQuery } from '@chakra-ui/media-query'
 import { useInView } from 'react-intersection-observer'
 
+import Spinner from '../src/components/Spinner'
+
+import theme from '../theme'
 import Hero from '../src/Sections/Hero'
 import useDrawer from '../src/hooks/useDrawer'
+
+const ChakraProvider = d(
+  () => import('@chakra-ui/react').then((e) => e.ChakraProvider),
+  { ssr: false }
+)
 
 const Navbar = d(() => import('../src/components/Navbar'), { ssr: false })
 const Bancos = d(() => import('../src/components/Bancos'), { ssr: false })
@@ -44,37 +52,75 @@ const Home = () => {
   }, [bancosDrawer, ubicanosDrawer, sidebarDrawer])
 
   return (
-    <>
+    <div>
       <Head>
         <meta name="theme-color" content="#562196" />
       </Head>
-      <Center
-        id="preloader"
-        w="full"
-        h="120vh"
-        pos="fixed"
-        zIndex="999"
-        bg="bgPrimary"
-        flexDir="column"
-        transition="opacity 1.5s ease"
-      >
-        <Spinner size="lg" />
-        <Heading mt={5} color="white">
-          ePack
-        </Heading>
-      </Center>
 
-      {!isDesktop ? <Header /> : <DesktopNav />}
-      <div ref={ref}>
-        <Hero />
+      <div id="preloader">
+        <div classnames="center">
+          <Spinner />
+          <h1 mt={5} color="white">
+            ePack
+          </h1>
+        </div>
       </div>
+      <ChakraProvider theme={theme}>
+        {!isDesktop ? <Header /> : <DesktopNav />}
+        <div ref={ref}>
+          <Hero />
+        </div>
 
-      <Landing {...{ isDesktop, inView }} />
-      {loadChunks ? <Bancos /> : null}
-      {loadChunks ? <Ubicanos /> : null}
-      {loadChunks ? <Sidebar /> : null}
-      {!isDesktop ? <Navbar /> : null}
-    </>
+        <Landing {...{ isDesktop, inView }} />
+        {loadChunks ? <Bancos /> : null}
+        {loadChunks ? <Ubicanos /> : null}
+        {loadChunks ? <Sidebar /> : null}
+        {!isDesktop ? <Navbar /> : null}
+      </ChakraProvider>
+      <style jsx global>{`
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        #preloader {
+          width: 100%;
+          height: 110vh;
+          position: fixed;
+          z-index: 99;
+          background-color: #564596;
+          display: grid;
+          place-items: center;
+
+          transition: opacity 1.5s ease-in-out;
+        }
+
+        .center {
+          display: flex;
+          aling-items: center;
+          justify-content: center;
+          height: 100%;
+        }
+
+        #preloader h1 {
+          color: white;
+          font-size: 5rem;
+          font-family: Flexi;
+          text-align: center;
+          animation: fadeIn 1s linear;
+        }
+
+        @keyframes fadeDown {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+      `}</style>
+    </div>
   )
 }
 
