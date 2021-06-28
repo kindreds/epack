@@ -1,10 +1,10 @@
 import React from 'react'
 import d from 'next/dynamic'
 import PropTypes from 'prop-types'
-import { Link } from 'react-scroll'
 import { IconButton } from '@chakra-ui/button'
 import { ChevronUpIcon } from '@chakra-ui/icons'
 import { useMediaQuery } from '@chakra-ui/media-query'
+import Link from 'react-scroll/modules/components/Link'
 
 import Nosotros from '../Nosotros'
 import Noticias from '../Noticias'

@@ -1,18 +1,14 @@
 import React, { useState } from 'react'
-import d from 'next/dynamic'
 import PropTypes from 'prop-types'
 
 import { FaWhatsapp } from 'react-icons/fa'
-import { Box, SimpleGrid, Text } from '@chakra-ui/layout'
 import { Button, IconButton } from '@chakra-ui/button'
 import { HamburgerIcon, Icon } from '@chakra-ui/icons'
+import LinkS from 'react-scroll/modules/components/Link'
+import { Box, SimpleGrid, Text } from '@chakra-ui/layout'
 
 import useDrawer from '../../hooks/useDrawer'
 import { BankIcon, MailIcon, HomeIcon } from '../../SVGS'
-
-const LinkS = d(() => import('react-scroll/modules/components/Link'), {
-  ssr: false
-})
 
 const Navbar = () => {
   const { onOpen, closeAll } = useDrawer()

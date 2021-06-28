@@ -1,11 +1,7 @@
 import React from 'react'
-import d from 'next/dynamic'
 import PropTypes from 'prop-types'
+import LinkS from 'react-scroll/modules/components/Link'
 import { Heading, Link as LinkC } from '@chakra-ui/layout'
-
-const LinkS = d(() => import('react-scroll/modules/components/Link'), {
-  ssr: false
-})
 
 const Link = ({
   to,
