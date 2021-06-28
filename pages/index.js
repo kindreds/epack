@@ -9,6 +9,7 @@ import Spinner from '../src/components/Spinner'
 
 import Hero from '../src/Sections/Hero'
 import useDrawer from '../src/hooks/useDrawer'
+import { Heading } from '@chakra-ui/react'
 
 const Navbar = d(() => import('../src/components/Navbar'), { ssr: false })
 const Bancos = d(() => import('../src/components/Bancos'), { ssr: false })
@@ -52,9 +53,7 @@ const Home = () => {
       <div id="preloader">
         <div classnames="center">
           <Spinner />
-          <h1 mt={5} color="white">
-            ePack
-          </h1>
+          <Heading as="h1">ePack</Heading>
         </div>
       </div>
 
@@ -98,7 +97,6 @@ const Home = () => {
         #preloader h1 {
           color: white;
           font-size: 5rem;
-          font-family: Flexi;
           text-align: center;
           animation: fadeIn 1s linear;
         }
