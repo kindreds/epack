@@ -30,6 +30,7 @@ const Home = () => {
       const preloader = document.getElementById('preloader')
       preloader.style.pointerEvents = 'none'
       preloader.style.opacity = 0
+      window.removeEventListener('load', onLoad)
     }
 
     window.addEventListener('load', onLoad)
