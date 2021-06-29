@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import { Logo } from '../SVGS'
 import { Icon } from '@chakra-ui/icons'
-import { Link as LinkS } from 'react-scroll'
+import LinkS from 'react-scroll/modules/components/Link'
 import {
   Box,
   Link,

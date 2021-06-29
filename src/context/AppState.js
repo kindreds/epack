@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from 'react'
+import React, { useReducer } from 'react'
 import PropTypes from 'prop-types'
 import AppContext from './AppContext'
 import { AppReducer } from './AppReducer'
@@ -17,14 +17,7 @@ const initialState = {
 }
 
 const AppState = ({ children }) => {
-  const [loadChunks, setLoadChunks] = useState(false)
   const [state, dispatch] = useReducer(AppReducer, initialState)
-
-  useEffect(() => {
-    if (state.bancosDrawer || state.ubicanosDrawer || state.sidebarDrawer) {
-      setLoadChunks(true)
-    }
-  }, [state.bancosDrawer, state.ubicanosDrawer, state.sidebarDrawer])
 
   const onOpen = (drawer) => {
     dispatch({ type: OPEN_DRAWER, payload: drawer })
@@ -40,7 +33,6 @@ const AppState = ({ children }) => {
   }
 
   const exports = {
-    loadChunks,
     /* States */
     bancosDrawer: state.bancosDrawer,
     sidebarDrawer: state.sidebarDrawer,

@@ -8,8 +8,8 @@ import { Flex, Text, Heading, Box, SimpleGrid } from '@chakra-ui/layout'
 
 import { productList, productList1, productList2 } from '../data/productos'
 
-const Producto = ({ titulo, subTitulo, desc, image }, i) => (
-  <Box key={i}>
+const Producto = ({ titulo, subTitulo, desc, image }) => (
+  <div>
     <Box
       mb={{ base: 4, md: 0 }}
       width="full"
@@ -53,7 +53,7 @@ const Producto = ({ titulo, subTitulo, desc, image }, i) => (
       </Text>
       <Button colorScheme="secundary">Más información</Button>
     </Flex>
-  </Box>
+  </div>
 )
 
 const Productos = (props) => {

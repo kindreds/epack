@@ -63,10 +63,12 @@ const Home = () => {
       </div>
 
       <Landing {...{ isDesktop, inView }} />
+      {!isDesktop ? <Navbar /> : null}
+
+      {/* POrtales que seran cargados al intentar ser abiertos */}
       {loadChunks ? <Bancos /> : null}
       {loadChunks ? <Sidebar /> : null}
       {loadChunks ? <Ubicanos /> : null}
-      {!isDesktop ? <Navbar /> : null}
     </>
   )
 }

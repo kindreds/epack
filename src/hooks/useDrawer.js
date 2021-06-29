@@ -3,7 +3,6 @@ import AppContext from '../context/AppContext'
 
 const useDrawer = () => {
   const {
-    loadChunks,
     /* States */
     bancosDrawer,
     sidebarDrawer,
@@ -16,7 +15,6 @@ const useDrawer = () => {
     setCurrentScroll
   } = useContext(AppContext)
   return {
-    loadChunks,
     /* States */
     bancosDrawer,
     sidebarDrawer,

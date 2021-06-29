@@ -7,7 +7,6 @@ import { Button } from '@chakra-ui/button'
 import { useMediaQuery } from '@chakra-ui/media-query'
 import { Flex, Heading, Box } from '@chakra-ui/layout'
 import { useInView } from 'react-intersection-observer'
-import useDrawer from '../../hooks/useDrawer'
 import { SliderLoader } from './SliderLoader'
 
 const ReactSlider = d(() => import('react-slidy'), {
@@ -22,7 +21,6 @@ const BlogSlider = ({
   sizeHeading = '4xl',
   ...props
 }) => {
-  const { loadChunks } = useDrawer()
   const { ref, inView } = useInView()
   const [load, setLoad] = useState(false)
   const [actualSlide, setActualSlide] = useState(0)
@@ -30,8 +28,7 @@ const BlogSlider = ({
 
   useEffect(() => {
     if (inView) setLoad(true)
-    if (loadChunks) setLoad(true)
-  }, [inView, loadChunks])
+  }, [inView])
 
   const isWhite = theme === 'white'
 
