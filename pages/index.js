@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import d from 'next/dynamic'
-import { initialize } from 'react-gtm-module/dist/TagManager'
+import Tag from 'react-gtm-module'
 
 import { useMediaQuery } from '@chakra-ui/media-query'
 import { useInView } from 'react-intersection-observer'
@@ -45,7 +45,7 @@ const Home = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      initialize({ gtmId: 'GTM-KBLCP3J' })
+      Tag.initialize({ gtmId: 'GTM-KBLCP3J' })
       setLoadChunks(true)
     }, 1000 * 10)
 
