@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import d from 'next/dynamic'
+import { initialize } from 'react-gtm-module/dist/TagManager'
 
 import { useMediaQuery } from '@chakra-ui/media-query'
 import { useInView } from 'react-intersection-observer'
@@ -41,10 +42,38 @@ const Home = () => {
     }
   }, [bancosDrawer, ubicanosDrawer, sidebarDrawer])
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      initialize({ gtmId: 'GTM-KBLCP3J' })
+      setLoadChunks(true)
+    }, 1000 * 10)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <>
       <Head>
         <meta name="theme-color" content="#562196" />
+        {loadChunks ? (
+          <React.Fragment>
+            <script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=UA-175669111-1"
+            />
+
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'UA-175669111-1');
+              `
+              }}
+            />
+          </React.Fragment>
+        ) : null}
       </Head>
 
       {/* PRELOADER */}
