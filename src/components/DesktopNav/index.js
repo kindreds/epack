@@ -35,7 +35,7 @@ const DesktopNav = () => {
         minH="60px"
         pos="sticky"
         style={{ zIndex: 4 }}
-        display={{ base: 'none', md: 'block' }}
+        display={{ base: 'none', lg: 'block' }}
         bg={isPrimary ? '#562196' : 'transparent'}
       >
         <Flex
