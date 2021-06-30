@@ -5,10 +5,14 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 module.exports = withBundleAnalyzer({
-  future: { webpack5: true },
   images: { domains: ['bit.ly', 'images.unsplash.com'] },
   webpack: (config) => {
     config.plugins.push(new DuplicatePackageCheckerPlugin())
+    config.resolve.alias['react-is'] = path.resolve(
+      __dirname,
+      'node_modules',
+      'next/node_modules/react-is'
+    )
     config.resolve.alias['@emotion/is-prop-valid'] = path.resolve(
       __dirname,
       'node_modules',
@@ -27,7 +31,7 @@ module.exports = withBundleAnalyzer({
     config.resolve.alias['strip-ansi'] = path.resolve(
       __dirname,
       'node_modules',
-      'strip-ansi'
+      'next/dist/compiled/strip-ansi'
     )
     config.resolve.alias['@babel/runtime'] = path.resolve(
       __dirname,

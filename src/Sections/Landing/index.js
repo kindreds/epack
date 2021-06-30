@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import Head from 'next/head'
 import d from 'next/dynamic'
 import PropTypes from 'prop-types'
 import { IconButton } from '@chakra-ui/button'
 import { ChevronUpIcon } from '@chakra-ui/icons'
 import { useMediaQuery } from '@chakra-ui/media-query'
 import Link from 'react-scroll/modules/components/Link'
+import { useInView } from 'react-intersection-observer'
 
+import Hero from '../Hero'
 import Nosotros from '../Nosotros'
 import Noticias from '../Noticias'
 import Clientes from '../Clientes'
@@ -14,21 +17,78 @@ import Productos from '../Productos'
 import Servicios from '../Servicios'
 import Testimonios from '../Testimonios'
 import Slider from '../../components/Slider'
+import Navbar from '../../components/Navbar'
+import Header from '../../components/Header'
+import DesktopNav from '../../components/DesktopNav'
 import BlogSlider from '../../components/Slider/BlogSlider'
 import ClientesSlider from '../../components/Slider/ClientesSlider'
 
+import useDrawer from '../../hooks/useDrawer'
 import { images1, images2, images4, images5, images6 } from '../../data/images'
 
 const Footer = d(() => import('../Footer'), { ssr: false })
+const Bancos = d(() => import('../../components/Bancos'), { ssr: false })
+const Sidebar = d(() => import('../../components/Sidebar'), { ssr: false })
+const Ubicanos = d(() => import('../../components/Ubicanos'), { ssr: false })
 const UbicanosDesk = d(() => import('../../components/Ubicanos/UbicanosDesk'), {
   ssr: false
 })
 
-const Landing = ({ inView, isDesktop }) => {
+const Landing = () => {
+  const { ref, inView } = useInView()
+  const [loadChunks, setLoadChunks] = useState(false)
+  const [isDesktop] = useMediaQuery(['(min-width: 1024px)'])
   const [isLargerThan1280] = useMediaQuery('(min-width: 1280px)')
+  const { bancosDrawer, ubicanosDrawer, sidebarDrawer } = useDrawer()
+
+  useEffect(() => {
+    const onLoad = () => {
+      const preloader = document.getElementById('preloader')
+      preloader.style.pointerEvents = 'none'
+      preloader.style.opacity = 0
+      window.removeEventListener('load', onLoad)
+    }
+
+    window.addEventListener('load', onLoad)
+    return () => window.removeEventListener('load', onLoad)
+  }, [])
+
+  useEffect(() => {
+    if (bancosDrawer || ubicanosDrawer || sidebarDrawer) {
+      setLoadChunks(true)
+    }
+  }, [bancosDrawer, ubicanosDrawer, sidebarDrawer])
 
   return (
     <>
+      <Head>
+        <meta name="theme-color" content="#562196" />
+        {loadChunks ? (
+          <React.Fragment>
+            <script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=UA-175669111-1"
+            />
+
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'UA-175669111-1');
+              `
+              }}
+            />
+          </React.Fragment>
+        ) : null}
+      </Head>
+      {/* CONTENT */}
+      <Header />
+      {isDesktop ? <DesktopNav /> : null}
+      <div ref={ref}>
+        <Hero />
+      </div>
       <Nosotros />
       <Productos />
       <Servicios />
@@ -76,6 +136,14 @@ const Landing = ({ inView, isDesktop }) => {
       <div id="contacto">
         <Contacto />
       </div>
+
+      {!isDesktop ? <Navbar /> : null}
+
+      {/* POrtales que seran cargados al intentar ser abiertos */}
+      {loadChunks ? <Bancos /> : null}
+      {loadChunks ? <Sidebar /> : null}
+      {loadChunks ? <Ubicanos /> : null}
+
       {isDesktop ? <UbicanosDesk /> : null}
       {isDesktop ? <Footer /> : null}
       <IconButton
