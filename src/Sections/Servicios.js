@@ -2,12 +2,9 @@ import React from 'react'
 import Image from 'next/image'
 // import PropTypes from 'prop-types'
 import { Button } from '@chakra-ui/button'
-import { useMediaQuery } from '@chakra-ui/media-query'
 import { Flex, Text, Heading, Box, SimpleGrid } from '@chakra-ui/layout'
 
 const Nosotros = (props) => {
-  const [is670pxOrLess] = useMediaQuery('(max-height: 670px)')
-
   return (
     <>
       <Flex
@@ -38,13 +35,7 @@ const Nosotros = (props) => {
             lg: 'calc(100vh * 0.8)'
           }}
         >
-          <Box
-            h="full"
-            w="full"
-            mx="auto"
-            mb={is670pxOrLess ? 2 : 4}
-            pos="relative"
-          >
+          <Box h="full" w="full" mx="auto" mb={4} pos="relative">
             <Image src="/seriegrafia.png" layout="fill" objectFit="contain" />
           </Box>
           <Box>
@@ -53,7 +44,7 @@ const Nosotros = (props) => {
               fontSize="3xl"
               color="bgSecundary"
               textAlign={{ base: 'center', md: 'left' }}
-              mb={is670pxOrLess ? 2 : 4}
+              mb={4}
             >
               SERVICIO DE SERIGRAFÍA
             </Heading>
@@ -63,7 +54,7 @@ const Nosotros = (props) => {
               fontWeight="400"
               textAlign="justify"
               fontSize={{ base: 'lg', lg: 'xl' }}
-              lineHeight={is670pxOrLess ? 'short' : 'taller'}
+              lineHeight={'taller'}
             >
               EPACK, es la mejor opción en servicio de serigrafía, estampado,
               tampografía y todo tipo de impresión, nuestro taller cuenta con

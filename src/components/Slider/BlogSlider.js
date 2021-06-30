@@ -1,18 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import d from 'next/dynamic'
+import React, { useState } from 'react'
 import Image from 'next/image'
 
 import PropTypes from 'prop-types'
+import ReactSlider from 'react-slidy'
 import { Button } from '@chakra-ui/button'
-import { useMediaQuery } from '@chakra-ui/media-query'
 import { Flex, Heading, Box } from '@chakra-ui/layout'
-import { useInView } from 'react-intersection-observer'
-import { SliderLoader } from './SliderLoader'
-
-const ReactSlider = d(() => import('react-slidy'), {
-  ssr: false,
-  loading: SliderLoader
-})
 
 const BlogSlider = ({
   heading,
@@ -21,14 +13,7 @@ const BlogSlider = ({
   sizeHeading = '4xl',
   ...props
 }) => {
-  const { ref, inView } = useInView()
-  const [load, setLoad] = useState(false)
   const [actualSlide, setActualSlide] = useState(0)
-  const [is670pxOrLess] = useMediaQuery('(max-height: 670px)')
-
-  useEffect(() => {
-    if (inView) setLoad(true)
-  }, [inView])
 
   const isWhite = theme === 'white'
 
@@ -41,7 +26,6 @@ const BlogSlider = ({
       <Flex
         {...props}
         pb={100}
-        ref={ref}
         flexDir="column"
         bgColor="bgPrimary"
         bgBlendMode="darken"
@@ -73,7 +57,7 @@ const BlogSlider = ({
           mx="auto"
           textAlign="center"
           fontSize={sizeHeading}
-          mb={is670pxOrLess ? 5 : 10}
+          mb={10}
           maxW={{ base: '80%', md: '500px' }}
           color={isWhite ? 'bgPrimary' : 'white'}
         >
@@ -87,15 +71,13 @@ const BlogSlider = ({
           maxW={{ md: '90%' }}
           mx={{ md: 'auto' }}
         >
-          {load ? (
-            <ReactSlider
-              showArrows={!!0}
-              slide={actualSlide}
-              doAfterSlide={updateSlide}
-            >
-              {children}
-            </ReactSlider>
-          ) : null}
+          <ReactSlider
+            showArrows={!!0}
+            slide={actualSlide}
+            doAfterSlide={updateSlide}
+          >
+            {children}
+          </ReactSlider>
           <Flex mt={5} ml={{ base: '10%', md: 0 }} justify={{ md: 'center' }}>
             {Array(3)
               .fill(null)

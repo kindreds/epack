@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import d from 'next/dynamic'
+import Tag from 'react-gtm-module'
 import PropTypes from 'prop-types'
+import { Box } from '@chakra-ui/layout'
+import useDrawer from '../../hooks/useDrawer'
 import { IconButton } from '@chakra-ui/button'
 import { ChevronUpIcon } from '@chakra-ui/icons'
 import { useMediaQuery } from '@chakra-ui/media-query'
@@ -23,7 +26,6 @@ import DesktopNav from '../../components/DesktopNav'
 import BlogSlider from '../../components/Slider/BlogSlider'
 import ClientesSlider from '../../components/Slider/ClientesSlider'
 
-import useDrawer from '../../hooks/useDrawer'
 import { images1, images2, images4, images5, images6 } from '../../data/images'
 
 const Footer = d(() => import('../Footer'), { ssr: false })
@@ -38,7 +40,6 @@ const Landing = () => {
   const { ref, inView } = useInView()
   const [loadChunks, setLoadChunks] = useState(false)
   const [isDesktop] = useMediaQuery(['(min-width: 1024px)'])
-  const [isLargerThan1280] = useMediaQuery('(min-width: 1280px)')
   const { bancosDrawer, ubicanosDrawer, sidebarDrawer } = useDrawer()
 
   useEffect(() => {
@@ -59,12 +60,21 @@ const Landing = () => {
     }
   }, [bancosDrawer, ubicanosDrawer, sidebarDrawer])
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      Tag.initialize({ gtmId: 'GTM-KBLCP3J' })
+      setLoadChunks(true)
+    }, 1000 * 10)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <>
       <Head>
         <meta name="theme-color" content="#562196" />
         {loadChunks ? (
-          <React.Fragment>
+          <>
             <script
               async
               src="https://www.googletagmanager.com/gtag/js?id=UA-175669111-1"
@@ -80,7 +90,7 @@ const Landing = () => {
               `
               }}
             />
-          </React.Fragment>
+          </>
         ) : null}
       </Head>
       {/* CONTENT */}
@@ -89,6 +99,7 @@ const Landing = () => {
       <div ref={ref}>
         <Hero />
       </div>
+
       <Nosotros />
       <Productos />
       <Servicios />
@@ -110,7 +121,7 @@ const Landing = () => {
           <Testimonios />
         </Slider>
       </div>
-      {isLargerThan1280 ? (
+      <Box display={{ base: 'block', xl: 'none' }}>
         <ClientesSlider
           id="clientes"
           theme="primary"
@@ -121,7 +132,8 @@ const Landing = () => {
           <Clientes images={images5} />
           <Clientes images={images6} />
         </ClientesSlider>
-      ) : (
+      </Box>
+      <Box display={{ base: 'none', xl: 'block' }}>
         <ClientesSlider
           pt={10}
           id="clientes"
@@ -132,20 +144,24 @@ const Landing = () => {
           <Clientes images={images1} />
           <Clientes images={images2} />
         </ClientesSlider>
-      )}
+      </Box>
       <div id="contacto">
         <Contacto />
       </div>
-
-      {!isDesktop ? <Navbar /> : null}
+      <Navbar />
 
       {/* POrtales que seran cargados al intentar ser abiertos */}
       {loadChunks ? <Bancos /> : null}
       {loadChunks ? <Sidebar /> : null}
       {loadChunks ? <Ubicanos /> : null}
 
-      {isDesktop ? <UbicanosDesk /> : null}
-      {isDesktop ? <Footer /> : null}
+      {isDesktop ? (
+        <>
+          <UbicanosDesk />
+          <Footer />
+        </>
+      ) : null}
+
       <IconButton
         spy
         smooth

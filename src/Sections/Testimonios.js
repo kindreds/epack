@@ -2,11 +2,8 @@ import React from 'react'
 import Image from 'next/image'
 // import PropTypes from 'prop-types'
 import { Flex, Text, Box } from '@chakra-ui/layout'
-import { useMediaQuery } from '@chakra-ui/media-query'
 
 const Testimonios = (props) => {
-  const [is670pxOrLess] = useMediaQuery('(max-height: 670px)')
-
   return (
     <Flex
       pos="relative"
@@ -35,7 +32,7 @@ const Testimonios = (props) => {
         color="gray.700"
         textAlign="center"
         whiteSpace="normal"
-        lineHeight={is670pxOrLess ? 'short' : 'tall'}
+        lineHeight={'tall'}
       >
         rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed
         ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.

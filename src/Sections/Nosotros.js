@@ -1,22 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
 // import PropTypes from 'prop-types'
 import { Button } from '@chakra-ui/button'
-import { useMediaQuery } from '@chakra-ui/media-query'
-import { useInView } from 'react-intersection-observer'
 import { Flex, Text, Heading, Box, SimpleGrid } from '@chakra-ui/layout'
 
 const Nosotros = (props) => {
-  const { ref, inView } = useInView()
-  const [load, setLoad] = useState(false)
-  const [is670pxOrLess] = useMediaQuery('(max-height: 670px)')
-
-  useEffect(() => {
-    if (inView) setLoad(true)
-  }, [inView])
-
   return (
-    <Box id="nosotros" mx="auto" ref={ref}>
+    <Box id="nosotros" mx="auto">
       <Flex
         bg="white"
         align="center"
@@ -42,13 +32,7 @@ const Nosotros = (props) => {
             lg: 'calc(100vh * 0.8)'
           }}
         >
-          <Box
-            h="full"
-            w="full"
-            mx="auto"
-            pos="relative"
-            mb={is670pxOrLess ? 2 : 4}
-          >
+          <Box h="full" w="full" mx="auto" pos="relative" mb={4}>
             <Box
               top={0}
               left={{ base: -5, md: -16 }}
@@ -57,24 +41,20 @@ const Nosotros = (props) => {
               w={{ base: '100px', md: '200px' }}
               // display={{ base: 'none', lg: 'block' }}
             >
-              {load ? (
-                <Image
-                  layout="fill"
-                  style={{ height: '100%', width: '100%' }}
-                  src="/puntos_cp.webp"
-                />
-              ) : null}
+              <Image
+                layout="fill"
+                style={{ height: '100%', width: '100%' }}
+                src="/puntos_cp.webp"
+              />
             </Box>
-            {load ? (
-              <Image src="/3.png" layout="fill" objectFit="contain" />
-            ) : null}
+            <Image src="/3.png" layout="fill" objectFit="contain" />
           </Box>
           <Box>
             <Heading
               as="h1"
               fontSize="3xl"
               color="bgSecundary"
-              mb={is670pxOrLess ? 2 : 4}
+              mb={4}
               textAlign={{ base: 'center', md: 'left' }}
             >
               SOBRE NOSOTROS
@@ -85,7 +65,7 @@ const Nosotros = (props) => {
               fontWeight="400"
               textAlign="justify"
               fontSize={{ base: 'lg', lg: 'xl' }}
-              lineHeight={is670pxOrLess ? 'short' : 'taller'}
+              lineHeight={'taller'}
             >
               Somos una empresa fabricante y distribuidora de bolsas de papel
               Kraft, Liner, Doy Pack, cajas de cartón microcorrugado, etiquetas

@@ -25,6 +25,8 @@ const Navbar = () => {
         align="center"
         bg="bgSecundary"
         alignItems="center"
+        opacity={{ lg: 0 }}
+        pointerEvents={{ lg: 'none' }}
         // gap={5}
         borderTopRadius="xl"
         justifyContent="center"

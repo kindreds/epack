@@ -1,17 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import d from 'next/dynamic'
+import React, { useState } from 'react'
+import ReactSlider from 'react-slidy'
 import PropTypes from 'prop-types'
 import { Button } from '@chakra-ui/button'
 import { Flex, Heading, Box } from '@chakra-ui/layout'
-import { useMediaQuery } from '@chakra-ui/media-query'
-import { useInView } from 'react-intersection-observer'
-
-import { SliderLoader } from './SliderLoader'
-
-const ReactSlider = d(() => import('react-slidy'), {
-  ssr: false,
-  loading: SliderLoader
-})
 
 const ClientesSlider = ({
   heading,
@@ -20,14 +11,7 @@ const ClientesSlider = ({
   sizeHeading = '4xl',
   ...props
 }) => {
-  const { ref, inView } = useInView()
-  const [load, setLoad] = useState(false)
   const [actualSlide, setActualSlide] = useState(0)
-  const [is670pxOrLess] = useMediaQuery('(max-height: 670px)')
-
-  useEffect(() => {
-    if (inView) setLoad(true)
-  }, [inView])
 
   const isWhite = theme === 'white'
 
@@ -38,7 +22,6 @@ const ClientesSlider = ({
   return (
     <Box
       w="full"
-      ref={ref}
       minH={{ base: '800px', lg: 'unset' }}
       bgColor="bgPrimary"
       bgBlendMode="darken"
@@ -60,21 +43,19 @@ const ClientesSlider = ({
           mx="auto"
           textAlign="center"
           fontSize={sizeHeading}
-          mb={is670pxOrLess ? 5 : 10}
+          mb={10}
           maxW={{ base: '80%', md: '500px' }}
           color={isWhite ? 'bgPrimary' : 'white'}
         >
           {heading}
         </Heading>
-        {load ? (
-          <ReactSlider
-            showArrows={!!0}
-            slide={actualSlide}
-            doAfterSlide={updateSlide}
-          >
-            {children}
-          </ReactSlider>
-        ) : null}
+        <ReactSlider
+          showArrows={!!0}
+          slide={actualSlide}
+          doAfterSlide={updateSlide}
+        >
+          {children}
+        </ReactSlider>
         <Flex mt={5} ml={{ base: '10%', xl: '20%' }}>
           {Array(3)
             .fill(null)

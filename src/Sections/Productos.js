@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
 // import PropTypes from 'prop-types'
 import { Button } from '@chakra-ui/button'
-import { useMediaQuery } from '@chakra-ui/media-query'
-import { useInView } from 'react-intersection-observer'
 import { Flex, Text, Heading, Box, SimpleGrid } from '@chakra-ui/layout'
 
 import { productList, productList1, productList2 } from '../data/productos'
@@ -57,16 +55,8 @@ const Producto = ({ titulo, subTitulo, desc, image }) => (
 )
 
 const Productos = (props) => {
-  const { ref, inView } = useInView()
-  const [load, setLoad] = useState(false)
-  const [is835px] = useMediaQuery(['(max-width: 835px)'])
-
-  useEffect(() => {
-    if (inView) setLoad(true)
-  }, [inView])
-
   return (
-    <Flex ref={ref} mx="auto" id="productos" flexDir="column" {...props}>
+    <Flex mx="auto" id="productos" flexDir="column" {...props}>
       <Box
         pos="relative"
         bgColor="#562196"
@@ -91,18 +81,32 @@ const Productos = (props) => {
           h={{ base: '200px' }}
           w={{ base: '150px' }}
         >
-          {load && (
-            <img
-              style={{ height: '100%', width: '100%' }}
-              src="/productos-recurso.png"
-            />
-          )}
+          <Image width={150} height={200} src="/productos-recurso.png" />
         </Box>
       </Box>
-      {is835px ? (
+      <Box bg="white" py={16} display={{ base: 'block', md: 'none' }}>
+        <SimpleGrid
+          gap={{ base: 4, xl: 20 }}
+          mx="auto"
+          w={{
+            base: '90%',
+            sm: '80%'
+          }}
+          maxW="1000px"
+          templateColumns={{
+            base: 'repeat(2, minmax(0, 1fr))',
+            sm: 'repeat(3, minmax(0, 1fr))'
+          }}
+        >
+          {productList.map((p, i) => (
+            <Producto key={i} {...p} />
+          ))}
+        </SimpleGrid>
+      </Box>
+      <Box display={{ base: 'none', md: 'block' }}>
         <Box bg="white" py={16}>
           <SimpleGrid
-            gap={{ base: 4, xl: 20 }}
+            gap={{ base: 4, xl: 10 }}
             mx="auto"
             w={{
               base: '90%',
@@ -111,56 +115,34 @@ const Productos = (props) => {
             maxW="1000px"
             templateColumns={{
               base: 'repeat(2, minmax(0, 1fr))',
-              sm: 'repeat(3, minmax(0, 1fr))'
+              md: 'repeat(3, minmax(0, 1fr))'
             }}
           >
-            {productList.map((p, i) => (
+            {productList1.map((p, i) => (
               <Producto key={i} {...p} />
             ))}
           </SimpleGrid>
         </Box>
-      ) : (
-        <>
-          <Box bg="white" py={16}>
-            <SimpleGrid
-              gap={{ base: 4, xl: 10 }}
-              mx="auto"
-              w={{
-                base: '90%',
-                sm: '80%'
-              }}
-              maxW="1000px"
-              templateColumns={{
-                base: 'repeat(2, minmax(0, 1fr))',
-                md: 'repeat(3, minmax(0, 1fr))'
-              }}
-            >
-              {productList1.map((p, i) => (
-                <Producto key={i} {...p} />
-              ))}
-            </SimpleGrid>
-          </Box>
-          <Box bg="gray.200" pt={16}>
-            <SimpleGrid
-              gap={{ base: 4, xl: 10 }}
-              mx="auto"
-              w={{
-                base: '90%',
-                sm: '80%'
-              }}
-              maxW="1000px"
-              templateColumns={{
-                base: 'repeat(2, minmax(0, 1fr))',
-                md: 'repeat(3, minmax(0, 1fr))'
-              }}
-            >
-              {productList2.map((p, i) => (
-                <Producto key={i} {...p} />
-              ))}
-            </SimpleGrid>
-          </Box>
-        </>
-      )}
+        <Box bg="gray.200" pt={16}>
+          <SimpleGrid
+            gap={{ base: 4, xl: 10 }}
+            mx="auto"
+            w={{
+              base: '90%',
+              sm: '80%'
+            }}
+            maxW="1000px"
+            templateColumns={{
+              base: 'repeat(2, minmax(0, 1fr))',
+              md: 'repeat(3, minmax(0, 1fr))'
+            }}
+          >
+            {productList2.map((p, i) => (
+              <Producto key={i} {...p} />
+            ))}
+          </SimpleGrid>
+        </Box>
+      </Box>
     </Flex>
   )
 }
