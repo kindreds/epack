@@ -5,13 +5,8 @@ import Tag from 'react-gtm-module'
 import PropTypes from 'prop-types'
 import { Box } from '@chakra-ui/layout'
 import useDrawer from '../../hooks/useDrawer'
-import { IconButton } from '@chakra-ui/button'
-import { ChevronUpIcon } from '@chakra-ui/icons'
 import { useMediaQuery } from '@chakra-ui/media-query'
-import Link from 'react-scroll/modules/components/Link'
-import { useInView } from 'react-intersection-observer'
 
-import Hero from '../Hero'
 import Nosotros from '../Nosotros'
 import Noticias from '../Noticias'
 import Clientes from '../Clientes'
@@ -21,8 +16,6 @@ import Servicios from '../Servicios'
 import Testimonios from '../Testimonios'
 import Slider from '../../components/Slider'
 import Navbar from '../../components/Navbar'
-import Header from '../../components/Header'
-import DesktopNav from '../../components/DesktopNav'
 import BlogSlider from '../../components/Slider/BlogSlider'
 import ClientesSlider from '../../components/Slider/ClientesSlider'
 
@@ -37,7 +30,6 @@ const UbicanosDesk = d(() => import('../../components/Ubicanos/UbicanosDesk'), {
 })
 
 const Landing = () => {
-  const { ref, inView } = useInView()
   const [loadChunks, setLoadChunks] = useState(false)
   const [isDesktop] = useMediaQuery(['(min-width: 1024px)'])
   const { bancosDrawer, ubicanosDrawer, sidebarDrawer } = useDrawer()
@@ -47,7 +39,6 @@ const Landing = () => {
       const preloader = document.getElementById('preloader')
       preloader.style.pointerEvents = 'none'
       preloader.style.opacity = 0
-      window.removeEventListener('load', onLoad)
     }
 
     window.addEventListener('load', onLoad)
@@ -94,11 +85,6 @@ const Landing = () => {
         ) : null}
       </Head>
       {/* CONTENT */}
-      <Header />
-      {isDesktop ? <DesktopNav /> : null}
-      <div ref={ref}>
-        <Hero />
-      </div>
 
       <Nosotros />
       <Productos />
@@ -151,9 +137,6 @@ const Landing = () => {
       <Navbar />
 
       {/* POrtales que seran cargados al intentar ser abiertos */}
-      {loadChunks ? <Bancos /> : null}
-      {loadChunks ? <Sidebar /> : null}
-      {loadChunks ? <Ubicanos /> : null}
 
       {isDesktop ? (
         <>
@@ -162,19 +145,13 @@ const Landing = () => {
         </>
       ) : null}
 
-      <IconButton
-        spy
-        smooth
-        as={Link}
-        to="inicio"
-        pos="fixed"
-        zIndex="88"
-        fontSize="4xl"
-        colorScheme="secundary"
-        right={!inView ? 5 : -1005}
-        bottom={{ base: 100, xl: 10 }}
-        icon={<ChevronUpIcon color="bgPrimary" />}
-      />
+      {loadChunks ? (
+        <>
+          <Bancos />
+          <Sidebar />
+          <Ubicanos />
+        </>
+      ) : null}
     </>
   )
 }

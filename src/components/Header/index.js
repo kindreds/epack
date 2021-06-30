@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import PropTypes from 'prop-types'
 
@@ -10,15 +10,6 @@ import useDrawer from '../../hooks/useDrawer'
 
 const Header = () => {
   const { onOpen } = useDrawer()
-  const [isScrolling, setIsScrolling] = useState(0)
-
-  useEffect(() => {
-    const onChange = () => setIsScrolling(window.scrollY)
-    window.addEventListener('scroll', onChange)
-    return () => window.removeEventListener('scroll', onChange)
-  }, [])
-
-  const isPrimary = isScrolling > 80
 
   return (
     <Box
@@ -34,7 +25,7 @@ const Header = () => {
       bgColor="bgPrimary"
       bgBlendMode="darken"
       justifyContent="center"
-      shadow={isPrimary && 'lg'}
+      // shadow={'lg'}
       display={{ base: 'flex', lg: 'none' }}
     >
       <Link to="inicio">

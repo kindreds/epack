@@ -5,6 +5,8 @@ import { Button } from '@chakra-ui/button'
 import { Flex, Text, Heading, Box, SimpleGrid } from '@chakra-ui/layout'
 
 const Nosotros = (props) => {
+  console.log(!props.inView)
+
   return (
     <Box id="nosotros" mx="auto">
       <Flex
