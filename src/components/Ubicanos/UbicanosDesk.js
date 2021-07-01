@@ -30,10 +30,6 @@ const UbicanosDesk = () => {
           <Heading mb={2} color="primary.500">
             Ubícanos en:
           </Heading>
-          <Text fontSize={{ base: 'lg' }} mb={6} color="secundary.500">
-            “ingresar al Correo Corporativo <br />
-            ingresar al Correo Corporativo”
-          </Text>
         </Box>
         <Flex>
           <Box maxW="300px" mb={6} mr={5}>
