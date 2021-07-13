@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 // import PropTypes from 'prop-types'
 import { Button } from '@chakra-ui/button'
-import { Flex, Text, Heading, Box } from '@chakra-ui/layout'
+import { Flex, Text, Heading, Box, Link } from '@chakra-ui/layout'
 
 const Hero = (props) => {
   return (
@@ -71,9 +71,13 @@ const Hero = (props) => {
             Pedido mínimo: 100und
           </Heading>
           <Button
-            fontSize={'lg'}
+            as={Link}
+            isExternal
+            size="lg"
+            w="fit-content"
+            href="https://bit.ly/contactoslide"
             colorScheme="secundary"
-            display={{ base: 'none', sm: 'block' }}
+            display={{ base: 'none', sm: 'flex' }}
           >
             Contáctanos
           </Button>

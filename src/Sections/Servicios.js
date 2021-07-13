@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 // import PropTypes from 'prop-types'
 import { Button } from '@chakra-ui/button'
-import { Flex, Text, Heading, Box, SimpleGrid } from '@chakra-ui/layout'
+import { Flex, Text, Heading, Box, SimpleGrid, Link } from '@chakra-ui/layout'
 
 const Nosotros = (props) => {
   return (
@@ -63,9 +63,13 @@ const Nosotros = (props) => {
               con Asa Riñon, Stickers, etc
             </Text>
             <Button
+              as={Link}
+              w="fit-content"
               size="lg"
+              isExternal
               colorScheme="secundary"
               display={{ base: 'none', md: 'flex' }}
+              href="https://bit.ly/serviciodeserigrafia"
             >
               Contáctanos
             </Button>

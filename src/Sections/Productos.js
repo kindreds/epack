@@ -2,11 +2,11 @@ import React from 'react'
 import Image from 'next/image'
 // import PropTypes from 'prop-types'
 import { Button } from '@chakra-ui/button'
-import { Flex, Text, Heading, Box, SimpleGrid } from '@chakra-ui/layout'
+import { Flex, Text, Heading, Box, SimpleGrid, Link } from '@chakra-ui/layout'
 
 import { productList, productList1, productList2 } from '../data/productos'
 
-const Producto = ({ titulo, subTitulo, desc, image }) => (
+const Producto = ({ titulo, subTitulo, desc, image, href }) => (
   <div>
     <Box
       mb={{ base: 4, md: 0 }}
@@ -49,7 +49,9 @@ const Producto = ({ titulo, subTitulo, desc, image }) => (
       >
         {desc}
       </Text>
-      <Button colorScheme="secundary">Más información</Button>
+      <Button as={Link} isExternal href={href} colorScheme="secundary">
+        Más información
+      </Button>
     </Flex>
   </div>
 )

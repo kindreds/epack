@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import d from 'next/dynamic'
-import Tag from 'react-gtm-module'
 import PropTypes from 'prop-types'
 import { Box } from '@chakra-ui/layout'
 import useDrawer from '../../hooks/useDrawer'
@@ -53,7 +52,6 @@ const Landing = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      Tag.initialize({ gtmId: 'GTM-KBLCP3J' })
       setLoadChunks(true)
     }, 1000 * 10)
 
@@ -66,6 +64,31 @@ const Landing = () => {
         <meta name="theme-color" content="#562196" />
         {loadChunks ? (
           <>
+            {/* <!-- Facebook Pixel Code --> */}
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '330069158766167');
+            fbq('track', 'PageView');
+            `
+              }}
+            />
+
+            <meta
+              name="facebook-domain-verification"
+              content="a5h74k92ofbuywos6de1y7c8zpjobv"
+            />
+
+            {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
+
             <script
               async
               src="https://www.googletagmanager.com/gtag/js?id=UA-175669111-1"
@@ -78,6 +101,46 @@ const Landing = () => {
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
                 gtag('config', 'UA-175669111-1');
+              `
+              }}
+            />
+
+            {/* <!-- Hotjar Tracking Code for EPACK - EMPAQUES BIODEGRADABLES --> */}
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                (function(h,o,t,j,a,r){
+                  h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                  h._hjSettings={hjid:1953164,hjsv:6};
+                  a=o.getElementsByTagName('head')[0];
+                  r=o.createElement('script');r.async=1;
+                  r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                  a.appendChild(r);
+                })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+              `
+              }}
+            />
+
+            {/* ONE SIGNAL */}
+
+            <script
+              async
+              src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"
+            />
+
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                window.OneSignal = window.OneSignal || [];
+                OneSignal.push(function() {
+                  OneSignal.init({
+                    appId: "faecf426-0049-4d33-8fc9-04d068e7b7ab",
+                    safari_web_id: "web.onesignal.auto.0c2e8ce9-0832-4305-9baa-f4eee2871a0e",
+                    notifyButton: {
+                      enable: true,
+                    },
+                  });
+                });
               `
               }}
             />
