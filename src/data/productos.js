@@ -39,6 +39,18 @@ export const productList = [
     href: 'https://bit.ly/cajasepack',
     titulo: 'CAJAS DE CARTÓN MICROCORRUGADO',
     desc: 'Varias medidas Impresión con tu logo (opcional) Cantidad mínima 100 unidades'
+  },
+  {
+    image: '/sticker.png',
+    titulo: 'STICKER ADHESIVOS',
+    href: 'https://bit.ly/stickerepack',
+    desc: 'Sticker Adhesivos cuadrados, circulares, medidas personalizadas. Marca del adhesivo Arclad P3 +  Plastificado brillante'
+  },
+  {
+    image: '/etiqueta.png',
+    titulo: 'ETIQUETA LINER',
+    href: 'https://bit.ly/hantagepack',
+    desc: 'Etiqueta Liner contraplacado, troquelado, couche 300gr, perforado medida de 9x5cm, impresión ambos lados.'
   }
 ]
 export const productList1 = [
@@ -85,5 +97,17 @@ export const productList2 = [
     href: 'https://bit.ly/cajasepack',
     titulo: 'CAJAS DE CARTÓN MICROCORRUGADO',
     desc: 'Varias medidas Impresión con tu logo (opcional) Cantidad mínima 100 unidades'
+  },
+  {
+    image: '/sticker.png',
+    titulo: 'STICKER ADHESIVOS',
+    href: 'https://bit.ly/stickerepack',
+    desc: 'Sticker Adhesivos cuadrados, circulares, medidas personalizadas. Marca del adhesivo Arclad P3 +  Plastificado brillante'
+  },
+  {
+    image: '/etiqueta.png',
+    titulo: 'ETIQUETA LINER',
+    href: 'https://bit.ly/hantagepack',
+    desc: 'Etiqueta Liner contraplacado, troquelado, couche 300gr, perforado medida de 9x5cm, impresión ambos lados.'
   }
 ]

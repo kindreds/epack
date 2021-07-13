@@ -4,9 +4,9 @@ import Image from 'next/image'
 import { Button } from '@chakra-ui/button'
 import { Flex, Text, Heading, Box, SimpleGrid, Link } from '@chakra-ui/layout'
 
-import { productList, productList1, productList2 } from '../data/productos'
 import { motion } from 'framer-motion'
 import { InView } from 'react-intersection-observer'
+import { productList, productList1, productList2 } from '../data/productos'
 
 const Producto = ({ titulo, subTitulo, desc, image, href }) => (
   <div>

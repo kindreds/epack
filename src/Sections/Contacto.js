@@ -93,7 +93,11 @@ const Contacto = (props) => {
             <Formik
               initialValues={initialValues}
               validationSchema={validacion}
-              onSubmit={({ condiciones, ...values }, { resetForm }) => {
+              onSubmit={(
+                { condiciones, ...values },
+                { resetForm, setSubmitting }
+              ) => {
+                setSubmitting(true)
                 const payload = {
                   ...values,
                   dispositivo: '',
@@ -102,13 +106,13 @@ const Contacto = (props) => {
 
                 const SO = navigator.userAgent
 
-                if (/iPad/i.test(SO)) payload.dispositivo = 'iPad'
-                if (/iPhone/i.test(SO)) payload.dispositivo = 'iPhone'
-                if (/Android/i.test(SO)) payload.dispositivo = 'Android'
-                if (/Windows/i.test(SO)) payload.dispositivo = 'PC'
+                if (/iPad/i.test(SO)) payload.dispositivo = 'Tablet'
+                if (/iPhone/i.test(SO)) payload.dispositivo = 'Movil'
+                if (/Android/i.test(SO)) payload.dispositivo = 'Movil'
+                if (/Windows/i.test(SO)) payload.dispositivo = 'Desktop'
 
-                if (/Linux/i.test(SO)) payload.sistemaOperativo = 'Linux'
                 if (/OS/i.test(SO)) payload.sistemaOperativo = 'IOS'
+                if (/Linux/i.test(SO)) payload.sistemaOperativo = 'Linux'
                 if (/Android/i.test(SO)) payload.sistemaOperativo = 'Android'
                 if (/Windows/i.test(SO)) payload.sistemaOperativo = 'Windows'
 
@@ -120,7 +124,8 @@ const Contacto = (props) => {
                       isClosable: true,
                       status: 'success',
                       title: 'Mensaje enviado',
-                      description: 'Pronto nos pondremos en contacto contigo.'
+                      description: 'Pronto nos pondremos en contacto contigo.',
+                      position: payload.dispositivo === 'PC' ? 'bottom' : 'top'
                     })
                   } else {
                     toast({
@@ -131,16 +136,19 @@ const Contacto = (props) => {
                       description: 'Por favor contacta al administrador.'
                     })
                   }
+
+                  setSubmitting(false)
                 })
               }}
             >
               {({
                 values,
-                handleSubmit,
-                handleBlur,
-                handleChange,
                 errors,
-                touched
+                touched,
+                handleBlur,
+                handleSubmit,
+                handleChange,
+                isSubmitting
               }) => (
                 <Box
                   mx={6}
@@ -217,7 +225,12 @@ const Contacto = (props) => {
                   </Flex>
                   <ErrorMessage {...{ errors, touched, name: 'condiciones' }} />
 
-                  <Button w="full" type="submit" colorScheme="secundary">
+                  <Button
+                    w="full"
+                    type="submit"
+                    colorScheme="secundary"
+                    isLoading={isSubmitting}
+                  >
                     ENVIAR MENSAJE
                   </Button>
                 </Box>
