@@ -212,7 +212,7 @@ const Contacto = (props) => {
                       fontWeight="medium"
                       transform="translateY(-3px)"
                     >
-                      Acepta los terminos y condiciones
+                      Acepta los términos y condiciones
                     </Text>
                   </Flex>
                   <ErrorMessage {...{ errors, touched, name: 'condiciones' }} />

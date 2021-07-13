@@ -45,7 +45,7 @@ const UbicanosDesk = () => {
           )}
         </InView>
         <Flex>
-          <Box w={{ base: 300 }} maxW="300px" mb={6}>
+          <Box w={{ base: 300 }} maxW="300px" mb={6} mr={5}>
             <InView>
               {({ ref, inView }) => (
                 <div ref={ref}>
@@ -73,7 +73,7 @@ const UbicanosDesk = () => {
               C.C. Shopping Center Av. La Mar 2275 Int. 77
             </Text>
           </Box>
-          <Box w={{ base: 300 }} maxW="300px" mb={6} mr={5}>
+          <Box w={{ base: 300 }} maxW="300px" mb={6}>
             <InView>
               {({ ref, inView }) => (
                 <div ref={ref}>

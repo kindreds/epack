@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import InView from 'react-intersection-observer'
 
 const Noticias = (props) => {
-  const parser = (i) => parseFloat(`1.${i}`)
+  const parser = (i) => parseFloat(`0.${i}`)
   return (
     <Flex
       mx="auto"
