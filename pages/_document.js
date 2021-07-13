@@ -11,6 +11,22 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta
+            data-n-head="ssr"
+            name="twitter:url"
+            content="https://www.epack.pe"
+          />
+          <meta
+            data-n-head="ssr"
+            name="twitter:image"
+            content="https://bolsas.epack.pe/imagenes/epack-logo-fb.webp"
+          />
+          <meta data-n-head="ssr" name="twitter:title" content="ePack" />
+          <meta
+            name="twitter:description"
+            content="Bolsas Ecológicas de papel Kraft y Liner a medida personalizada con asa o sin asa. Bolsas para ropa, calzado, accesorios, botellas, alimentos, pan y más. Atención 24/7."
+          />
+
           <script
             dangerouslySetInnerHTML={{
               __html: `
