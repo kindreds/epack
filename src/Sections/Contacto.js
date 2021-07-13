@@ -158,7 +158,7 @@ const Contacto = (props) => {
                     onBlur={handleBlur}
                     value={values.nombres}
                     onChange={handleChange}
-                    placeholder="Nombes y Apellidos"
+                    placeholder="Nombres y Apellidos"
                   />
                   <ErrorMessage {...{ errors, touched, name: 'nombres' }} />
                   <Input
@@ -169,7 +169,7 @@ const Contacto = (props) => {
                     onBlur={handleBlur}
                     value={values.nroCelular}
                     onChange={handleChange}
-                    placeholder="Telefono de contacto"
+                    placeholder="Teléfono de contacto"
                   />
                   <ErrorMessage {...{ errors, touched, name: 'nroCelular' }} />
                   <Input
