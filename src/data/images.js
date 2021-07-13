@@ -7,19 +7,22 @@ export const images1 = [
   '/logo-dumma.png',
   '/logo-joancho.png',
   '/logo-kenido.png',
-  '/logo-knn.png',
-  '/logo-laita.png',
-  '/logo-lajama.png',
-  '/logo-lentes-del-peru.png'
+  '/logo-knn.png'
 ]
 
 export const images2 = [
+  '/logo-laita.png',
+  '/logo-lajama.png',
+  '/logo-lentes-del-peru.png',
   '/logo-leomi.png',
   '/logo-los-fenicios.png',
   '/logo-lucy.png',
   '/logo-mana.png',
   '/logo-meat.png',
-  '/logo-mobble.png',
+  '/logo-mobble.png'
+]
+
+export const images3 = [
   '/logo-mon.png',
   '/logo-mora.png',
   '/logo-rumbero.png',
@@ -27,6 +30,7 @@ export const images2 = [
   '/logo-telaza.png',
   '/logo-hornitos.png'
 ]
+
 export const images4 = [
   '/logo-adriana.png',
   '/logo-azucar.png',

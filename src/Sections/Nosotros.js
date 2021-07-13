@@ -3,10 +3,23 @@ import Image from 'next/image'
 // import PropTypes from 'prop-types'
 import { Button } from '@chakra-ui/button'
 import { Flex, Text, Heading, Box, SimpleGrid, Link } from '@chakra-ui/layout'
+import { useInView } from 'react-intersection-observer'
+import { motion } from 'framer-motion'
+
+const variantsX = {
+  open: { opacity: 1, x: 0 },
+  closed: { opacity: 0, x: '-100%' }
+}
+const variantsX2 = {
+  open: { opacity: 1, x: 0 },
+  closed: { opacity: 0, x: '100%' }
+}
 
 const Nosotros = (props) => {
+  const { ref, inView } = useInView()
+
   return (
-    <Box id="nosotros" mx="auto">
+    <Box overflow="hidden" id="nosotros" mx="auto" ref={ref}>
       <Flex
         bg="white"
         align="center"
@@ -32,11 +45,20 @@ const Nosotros = (props) => {
             lg: 'calc(100vh * 0.8)'
           }}
         >
-          <Box h="full" w="full" mx="auto" pos="relative" mb={4}>
+          <Box
+            mb={4}
+            h="full"
+            w="full"
+            mx="auto"
+            pos="relative"
+            as={motion.div}
+            variants={variantsX}
+            animate={inView ? 'open' : 'closed'}
+          >
             <Box
               top={0}
-              left={{ base: -5, md: -16 }}
               pos="absolute"
+              left={{ base: -5, md: -16 }}
               h={{ base: '200px', md: '300px' }}
               w={{ base: '100px', md: '200px' }}
               // display={{ base: 'none', lg: 'block' }}
@@ -49,7 +71,11 @@ const Nosotros = (props) => {
             </Box>
             <Image src="/3.png" layout="fill" objectFit="contain" />
           </Box>
-          <Box>
+          <Box
+            as={motion.div}
+            variants={variantsX2}
+            animate={inView ? 'open' : 'closed'}
+          >
             <Heading
               as="h1"
               fontSize="3xl"

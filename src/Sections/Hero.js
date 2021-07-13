@@ -2,7 +2,8 @@ import React from 'react'
 import Image from 'next/image'
 // import PropTypes from 'prop-types'
 import { Button } from '@chakra-ui/button'
-import { Flex, Text, Heading, Box, Link } from '@chakra-ui/layout'
+import { Flex, Text, Heading, Box } from '@chakra-ui/layout'
+import Link from 'react-scroll/modules/components/Link'
 
 const Hero = (props) => {
   return (
@@ -70,17 +71,16 @@ const Hero = (props) => {
           >
             Pedido mínimo: 100und
           </Heading>
-          <Button
-            as={Link}
-            isExternal
-            size="lg"
-            w="fit-content"
-            href="https://bit.ly/contactoslide"
-            colorScheme="secundary"
-            display={{ base: 'none', sm: 'flex' }}
-          >
-            Contáctanos
-          </Button>
+          <Link spy smooth to="contacto" offset={-175}>
+            <Button
+              size="lg"
+              w="fit-content"
+              colorScheme="secundary"
+              display={{ base: 'none', sm: 'flex' }}
+            >
+              Contáctanos
+            </Button>
+          </Link>
         </Flex>
         <Box
           pos="relative"

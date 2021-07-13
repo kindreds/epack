@@ -71,6 +71,7 @@ const Navbar = () => {
           variant="unstyled"
           colorScheme="primary"
           flexDirection="column"
+          _focus={{ borderColor: 'transparent' }}
           sx={{ transform: 'translateY(-23px)' }}
         >
           <Box rounded="full" bg="bgSecundary" p={1}>

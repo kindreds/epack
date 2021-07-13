@@ -2,9 +2,10 @@ import React from 'react'
 import Image from 'next/image'
 import PropTypes from 'prop-types'
 
-import Link from '../Sidebar/Link'
-import { Box } from '@chakra-ui/layout'
-import { IconButton } from '@chakra-ui/button'
+import Link from 'react-scroll/modules/components/Link'
+import { ChatIcon } from '@chakra-ui/icons'
+import { Box, Text } from '@chakra-ui/layout'
+import { IconButton, Button } from '@chakra-ui/button'
 
 import useDrawer from '../../hooks/useDrawer'
 
@@ -18,22 +19,37 @@ const Header = () => {
       w="full"
       pos="sticky"
       zIndex="88"
-      // bg="bgPrimary"
       bgSize="cover"
       bgRepeat="no-repeat"
-      bgImage="url(slide1_cp.webp)"
       bgColor="bgPrimary"
       bgBlendMode="darken"
       justifyContent="center"
-      // shadow={'lg'}
+      bgImage="url(slide1_cp.webp)"
       display={{ base: 'flex', lg: 'none' }}
     >
-      <Link to="inicio">
+      <Link spy smooth to="contacto">
+        <Button
+          top="13px"
+          left="25px"
+          pos="absolute"
+          variant="unstyled"
+          flexDirection="column"
+          _focus={{ borderColor: 'transparent' }}
+        >
+          <ChatIcon color="gray.300" />
+          <Text color="gray.300" fontWeight="500" fontSize="small">
+            Contacto
+          </Text>
+        </Button>
+      </Link>
+
+      <Link spy smooth to="inicio">
         <Image width={150} height={50} src="/logo.png" objectFit="contain" />
       </Link>
       <Box pos="absolute" right={6}>
         <IconButton
           variant="unstyled"
+          _focus={{ borderColor: 'transparent' }}
           onClick={() => onOpen('ubicanosDrawer')}
           icon={
             <Image

@@ -5,6 +5,8 @@ import { Button } from '@chakra-ui/button'
 import { Flex, Text, Heading, Box, SimpleGrid, Link } from '@chakra-ui/layout'
 
 import { productList, productList1, productList2 } from '../data/productos'
+import { motion } from 'framer-motion'
+import { InView } from 'react-intersection-observer'
 
 const Producto = ({ titulo, subTitulo, desc, image, href }) => (
   <div>
@@ -57,8 +59,15 @@ const Producto = ({ titulo, subTitulo, desc, image, href }) => (
 )
 
 const Productos = (props) => {
+  const parser = (i) => parseFloat(`1.${i}`)
   return (
-    <Flex mx="auto" id="productos" flexDir="column" {...props}>
+    <Flex
+      mx="auto"
+      id="productos"
+      flexDir="column"
+      overflow="hidden"
+      {...props}
+    >
       <Box
         pos="relative"
         bgColor="#562196"
@@ -87,62 +96,104 @@ const Productos = (props) => {
         </Box>
       </Box>
       <Box bg="white" py={16} display={{ base: 'block', md: 'none' }}>
-        <SimpleGrid
-          gap={{ base: 4, xl: 20 }}
-          mx="auto"
-          w={{
-            base: '90%',
-            sm: '80%'
-          }}
-          maxW="1000px"
-          templateColumns={{
-            base: 'repeat(2, minmax(0, 1fr))',
-            sm: 'repeat(3, minmax(0, 1fr))'
-          }}
-        >
-          {productList.map((p, i) => (
-            <Producto key={i} {...p} />
-          ))}
-        </SimpleGrid>
+        <InView>
+          {({ ref, inView }) => (
+            <SimpleGrid
+              ref={ref}
+              gap={{ base: 4, xl: 20 }}
+              mx="auto"
+              w={{
+                base: '90%',
+                sm: '80%'
+              }}
+              maxW="1000px"
+              templateColumns={{
+                base: 'repeat(2, minmax(0, 1fr))',
+                sm: 'repeat(3, minmax(0, 1fr))'
+              }}
+            >
+              {productList.map((p, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ y: 60, opacity: 0 }}
+                  animate={
+                    inView
+                      ? { y: 0, opacity: 1, transition: { delay: parser(i) } }
+                      : { y: 60, opacity: 0 }
+                  }
+                >
+                  <Producto {...p} />
+                </motion.div>
+              ))}
+            </SimpleGrid>
+          )}
+        </InView>
       </Box>
       <Box display={{ base: 'none', md: 'block' }}>
         <Box bg="white" py={16}>
-          <SimpleGrid
-            gap={{ base: 4, xl: 10 }}
-            mx="auto"
-            w={{
-              base: '90%',
-              sm: '80%'
-            }}
-            maxW="1000px"
-            templateColumns={{
-              base: 'repeat(2, minmax(0, 1fr))',
-              md: 'repeat(3, minmax(0, 1fr))'
-            }}
-          >
-            {productList1.map((p, i) => (
-              <Producto key={i} {...p} />
-            ))}
-          </SimpleGrid>
+          <InView>
+            {({ ref, inView }) => (
+              <SimpleGrid
+                ref={ref}
+                mx="auto"
+                maxW="1000px"
+                gap={{ base: 4, xl: 10 }}
+                w={{ base: '90%', sm: '80%' }}
+                templateColumns={{
+                  base: 'repeat(2, minmax(0, 1fr))',
+                  md: 'repeat(3, minmax(0, 1fr))'
+                }}
+              >
+                {productList1.map((p, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ y: 60, opacity: 0 }}
+                    animate={
+                      inView
+                        ? { y: 0, opacity: 1, transition: { delay: parser(i) } }
+                        : { y: 60, opacity: 0 }
+                    }
+                  >
+                    <Producto {...p} />
+                  </motion.div>
+                ))}
+              </SimpleGrid>
+            )}
+          </InView>
         </Box>
         <Box bg="gray.200" pt={16}>
-          <SimpleGrid
-            gap={{ base: 4, xl: 10 }}
-            mx="auto"
-            w={{
-              base: '90%',
-              sm: '80%'
-            }}
-            maxW="1000px"
-            templateColumns={{
-              base: 'repeat(2, minmax(0, 1fr))',
-              md: 'repeat(3, minmax(0, 1fr))'
-            }}
-          >
-            {productList2.map((p, i) => (
-              <Producto key={i} {...p} />
-            ))}
-          </SimpleGrid>
+          <InView>
+            {({ ref, inView }) => (
+              <SimpleGrid
+                ref={ref}
+                gap={{ base: 4, xl: 10 }}
+                mx="auto"
+                w={{
+                  base: '90%',
+                  sm: '80%'
+                }}
+                maxW="1000px"
+                templateColumns={{
+                  base: 'repeat(2, minmax(0, 1fr))',
+                  md: 'repeat(3, minmax(0, 1fr))'
+                }}
+              >
+                {productList2.map((p, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ y: 60, opacity: 0 }}
+                    animate={
+                      inView
+                        ? { y: 0, opacity: 1, transition: { delay: parser(i) } }
+                        : { y: 60, opacity: 0 }
+                    }
+                  >
+                    <Producto {...p} />
+                  </motion.div>
+                ))}
+              </SimpleGrid>
+            )}
+          </InView>
         </Box>
       </Box>
     </Flex>

@@ -3,7 +3,6 @@ import Head from 'next/head'
 import d from 'next/dynamic'
 import PropTypes from 'prop-types'
 import { Box } from '@chakra-ui/layout'
-import useDrawer from '../../hooks/useDrawer'
 import { useMediaQuery } from '@chakra-ui/media-query'
 
 import Nosotros from '../Nosotros'
@@ -15,10 +14,18 @@ import Servicios from '../Servicios'
 import Testimonios from '../Testimonios'
 import Slider from '../../components/Slider'
 import Navbar from '../../components/Navbar'
+import useDrawer from '../../hooks/useDrawer'
 import BlogSlider from '../../components/Slider/BlogSlider'
 import ClientesSlider from '../../components/Slider/ClientesSlider'
 
-import { images1, images2, images4, images5, images6 } from '../../data/images'
+import {
+  images1,
+  images2,
+  images3,
+  images4,
+  images5,
+  images6
+} from '../../data/images'
 
 const Footer = d(() => import('../Footer'), { ssr: false })
 const Bancos = d(() => import('../../components/Bancos'), { ssr: false })
@@ -179,7 +186,7 @@ const Landing = () => {
         >
           <Clientes images={images4} />
           <Clientes images={images5} />
-          <Clientes images={images6} />
+          {/* <Clientes images={images6} /> */}
         </ClientesSlider>
       </Box>
       <Box display={{ base: 'none', xl: 'block' }}>
@@ -192,6 +199,7 @@ const Landing = () => {
         >
           <Clientes images={images1} />
           <Clientes images={images2} />
+          <Clientes images={images3} />
         </ClientesSlider>
       </Box>
       <div id="contacto">

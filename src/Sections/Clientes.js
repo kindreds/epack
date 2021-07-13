@@ -2,8 +2,11 @@ import React from 'react'
 import Image from 'next/image'
 import PropTypes from 'prop-types'
 import { Flex, SimpleGrid, Box } from '@chakra-ui/layout'
+import { motion } from 'framer-motion'
+import InView from 'react-intersection-observer'
 
 const Clientes = ({ images = [], ...props }) => {
+  const parser = (i) => parseFloat(`1.${i}`)
   return (
     <Flex
       mx="auto"
@@ -25,17 +28,34 @@ const Clientes = ({ images = [], ...props }) => {
         }}
       >
         {images.map((src, i) => (
-          <Box
-            key={i + src}
-            mb={8}
-            w="full"
-            maxW="120px"
-            height="50px"
-            pos="relative"
-            justifySelf="center"
-          >
-            <Image src={src} layout="fill" objectFit="contain" />
-          </Box>
+          <InView key={i + src}>
+            {({ ref, inView }) => {
+              return (
+                <Box
+                  mb={8}
+                  ref={ref}
+                  initial={{ x: -100, opacity: 0 }}
+                  animate={
+                    inView
+                      ? {
+                          x: 0,
+                          opacity: 1,
+                          transition: { delay: parser(i) }
+                        }
+                      : { x: 100, opacity: 0 }
+                  }
+                  w="full"
+                  maxW="120px"
+                  height="50px"
+                  pos="relative"
+                  as={motion.div}
+                  justifySelf="center"
+                >
+                  <Image src={src} layout="fill" objectFit="contain" />
+                </Box>
+              )
+            }}
+          </InView>
         ))}
       </SimpleGrid>
     </Flex>
