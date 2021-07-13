@@ -8,23 +8,21 @@ export default {
     title: 'ePack',
     description:
       'Bolsas Ecológicas de papel Kraft y Liner a medida personalizada con asa o sin asa. Bolsas para ropa, calzado, accesorios, botellas, alimentos, pan y más. Atención 24/7.',
-    // images: [
-    //   {
-    //     url: 'https://www.example.ie/og-image-01.jpg',
-    //     width: 800,
-    //     height: 600,
-    //     alt: 'Og Image Alt'
-    //   },
-    //   {
-    //     url: 'https://www.example.ie/og-image-02.jpg',
-    //     width: 900,
-    //     height: 800,
-    //     alt: 'Og Image Alt Second'
-    //   },
-    //   { url: 'https://www.example.ie/og-image-03.jpg' },
-    //   { url: 'https://www.example.ie/og-image-04.jpg' }
-    // ],
-    site_name: 'ePack'
+    images: [
+      {
+        url: 'https://bolsas.epack.pe/imagenes/epack-logo-wsp.webp',
+        width: 400,
+        height: 400,
+        alt: 'Logo ePack whatsapp'
+      },
+      {
+        url: 'https://bolsas.epack.pe/imagenes/epack-logo-fb.webp',
+        width: 560,
+        height: 292,
+        alt: 'Logo ePack facebook'
+      }
+    ],
+    site_name: 'https://www.epack.pe/'
   },
   additionalLinkTags: [
     {
