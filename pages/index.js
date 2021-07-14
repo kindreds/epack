@@ -3,8 +3,8 @@ import d from 'next/dynamic'
 import { ProductJsonLd } from 'next-seo'
 
 import { IconButton } from '@chakra-ui/button'
-import { Link as LinkC } from '@chakra-ui/layout'
 import { ChevronUpIcon } from '@chakra-ui/icons'
+import { Link as LinkC } from '@chakra-ui/layout'
 import Link from 'react-scroll/modules/components/Link'
 import { VisuallyHidden } from '@chakra-ui/visually-hidden'
 
@@ -48,35 +48,35 @@ const Home = () => {
         }}
       />
 
-      <VisuallyHidden as="h1">
-        BOLSAS DE PAPEL BIODEGRADABLES EPACK
-      </VisuallyHidden>
-      <VisuallyHidden as="h2">
-        Bolsas con asa, sin asa, Doy Pack, Cajas, Hang tag, Stickers
-      </VisuallyHidden>
-      <VisuallyHidden as="h3">
-        Somos una empresa fabricante y distribuidora de bolsas de papel Kraft,
-        Liner, Doy Pack, cajas de cartón microcorrugado, etiquetas y stickers
-        con certificación FSC.
-      </VisuallyHidden>
-      <VisuallyHidden as="h3">
-        EPACK, es la mejor opción en servicio de serigrafía, estampado,
-        tampografía y todo tipo de impresión, nuestro taller cuenta con personal
-        altamente calificado y solida experticia en el rubro. Productos: Bolsas
-        con asa, bolsas sin asa, Bolsas Doy Pack, Bolsas con Asa Riñon,
-        Stickers, etc
-      </VisuallyHidden>
-
       {productList.map((item, i) => (
         <article key={i}>
-          <VisuallyHidden as="h2">{item.titulo}</VisuallyHidden>
-          <VisuallyHidden as="h3">{item.subTitulo}</VisuallyHidden>
+          <VisuallyHidden as="h1">{item.titulo}</VisuallyHidden>
+          <VisuallyHidden as="h2">{item.subTitulo}</VisuallyHidden>
           <VisuallyHidden as="p">{item.desc}</VisuallyHidden>
           <VisuallyHidden as={LinkC} href={item.href} isExternal>
             Información sobre {item.titulo}
           </VisuallyHidden>
         </article>
       ))}
+
+      <VisuallyHidden as="h1">
+        BOLSAS DE PAPEL BIODEGRADABLES EPACK
+      </VisuallyHidden>
+      <VisuallyHidden as="h2">
+        Bolsas con asa, sin asa, Doy Pack, Cajas, Hang tag, Stickers
+      </VisuallyHidden>
+      <VisuallyHidden as="p">
+        Somos una empresa fabricante y distribuidora de bolsas de papel Kraft,
+        Liner, Doy Pack, cajas de cartón microcorrugado, etiquetas y stickers
+        con certificación FSC.
+      </VisuallyHidden>
+      <VisuallyHidden as="p">
+        EPACK, es la mejor opción en servicio de serigrafía, estampado,
+        tampografía y todo tipo de impresión, nuestro taller cuenta con personal
+        altamente calificado y solida experticia en el rubro. Productos: Bolsas
+        con asa, bolsas sin asa, Bolsas Doy Pack, Bolsas con Asa Riñon,
+        Stickers, etc
+      </VisuallyHidden>
 
       <Header />
       <DesktopNav />
