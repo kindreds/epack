@@ -73,7 +73,7 @@ const Home = () => {
           <VisuallyHidden as="h3">{item.subTitulo}</VisuallyHidden>
           <VisuallyHidden as="p">{item.desc}</VisuallyHidden>
           <VisuallyHidden as={LinkC} href={item.href} isExternal>
-            Información
+            Información sobre {item.titulo}
           </VisuallyHidden>
         </article>
       ))}
