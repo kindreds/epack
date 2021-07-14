@@ -65,6 +65,7 @@ const Nosotros = (props) => {
             >
               <Image
                 layout="fill"
+                alt="Personas conversando"
                 style={{ height: '100%', width: '100%' }}
                 src="/puntos_cp.webp"
               />

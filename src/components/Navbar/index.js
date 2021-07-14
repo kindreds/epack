@@ -36,6 +36,7 @@ const Navbar = () => {
         }}
       >
         <IconButton
+          aria-label="Abrir sidebar"
           mx="auto"
           maxW="40px"
           colorScheme="primary"
@@ -66,6 +67,7 @@ const Navbar = () => {
         </Button>
         <Button
           py={2}
+          aria-label="Whatsapp"
           color="white"
           display="flex"
           variant="unstyled"

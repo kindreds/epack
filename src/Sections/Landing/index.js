@@ -18,14 +18,7 @@ import useDrawer from '../../hooks/useDrawer'
 import BlogSlider from '../../components/Slider/BlogSlider'
 import ClientesSlider from '../../components/Slider/ClientesSlider'
 
-import {
-  images1,
-  images2,
-  images3,
-  images4,
-  images5,
-  images6
-} from '../../data/images'
+import { images1, images2, images3, images4, images5 } from '../../data/images'
 
 const Footer = d(() => import('../Footer'), { ssr: false })
 const Bancos = d(() => import('../../components/Bancos'), { ssr: false })
@@ -68,9 +61,19 @@ const Landing = () => {
   return (
     <>
       <Head>
-        <meta name="theme-color" content="#562196" />
         {loadChunks ? (
           <>
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-W72295Z');
+              `
+              }}
+            />
             {/* <!-- Facebook Pixel Code --> */}
             <script
               dangerouslySetInnerHTML={{

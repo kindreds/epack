@@ -23,7 +23,7 @@ const Producto = ({ titulo, subTitulo, desc, image, href }) => (
         lg: '250px'
       }}
     >
-      <Image src={image} layout="fill" />
+      <Image src={image} alt={titulo} layout="fill" />
     </Box>
     <Flex
       p={{ md: 5 }}

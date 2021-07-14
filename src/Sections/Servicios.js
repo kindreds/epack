@@ -63,6 +63,7 @@ const Nosotros = (props) => {
                 <Image
                   src="/seriegrafia.png"
                   layout="fill"
+                  alt="SERVICIO DE SERIGRAFÍA"
                   objectFit="contain"
                 />
               </Box>

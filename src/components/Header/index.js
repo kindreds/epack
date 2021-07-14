@@ -29,6 +29,7 @@ const Header = () => {
     >
       <Link spy smooth to="contacto">
         <Button
+          aria-label="contacto"
           top="13px"
           left="25px"
           pos="absolute"
@@ -49,6 +50,7 @@ const Header = () => {
       <Box pos="absolute" right={6}>
         <IconButton
           variant="unstyled"
+          aria-label="Ubícanos"
           _focus={{ borderColor: 'transparent' }}
           onClick={() => onOpen('ubicanosDrawer')}
           icon={

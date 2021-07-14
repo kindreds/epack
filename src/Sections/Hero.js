@@ -87,7 +87,12 @@ const Hero = (props) => {
           w={['calc(100vw - 50px)', 300, 350, 400, 600]}
           h={['calc(28vh)', 250, 350, 400, 600]}
         >
-          <Image src="/1.png" objectFit="contain" layout="fill" />
+          <Image
+            src="/1.png"
+            alt="BOLSAS DE PAPEL BIODEGRADABLES"
+            objectFit="contain"
+            layout="fill"
+          />
         </Box>
       </Flex>
     </Flex>

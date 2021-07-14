@@ -1,13 +1,24 @@
 const path = require('path')
+const withPWA = require('next-pwa')
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin')
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true'
-})
+// const withBundleAnalyzer = require('@next/bundle-analyzer')({
+//   enabled: process.env.ANALYZE === 'true'
+// })
 
-module.exports = withBundleAnalyzer({
+module.exports = withPWA({
   images: { domains: ['bit.ly', 'images.unsplash.com'] },
+  pwa: {
+    dest: 'public',
+    register: true,
+    skipWaiting: true
+  },
   webpack: (config) => {
     config.plugins.push(new DuplicatePackageCheckerPlugin())
+    config.resolve.alias['react-fast-compare'] = path.resolve(
+      __dirname,
+      'node_modules',
+      'react-fast-compare'
+    )
     config.resolve.alias['react-is'] = path.resolve(
       __dirname,
       'node_modules',

@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 import InView from 'react-intersection-observer'
 
 const Clientes = ({ images = [], ...props }) => {
-  const parser = (i) => parseFloat(`1.${i}`)
+  const parser = (i) => parseFloat(`0.${i}`)
   return (
     <Flex
       mx="auto"
@@ -51,7 +51,12 @@ const Clientes = ({ images = [], ...props }) => {
                   as={motion.div}
                   justifySelf="center"
                 >
-                  <Image src={src} layout="fill" objectFit="contain" />
+                  <Image
+                    src={src}
+                    alt={src}
+                    layout="fill"
+                    objectFit="contain"
+                  />
                 </Box>
               )
             }}
