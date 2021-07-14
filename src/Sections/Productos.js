@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 // import PropTypes from 'prop-types'
 import { Button } from '@chakra-ui/button'
+import { VisuallyHidden } from '@chakra-ui/visually-hidden'
 import { Flex, Text, Heading, Box, SimpleGrid, Link } from '@chakra-ui/layout'
 
 import { motion } from 'framer-motion'
@@ -53,6 +54,7 @@ const Producto = ({ titulo, subTitulo, desc, image, href }) => (
       </Text>
       <Button as={Link} isExternal href={href} colorScheme="secundary">
         Más información
+        <VisuallyHidden as="span">{titulo}</VisuallyHidden>
       </Button>
     </Flex>
   </div>

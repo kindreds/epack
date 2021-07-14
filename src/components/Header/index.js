@@ -29,7 +29,6 @@ const Header = () => {
     >
       <Link spy smooth to="contacto">
         <Button
-          aria-label="contacto"
           top="13px"
           left="25px"
           pos="absolute"
@@ -45,7 +44,13 @@ const Header = () => {
       </Link>
 
       <Link spy smooth to="inicio">
-        <Image width={150} height={50} src="/logo.png" objectFit="contain" />
+        <Image
+          width={150}
+          height={50}
+          alt="Logo ePack"
+          src="/logo.png"
+          objectFit="contain"
+        />
       </Link>
       <Box pos="absolute" right={6}>
         <IconButton
@@ -57,6 +62,7 @@ const Header = () => {
             <Image
               width={50}
               height={50}
+              alt="Icono ubicanos"
               src="/ubiIcon.png"
               objectFit="contain"
             />

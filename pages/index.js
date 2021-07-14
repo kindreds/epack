@@ -48,7 +48,9 @@ const Home = () => {
         }}
       />
 
-      <VisuallyHidden as="h1">BOLSAS DE PAPEL BIODEGRADABLES</VisuallyHidden>
+      <VisuallyHidden as="h1">
+        BOLSAS DE PAPEL BIODEGRADABLES EPACK
+      </VisuallyHidden>
       <VisuallyHidden as="h2">
         Bolsas con asa, sin asa, Doy Pack, Cajas, Hang tag, Stickers
       </VisuallyHidden>

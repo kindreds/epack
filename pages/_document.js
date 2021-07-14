@@ -9,7 +9,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="es-ES">
         <Head>
           <link rel="manifest" href="/manifest.json" />
           <meta name="theme-color" content="#562196" />
@@ -19,6 +19,7 @@ class MyDocument extends Document {
 
           {/* TWITTER - FACEBOOK */}
           <meta name="twitter:title" content="ePack" />
+          <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:url" content="https://bolsas.epack.pe" />
           <meta
             name="twitter:image"

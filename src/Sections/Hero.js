@@ -36,7 +36,7 @@ const Hero = (props) => {
       >
         <Flex maxW={{ base: '80%' }} flexDir="column" align="flex-start">
           <Heading
-            as="h1"
+            as="h2"
             color="white"
             mb={{ base: 1, ms: 2 }}
             maxW={{ base: '330px', md: '700px' }}
