@@ -57,7 +57,7 @@ const Hero = (props) => {
             fontSize={{ base: 'clamp(1rem, 5vw, 2rem)', ms: 'lg' }}
             display={{ base: 'block', sm: 'none' }}
           >
-            Bolsas con asa, sin asa, Doy Pack, Cajas, Hang tag, Scker
+            Bolsas con asa, sin asa, Doy Pack, Cajas, Hang tag, Stickers
           </Text>
           <Heading
             color="bgSecundary"
