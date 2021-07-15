@@ -37,8 +37,8 @@ export const images4 = [
   '/logo-bivo.png',
   '/logo-chacrabox.png',
   '/logo-coccolina.png',
-  '/logo-dumma.png',
   '/logo-joancho.png',
+  '/logo-dumma.png',
   '/logo-kenido.png',
   '/logo-knn.png'
 ]

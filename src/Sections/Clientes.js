@@ -14,7 +14,7 @@ const Clientes = ({ images = [], ...props }) => {
       flexDir="column"
       justify="center"
       whiteSpace="normal"
-      maxW={{ base: '95%', xl: '1200px' }}
+      maxW={{ base: '80%', xl: '1200px' }}
       {...props}
     >
       <SimpleGrid
@@ -35,6 +35,7 @@ const Clientes = ({ images = [], ...props }) => {
                   mb={8}
                   ref={ref}
                   initial={{ x: -100, opacity: 0 }}
+                  exit={{ x: -100, opacity: 0 }}
                   animate={
                     inView
                       ? {

@@ -18,7 +18,14 @@ import useDrawer from '../../hooks/useDrawer'
 import BlogSlider from '../../components/Slider/BlogSlider'
 import ClientesSlider from '../../components/Slider/ClientesSlider'
 
-import { images1, images2, images3, images4, images5 } from '../../data/images'
+import {
+  images1,
+  images2,
+  images3,
+  images4,
+  images5,
+  images6
+} from '../../data/images'
 
 const Footer = d(() => import('../Footer'), { ssr: false })
 const Bancos = d(() => import('../../components/Bancos'), { ssr: false })
@@ -189,7 +196,7 @@ const Landing = () => {
         >
           <Clientes images={images4} />
           <Clientes images={images5} />
-          {/* <Clientes images={images6} /> */}
+          <Clientes images={images6} />
         </ClientesSlider>
       </Box>
       <Box display={{ base: 'none', xl: 'block' }}>
