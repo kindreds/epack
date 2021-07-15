@@ -6,7 +6,7 @@ import { Icon } from '@chakra-ui/icons'
 import { Image } from '@chakra-ui/image'
 import { Button } from '@chakra-ui/button'
 import { useMediaQuery } from '@chakra-ui/react'
-import { Stack, Flex, Box } from '@chakra-ui/layout'
+import { Stack, Flex, Box, Link as LinkC } from '@chakra-ui/layout'
 import { GoLocation as LocationIcon } from 'react-icons/go'
 
 import Link from '../Sidebar/Link'
@@ -144,13 +144,19 @@ const DesktopNav = () => {
               Contacto
             </Link>
 
-            <Button
-              color="bgPrimary"
-              colorScheme="amarello"
-              fontSize={{ base: 'md', xl: 'lg' }}
+            <LinkC
+              _hover={{ textDecoration: 'none' }}
+              href="https://bit.ly/chatenvivoepack"
+              isExternal
             >
-              Chat en vivo
-            </Button>
+              <Button
+                color="bgPrimary"
+                colorScheme="amarello"
+                fontSize={{ base: 'md', xl: 'lg' }}
+              >
+                Chat en vivo
+              </Button>
+            </LinkC>
             <LinkS
               spy
               smooth

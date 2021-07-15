@@ -61,7 +61,7 @@ const Producto = ({ titulo, subTitulo, desc, image, href }) => (
 )
 
 const Productos = (props) => {
-  const parser = (i) => parseFloat(`1.${i}`)
+  const parser = (i) => parseFloat(`0.${i}`)
   return (
     <Flex
       mx="auto"

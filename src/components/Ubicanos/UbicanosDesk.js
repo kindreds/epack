@@ -70,7 +70,7 @@ const UbicanosDesk = () => {
               San Miguel:
             </Text>
             <Text textAlign="center" color="bgSecundary" fontWeight="semibold">
-              Mz. Z Lt. 37 Urb. COOPIP
+              C.C. Shopping Center <br /> Av. La Mar 2275 Int. 77
             </Text>
           </Box>
           <Box w={{ base: 300 }} maxW="300px" mb={6}>
@@ -98,7 +98,7 @@ const UbicanosDesk = () => {
               San Martín de Porres:
             </Text>
             <Text textAlign="center" color="bgSecundary" fontWeight="semibold">
-              C.C. Shopping Center Av. La Mar 2275 Int. 77
+              Mz. Z Lt. 37 Urb. COOPIP
             </Text>
           </Box>
         </Flex>
