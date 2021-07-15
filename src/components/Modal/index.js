@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {
   Modal,
   ModalBody,
@@ -39,6 +40,11 @@ const ModalIframe = ({ isOpen, onClose }) => {
       </ModalContent>
     </Modal>
   )
+}
+
+ModalIframe.propTypes = {
+  isOpen: PropTypes.bool,
+  onClose: PropTypes.func
 }
 
 export default ModalIframe
