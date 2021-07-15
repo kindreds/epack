@@ -158,7 +158,7 @@ const Footer = (props) => {
                     CUENTA AHORROS
                   </Text>
                   <Text color="white" fontSize="sm" textAlign="right">
-                    192-01799922-0-01
+                    191-38685611-0-73
                   </Text>
                 </Box>
               </SimpleGrid>
@@ -252,7 +252,25 @@ const Footer = (props) => {
               icon={<FaLinkedinIn fontSize="23px" />}
             />
           </HStack>
-          <Icon as={FaWhatsapp} cursor="pointer" fontSize="50px" fill="white" />
+          <Link isExternal href="https://bit.ly/botonepack">
+            <IconButton
+              mb={4}
+              bg="transparent"
+              variant="unstyled"
+              _hover={{ bg: 'transparent' }}
+              _focus={{ borderColor: 'transparent' }}
+              icon={
+                <Icon
+                  fill="white"
+                  as={FaWhatsapp}
+                  fontSize="50px"
+                  cursor="pointer"
+                  transition="fill 250ms ease-in-out"
+                  _hover={{ fill: 'whatsapp.400' }}
+                />
+              }
+            />
+          </Link>
         </Flex>
       </GridItem>
     </Grid>

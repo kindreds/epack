@@ -13,11 +13,5 @@ export default {
       { url: 'https://bolsas.epack.pe/imagenes/epack-logo-wsp.webp' }
     ],
     site_name: 'ePack'
-  },
-  additionalLinkTags: [
-    {
-      rel: 'icon',
-      href: '/isotipo.png'
-    }
-  ]
+  }
 }

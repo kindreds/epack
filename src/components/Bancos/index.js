@@ -87,7 +87,7 @@ const Bancos = () => {
                     CUENTA AHORROS
                   </Heading>
                   <Heading color="blueBcp" fontSize="lg" textAlign="right">
-                    192-01799922-0-01
+                    191-38685611-0-73
                   </Heading>
                 </Box>
               </SimpleGrid>

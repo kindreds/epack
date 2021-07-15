@@ -13,9 +13,24 @@ class MyDocument extends Document {
         <Head>
           <link rel="manifest" href="/manifest.json" />
           <meta name="theme-color" content="#562196" />
-          <link rel="shortcut icon" href="/isotipo.png" />
-          <link rel="apple-touch-icon" href="/isotipo.png" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/isotipo.png" />
+          <link
+            sizes="144x144"
+            rel="apple-touch-icon"
+            href="/apple-touch-icon.png"
+          ></link>
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+          />
+          <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#562196" />
 
           {/* TWITTER - FACEBOOK */}
           <meta name="twitter:title" content="ePack" />

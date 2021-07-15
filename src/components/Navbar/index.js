@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { Button, IconButton } from '@chakra-ui/button'
 import { HamburgerIcon, Icon } from '@chakra-ui/icons'
 import LinkS from 'react-scroll/modules/components/Link'
-import { Box, SimpleGrid, Text } from '@chakra-ui/layout'
+import { Box, SimpleGrid, Text, Link } from '@chakra-ui/layout'
 
 import useDrawer from '../../hooks/useDrawer'
 import { BankIcon, MailIcon, HomeIcon, WspIcon } from '../../SVGS'
@@ -65,22 +65,31 @@ const Navbar = () => {
             Inicio
           </Text>
         </Button>
-        <Button
-          py={2}
-          aria-label="Whatsapp"
-          color="white"
-          display="flex"
-          variant="unstyled"
-          colorScheme="primary"
-          flexDirection="column"
-          _focus={{ borderColor: 'transparent' }}
-          sx={{ transform: 'translateY(-23px)' }}
+        <Link
+          ml="1px"
+          isExternal
+          textDecoration="none"
+          _hover={{ textDecoration: 'none' }}
+          href="https://bit.ly/botonepack"
         >
-          <Box rounded="full" bg="bgSecundary" p={1}>
-            <Icon color="white" fontSize="6xl" as={WspIcon} fill="white" />
-          </Box>
-          <Text sx={{ transform: 'translateY(6px)' }}>Whatsapp</Text>
-        </Button>
+          <Button
+            py={2}
+            color="white"
+            display="flex"
+            variant="unstyled"
+            colorScheme="primary"
+            aria-label="Whatsapp"
+            flexDirection="column"
+            _focus={{ borderColor: 'transparent' }}
+            _active={{ borderColor: 'transparent' }}
+            sx={{ transform: 'translateY(-23px)' }}
+          >
+            <Box rounded="full" bg="bgSecundary" p={1}>
+              <Icon color="white" fontSize="6xl" as={WspIcon} fill="white" />
+            </Box>
+            <Text sx={{ transform: 'translateY(6px)' }}>Whatsapp</Text>
+          </Button>
+        </Link>
         <Button
           ml={{ base: 3, ms: 5 }}
           py={2}
